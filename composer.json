@@ -2,11 +2,19 @@
     "name": "admin-kit/core",
     "description": "Admin-Kit",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "AdminKit\\Core\\": "src/"
         }
     },
+    "extra": {
+    "laravel": {
+        "providers": [
+            "AdminKit\\Core\\CoreServiceProvider"
+        ]
+    }
+},
     "authors": [
         {
             "name": "Anastas Mironov",
@@ -14,5 +22,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "orchid/platform": "^12.5"
+    }
 }
