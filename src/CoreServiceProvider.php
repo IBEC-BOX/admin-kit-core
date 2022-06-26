@@ -25,6 +25,9 @@ class CoreServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/admin-kit.php' => config_path('admin-kit.php'),
             ], 'config');
 
-    }
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'migrations');
+        }
     }
 }
