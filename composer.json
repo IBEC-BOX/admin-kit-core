@@ -24,5 +24,8 @@
     "minimum-stability": "dev",
     "require": {
         "orchid/platform": "^12.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0"
     }
 }
