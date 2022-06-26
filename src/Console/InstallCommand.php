@@ -2,6 +2,7 @@
 
 namespace AdminKit\Core\Console;
 
+use AdminKit\Core\CoreServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -12,19 +13,19 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        $this->info('Installing Admin Kit...');
+        $this->comment('Installing Admin Kit...');
         $this->info('Publishing configuration...');
 
-        if (! $this->configExists('admin-kit.php')) {
-            $this->publishConfiguration();
-        } else {
-            if ($this->shouldOverwriteConfig()) {
-                $this->info('Overwriting configuration file...');
-                $this->publishConfiguration($force = true);
-            } else {
-                $this->info('Existing configuration was not overwritten');
-            }
-        }
+        $this
+            ->executeCommand('vendor:publish', [
+                '--provider' => CoreServiceProvider::class,
+                '--tag' => [
+                    'config',
+                    'migrations',
+                ],
+            ])
+            ->executeCommand('migrate')
+            ->executeCommand('storage:link');
 
         $this->info('Installed Admin Kit');
     }
@@ -54,5 +55,23 @@ class InstallCommand extends Command
         }
 
         $this->call('vendor:publish', $params);
+    }
+
+    private function executeCommand(string $command, array $parameters = []): self
+    {
+        try {
+            $result = $this->callSilent($command, $parameters);
+        } catch (\Exception $exception) {
+            $result = 1;
+            $this->alert($exception->getMessage());
+        }
+
+        if ($result) {
+            $parameters = http_build_query($parameters, '', ' ');
+            $parameters = str_replace('%5C', '/', $parameters);
+            $this->alert("An error has occurred. The '{$command} {$parameters}' command was not executed");
+        }
+
+        return $this;
     }
 }
