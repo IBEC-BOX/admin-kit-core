@@ -79,4 +79,24 @@ class InstallCommand extends Command
 
         return $this;
     }
+
+    private function setValueEnv(string $constant, string $value = 'null'): self
+    {
+        $str = $this->fileGetContent(app_path('../.env'));
+
+        if ($str !== false && strpos($str, $constant) === false) {
+            file_put_contents(app_path('../.env'), $str . PHP_EOL . $constant . '=' . $value . PHP_EOL);
+        }
+
+        return $this;
+    }
+
+    private function fileGetContent(string $file)
+    {
+        if (! is_file($file)) {
+            return '';
+        }
+
+        return file_get_contents($file);
+    }
 }
