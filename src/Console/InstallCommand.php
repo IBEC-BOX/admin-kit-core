@@ -11,7 +11,7 @@ use Orchid\Platform\Providers\FoundationServiceProvider;
 class InstallCommand extends Command
 {
     protected $signature = 'admin-kit:install';
-    protected $description = 'Install all of the Admin Kit files';
+    protected $description = 'Install all of the AdminKit files';
 
     public function handle()
     {
@@ -29,7 +29,6 @@ class InstallCommand extends Command
             ])
             ->executeCommand('migrate')
             ->executeCommand('storage:link')
-            ->changeUserModel()
             ->setValueEnv('SCOUT_DRIVER');
 
         $this
@@ -37,8 +36,10 @@ class InstallCommand extends Command
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => [
                     'config',
+                    'stubs',
                 ],
-            ]);
+            ])
+            ->changeUserModel();
 
         $this->info('Installed Admin Kit');
     }
@@ -68,13 +69,13 @@ class InstallCommand extends Command
         if (!file_exists(app_path($path))) {
             $this->warn('Unable to locate "app/Models/User.php".  Did you move this file?');
             $this->warn('You will need to update this manually.');
-            $this->warn('Change "extends Authenticatable" to "extends \Orchid\Platform\Models\User" in your User model');
+            $this->warn('Change "extends Authenticatable" to "extends \AdminKit\Core\Models\User" in your User model');
             $this->warn('Also pay attention to the properties so that they are not overwritten.');
 
             return $this;
         }
 
-        $user = file_get_contents(Dashboard::path('stubs/app/User.stub'));
+        $user = file_get_contents(__DIR__ . '/../../stubs/app/User.stub');
         file_put_contents(app_path($path), $user);
 
         return $this;
