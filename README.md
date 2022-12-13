@@ -28,3 +28,7 @@ php artisan admin-kit:install
 ```shell
 php artisan orchid:admin
 ```
+
+### Usage
+
+Переходите по ссылке `/admin`, введите логин и пароль, и вы попали в админ панель.
