@@ -2,10 +2,10 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
-## v1.0.5 - 2023-01-07
+## v1.0.3 - 2023-01-07
 
-- test release 2
+- add changelog file
 
-## v1.0.4 - 2023-01-07
+## v1.0.2 - 2023-01-07
 
-- test release
+- use package-skeleton-laravel for this repo
