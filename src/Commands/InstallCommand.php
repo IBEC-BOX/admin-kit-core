@@ -1,16 +1,15 @@
 <?php
 
-namespace AdminKit\Core\Console;
+namespace AdminKit\Core\Commands;
 
 use AdminKit\Core\CoreServiceProvider;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
-use Orchid\Platform\Dashboard;
 use Orchid\Platform\Providers\FoundationServiceProvider;
 
 class InstallCommand extends Command
 {
     protected $signature = 'admin-kit:install';
+
     protected $description = 'Install all of the AdminKit files';
 
     public function handle()
@@ -35,8 +34,8 @@ class InstallCommand extends Command
             ->executeCommand('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => [
-                    'config',
-                    'stubs',
+                    'core-config',
+                    'core-stubs',
                 ],
             ])
             ->changeUserModel();
@@ -66,7 +65,7 @@ class InstallCommand extends Command
     {
         $this->info('Attempting to set ORCHID User model as parent to App\User');
 
-        if (!file_exists(app_path($path))) {
+        if (! file_exists(app_path($path))) {
             $this->warn('Unable to locate "app/Models/User.php".  Did you move this file?');
             $this->warn('You will need to update this manually.');
             $this->warn('Change "extends Authenticatable" to "extends \AdminKit\Core\Models\User" in your User model');
@@ -75,7 +74,7 @@ class InstallCommand extends Command
             return $this;
         }
 
-        $user = file_get_contents(__DIR__ . '/../../stubs/app/User.stub');
+        $user = file_get_contents(__DIR__.'/../../stubs/app/User.stub');
         file_put_contents(app_path($path), $user);
 
         return $this;
@@ -86,7 +85,7 @@ class InstallCommand extends Command
         $str = $this->fileGetContent(app_path('../.env'));
 
         if ($str !== false && strpos($str, $constant) === false) {
-            file_put_contents(app_path('../.env'), $str . PHP_EOL . $constant . '=' . $value . PHP_EOL);
+            file_put_contents(app_path('../.env'), $str.PHP_EOL.$constant.'='.$value.PHP_EOL);
         }
 
         return $this;

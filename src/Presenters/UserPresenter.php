@@ -71,8 +71,7 @@ class UserPresenter extends Presenter implements Searchable, Personable
     }
 
     /**
-     * @param string|null $query
-     *
+     * @param  string|null  $query
      * @return Builder
      */
     public function searchQuery(string $query = null): Builder

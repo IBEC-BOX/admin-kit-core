@@ -8,12 +8,12 @@ use AdminKit\Core\Layouts\Role\RolePermissionLayout;
 use AdminKit\Core\Layouts\User\UserEditLayout;
 use AdminKit\Core\Layouts\User\UserPasswordLayout;
 use AdminKit\Core\Layouts\User\UserRoleLayout;
+use AdminKit\Core\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Orchid\Access\UserSwitch;
-use AdminKit\Core\Models\User;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -31,8 +31,7 @@ class UserEditScreen extends Screen
     /**
      * Query data.
      *
-     * @param User $user
-     *
+     * @param  User  $user
      * @return array
      */
     public function query(User $user): iterable
@@ -40,7 +39,7 @@ class UserEditScreen extends Screen
         $user->load(['roles']);
 
         return [
-            'user'       => $user,
+            'user' => $user,
             'permission' => $user->getStatusPermission(),
         ];
     }
@@ -156,9 +155,8 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param User    $user
-     * @param Request $request
-     *
+     * @param  User  $user
+     * @param  Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function save(User $user, Request $request)
@@ -194,12 +192,10 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param User $user
-     *
-     * @throws \Exception
-     *
+     * @param  User  $user
      * @return \Illuminate\Http\RedirectResponse
      *
+     * @throws \Exception
      */
     public function remove(User $user)
     {
@@ -211,8 +207,7 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param User $user
-     *
+     * @param  User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
     public function loginAs(User $user)

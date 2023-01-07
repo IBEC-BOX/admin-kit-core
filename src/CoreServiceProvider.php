@@ -2,28 +2,31 @@
 
 namespace AdminKit\Core;
 
-use AdminKit\Core\Console\InstallCommand;
+use AdminKit\Core\Commands\InstallCommand;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
 use Orchid\Platform\Dashboard;
 use Orchid\Screen\TD;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class CoreServiceProvider extends ServiceProvider
+class CoreServiceProvider extends PackageServiceProvider
 {
-    public function register()
+    public function configurePackage(Package $package): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'admin-kit');
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallCommand::class,
-            ]);
-        }
+        $package
+            ->name('core')
+            ->hasConfigFile()
+            ->hasViews()
+            ->hasCommand(InstallCommand::class);
+    }
 
+    public function registeringPackage()
+    {
         TD::macro('bool', function () {
             $column = $this->column;
             $this->render(function ($datum) use ($column) {
                 return view('admin-kit::bool', [
-                    'bool' => $datum->$column
+                    'bool' => $datum->$column,
                 ]);
             });
 
@@ -31,24 +34,18 @@ class CoreServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function bootingPackage()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin-kit');
-
-        Route::domain((string)config('platform.domain'))
+        Route::domain((string) config('platform.domain'))
             ->prefix(Dashboard::prefix('/'))
             ->middleware(config('platform.middleware.private'))
-            ->group(__DIR__ . '/../routes/platform.php');
+            ->group(__DIR__.'/../routes/platform.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('admin-kit.php'),
-            ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../stubs/app/routes/' => base_path('routes'),
-                __DIR__ . '/../stubs/app/Orchid/' => app_path('Orchid'),
-            ], 'stubs');
+                __DIR__.'/../stubs/app/routes/' => base_path('routes'),
+                __DIR__.'/../stubs/app/Orchid/' => app_path('Orchid'),
+            ], 'core-stubs');
         }
     }
 }

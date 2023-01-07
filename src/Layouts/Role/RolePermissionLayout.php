@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\Role;
 
-use Illuminate\Support\Collection;
 use AdminKit\Core\Models\User;
+use Illuminate\Support\Collection;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Group;
@@ -22,9 +22,9 @@ class RolePermissionLayout extends Rows
     /**
      * Views.
      *
-     * @throws Throwable
-     *
      * @return Field[]
+     *
+     * @throws Throwable
      */
     public function fields(): array
     {
@@ -36,8 +36,7 @@ class RolePermissionLayout extends Rows
     }
 
     /**
-     * @param Collection $permissionsRaw
-     *
+     * @param  Collection  $permissionsRaw
      * @return array
      */
     private function generatedPermissionFields(Collection $permissionsRaw): array
@@ -51,9 +50,8 @@ class RolePermissionLayout extends Rows
     }
 
     /**
-     * @param Collection $permissions
-     * @param string     $title
-     *
+     * @param  Collection  $permissions
+     * @param  string  $title
      * @return Collection
      */
     private function makeCheckBoxGroup(Collection $permissions, string $title): Collection
@@ -77,8 +75,7 @@ class RolePermissionLayout extends Rows
     }
 
     /**
-     * @param Collection $chunks
-     *
+     * @param  Collection  $chunks
      * @return CheckBox
      */
     private function makeCheckBox(Collection $chunks): CheckBox
@@ -96,7 +93,6 @@ class RolePermissionLayout extends Rows
     /**
      * @param $slug
      * @param $value
-     *
      * @return bool
      */
     private function getIndeterminateStatus($slug, $value): bool

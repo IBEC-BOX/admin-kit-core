@@ -1,31 +1,73 @@
 {
     "name": "admin-kit/core",
-    "description": "Admin-Kit",
-    "type": "library",
+    "description": "Orchid Admin Core Package",
+    "keywords": [
+        "admin-kit",
+        "laravel",
+        "core"
+    ],
+    "homepage": "https://github.com/admin-kit/core",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "AdminKit\\Core\\": "src/"
-        }
-    },
-    "extra": {
-    "laravel": {
-        "providers": [
-            "AdminKit\\Core\\CoreServiceProvider"
-        ]
-    }
-},
     "authors": [
         {
             "name": "Anastas Mironov",
-            "email": "ast@l80.ru"
+            "email": "ast@l80.ru",
+            "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "orchid/platform": "^13.6"
+        "php": "^8.1",
+        "orchid/platform": "^13.6",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0"
-    }
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdminKit\\Core\\": "src",
+            "AdminKit\\Core\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AdminKit\\Core\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AdminKit\\Core\\CoreServiceProvider"
+            ],
+            "aliases": {
+                "Core": "AdminKit\\Core\\Facades\\Core"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -6,10 +6,10 @@ namespace AdminKit\Core\Screens\User;
 
 use AdminKit\Core\Layouts\User\ProfilePasswordLayout;
 use AdminKit\Core\Layouts\User\UserEditLayout;
+use AdminKit\Core\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use AdminKit\Core\Models\User;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -22,8 +22,7 @@ class UserProfileScreen extends Screen
     /**
      * Query data.
      *
-     * @param Request $request
-     *
+     * @param  Request  $request
      * @return array
      */
     public function query(Request $request): iterable
@@ -92,12 +91,12 @@ class UserProfileScreen extends Screen
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      */
     public function save(Request $request): void
     {
         $request->validate([
-            'user.name'  => 'required|string',
+            'user.name' => 'required|string',
             'user.email' => [
                 'required',
                 Rule::unique(User::class, 'email')->ignore($request->user()),
@@ -112,14 +111,14 @@ class UserProfileScreen extends Screen
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      */
     public function changePassword(Request $request): void
     {
         $guard = config('platform.guard', 'web');
         $request->validate([
             'old_password' => 'required|current_password:'.$guard,
-            'password'     => 'required|confirmed',
+            'password' => 'required|confirmed',
         ]);
 
         tap($request->user(), function ($user) use ($request) {

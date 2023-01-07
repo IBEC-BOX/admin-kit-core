@@ -7,9 +7,9 @@ namespace AdminKit\Core\Screens\User;
 use AdminKit\Core\Layouts\User\UserEditLayout;
 use AdminKit\Core\Layouts\User\UserFiltersLayout;
 use AdminKit\Core\Layouts\User\UserListLayout;
+use AdminKit\Core\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use AdminKit\Core\Models\User;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -94,8 +94,7 @@ class UserListScreen extends Screen
     }
 
     /**
-     * @param User $user
-     *
+     * @param  User  $user
      * @return array
      */
     public function asyncGetUser(User $user): iterable
@@ -106,8 +105,8 @@ class UserListScreen extends Screen
     }
 
     /**
-     * @param Request $request
-     * @param User    $user
+     * @param  Request  $request
+     * @param  User  $user
      */
     public function saveUser(Request $request, User $user): void
     {
@@ -124,7 +123,7 @@ class UserListScreen extends Screen
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      */
     public function remove(Request $request): void
     {

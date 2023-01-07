@@ -25,14 +25,13 @@ class RoleEditScreen extends Screen
     /**
      * Query data.
      *
-     * @param Role $role
-     *
+     * @param  Role  $role
      * @return array
      */
     public function query(Role $role): iterable
     {
         return [
-            'role'       => $role,
+            'role' => $role,
             'permission' => $role->getStatusPermission(),
         ];
     }
@@ -109,9 +108,8 @@ class RoleEditScreen extends Screen
     }
 
     /**
-     * @param Request $request
-     * @param Role    $role
-     *
+     * @param  Request  $request
+     * @param  Role  $role
      * @return \Illuminate\Http\RedirectResponse
      */
     public function save(Request $request, Role $role)
@@ -140,11 +138,10 @@ class RoleEditScreen extends Screen
     }
 
     /**
-     * @param Role $role
+     * @param  Role  $role
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function remove(Role $role)
     {
