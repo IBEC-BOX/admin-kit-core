@@ -1,8 +1,8 @@
-# Orchid Admin Core Package
+# Admin-Kit Core Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/admin-kit/core.svg?style=flat-square)](https://packagist.org/packages/admin-kit/core)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/admin-kit/core/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/admin-kit/core/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/admin-kit/core/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/admin-kit/core/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/admin-kit/core/run-tests.yml?branch=1.x&label=tests&style=flat-square)](https://github.com/admin-kit/core/actions?query=workflow%3Arun-tests+branch%3A1.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/admin-kit/core/fix-php-code-style-issues.yml?branch=1.x&label=code%20style&style=flat-square)](https://github.com/admin-kit/core/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A1.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/admin-kit/core.svg?style=flat-square)](https://packagist.org/packages/admin-kit/core)
 
 Пакет служит улучшением и ускорением разработки админ панелей.
