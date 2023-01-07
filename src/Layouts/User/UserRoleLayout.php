@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\User;
 
-use Orchid\Platform\Models\Role;
+use AdminKit\Core\Models\Role;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;

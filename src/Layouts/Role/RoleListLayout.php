@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\Role;
 
-use Orchid\Platform\Models\Role;
+use AdminKit\Core\Models\Role;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Cell;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -18,7 +19,7 @@ class RoleListLayout extends Table
     public $target = 'roles';
 
     /**
-     * @return TD[]
+     * @return Cell[]
      */
     public function columns(): array
     {

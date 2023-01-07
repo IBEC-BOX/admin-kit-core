@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AdminKit\Core\Screens\Role;
 
 use AdminKit\Core\Layouts\Role\RoleListLayout;
-use Orchid\Platform\Models\Role;
+use AdminKit\Core\Models\Role;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;

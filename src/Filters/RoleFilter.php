@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Filters;
 
+use AdminKit\Core\Models\Role;
 use Illuminate\Database\Eloquent\Builder;
 use Orchid\Filters\Filter;
-use Orchid\Platform\Models\Role;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Select;
 

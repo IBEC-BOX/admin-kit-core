@@ -23,6 +23,7 @@ class CoreServiceProvider extends PackageServiceProvider
     public function registeringPackage()
     {
         TD::macro('bool', function () {
+            /** @var TD $this */
             $column = $this->column;
             $this->render(function ($datum) use ($column) {
                 return view('admin-kit::bool', [

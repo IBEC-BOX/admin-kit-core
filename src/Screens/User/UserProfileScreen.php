@@ -122,6 +122,7 @@ class UserProfileScreen extends Screen
         ]);
 
         tap($request->user(), function ($user) use ($request) {
+            /** @var User $user */
             $user->password = Hash::make($request->get('password'));
         })->save();
 

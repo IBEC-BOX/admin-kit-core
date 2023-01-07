@@ -9,6 +9,7 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Cell;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Layouts\Table;
@@ -22,7 +23,7 @@ class UserListLayout extends Table
     public $target = 'users';
 
     /**
-     * @return TD[]
+     * @return Cell[]
      */
     public function columns(): array
     {

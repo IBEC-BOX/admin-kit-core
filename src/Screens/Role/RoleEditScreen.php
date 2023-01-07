@@ -6,9 +6,9 @@ namespace AdminKit\Core\Screens\Role;
 
 use AdminKit\Core\Layouts\Role\RoleEditLayout;
 use AdminKit\Core\Layouts\Role\RolePermissionLayout;
+use AdminKit\Core\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Orchid\Platform\Models\Role;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
