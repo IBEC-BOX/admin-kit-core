@@ -24,7 +24,7 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         TD::macro('bool', function () {
             /** @var TD $this */
-            $column = $this->column;
+            $column = $this->column; /** @phpstan-ignore-line */
             $this->render(function ($datum) use ($column) {
                 return view('admin-kit::bool', [
                     'bool' => $datum->$column,
