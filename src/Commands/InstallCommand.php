@@ -34,8 +34,8 @@ class InstallCommand extends Command
             ->executeCommand('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => [
-                    'core-config',
-                    'core-stubs',
+                    'admin-kit-config',
+                    'admin-kit-stubs',
                 ],
             ])
             ->changeUserModel();

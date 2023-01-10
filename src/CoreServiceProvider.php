@@ -14,7 +14,7 @@ class CoreServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('core')
+            ->name('admin-kit')
             ->hasConfigFile()
             ->hasViews()
             ->hasCommand(InstallCommand::class);
@@ -46,7 +46,7 @@ class CoreServiceProvider extends PackageServiceProvider
             $this->publishes([
                 __DIR__.'/../stubs/app/routes/' => base_path('routes'),
                 __DIR__.'/../stubs/app/Orchid/' => app_path('Orchid'),
-            ], 'core-stubs');
+            ], 'admin-kit-stubs');
         }
     }
 }

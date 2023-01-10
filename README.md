@@ -28,7 +28,7 @@ php artisan orchid:admin
 
 Опционально, можно кастомизировать view файлы
 ```bash
-php artisan vendor:publish --tag="core-views"
+php artisan vendor:publish --tag="admin-kit-views"
 ```
 
 ## Usage
