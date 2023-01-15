@@ -1,6 +1,5 @@
 <?php
 
-use AdminKit\Core\Screens\PlatformScreen;
 use AdminKit\Core\Screens\Role\RoleEditScreen;
 use AdminKit\Core\Screens\Role\RoleListScreen;
 use AdminKit\Core\Screens\User\UserEditScreen;
