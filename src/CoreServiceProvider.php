@@ -47,7 +47,7 @@ class CoreServiceProvider extends ServiceProvider
             /** @var TD $this */
             $column = $this->column; /** @phpstan-ignore-line */
             $this->render(function ($datum) use ($column) {
-                return view('admin-kit::bool', [
+                return view('admin-kit::partials.bool', [
                     'bool' => $datum->$column,
                 ]);
             });

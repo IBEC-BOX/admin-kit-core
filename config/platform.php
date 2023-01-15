@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'index' => 'platform.main',
+    'index' => 'platform.systems.users',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,8 +128,8 @@ return [
     */
 
     'template' => [
-        'header' => '',
-        'footer' => '',
+        'header' => 'admin-kit::header',
+        'footer' => 'admin-kit::footer',
     ],
 
     /*

@@ -9,9 +9,6 @@ use AdminKit\Core\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
-Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
-
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')

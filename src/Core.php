@@ -4,8 +4,5 @@ namespace AdminKit\Core;
 
 class Core
 {
-    public function test()
-    {
-        return 'test success';
-    }
+    public const VERSION = '1.1.0';
 }
