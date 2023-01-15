@@ -20,11 +20,7 @@ class InstallCommand extends Command
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => FoundationServiceProvider::class,
-                '--tag' => [
-                    'config',
-                    'migrations',
-                    'orchid-assets',
-                ],
+                '--tag' => ['migrations','orchid-assets'],
             ])
             ->executeCommand('migrate')
             ->executeCommand('storage:link')
@@ -33,10 +29,7 @@ class InstallCommand extends Command
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
-                '--tag' => [
-                    'admin-kit-config',
-                    'admin-kit-stubs',
-                ],
+                '--tag' => ['admin-kit-config','admin-kit-stubs'],
             ])
             ->changeUserModel();
 

@@ -18,7 +18,6 @@
     "require": {
         "php": "^8.1",
         "orchid/platform": "^13.6",
-        "spatie/laravel-package-tools": "^1.13.0",
         "illuminate/contracts": "^9.0"
     },
     "require-dev": {
