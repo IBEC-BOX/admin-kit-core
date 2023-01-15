@@ -2,7 +2,9 @@
 
 namespace AdminKit\Core\Models;
 
-class AdminKitModel
+use Illuminate\Database\Eloquent\Model;
+
+class AdminKitModel extends Model
 {
     /**
      * Save to database cyrillic characters
@@ -10,7 +12,7 @@ class AdminKitModel
      * @param $value
      * @return false|string
      */
-    public function asJson($value)
+    public function asJson($value): bool|string
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
