@@ -29,7 +29,7 @@ class InstallCommand extends Command
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
-                '--tag' => ['admin-kit-config','admin-kit-stubs'],
+                '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-assets'],
             ])
             ->changeUserModel();
 

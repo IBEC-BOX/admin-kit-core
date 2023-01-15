@@ -26,10 +26,11 @@ class CoreServiceProvider extends ServiceProvider
             ->addViews()
             ->addRoutes()
             ->publishStubs()
+            ->publishAssets()
             ->publishConfigs();
     }
 
-    private function registerCommands(): self
+    protected function registerCommands(): self
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -40,7 +41,7 @@ class CoreServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function registerMacros(): self
+    protected function registerMacros(): self
     {
         TD::macro('bool', function () {
             /** @var TD $this */
@@ -57,14 +58,14 @@ class CoreServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function registerConfigs(): self
+    protected function registerConfigs(): self
     {
         $this->mergeConfigFrom(__DIR__ . "/../config/$this->name.php", $this->name);
 
         return $this;
     }
 
-    private function addRoutes(): self
+    protected function addRoutes(): self
     {
         Route::domain((string)config('platform.domain'))
             ->prefix(Dashboard::prefix('/'))
@@ -74,14 +75,14 @@ class CoreServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function addViews(): self
+    protected function addViews(): self
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', $this->name);
 
         return $this;
     }
 
-    private function publishConfigs(): self
+    protected function publishConfigs(): self
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -93,13 +94,24 @@ class CoreServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function publishStubs(): self
+    protected function publishStubs(): self
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../stubs/app/routes/' => base_path('routes'),
                 __DIR__ . '/../stubs/app/Orchid/' => app_path('Orchid'),
             ], "$this->name-stubs");
+        }
+
+        return $this;
+    }
+
+    protected function publishAssets(): self
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../public' => public_path("vendor/$this->name"),
+            ], ["$this->name-assets", 'laravel-assets']);
         }
 
         return $this;
