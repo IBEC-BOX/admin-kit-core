@@ -48,7 +48,7 @@ class CoreServiceProvider extends ServiceProvider
             $column = $this->column; /** @phpstan-ignore-line */
             $this->render(function ($datum) use ($column) {
                 return view('admin-kit::bool', [
-                    'bool' => $datum->$column
+                    'bool' => $datum->$column,
                 ]);
             });
 
@@ -60,24 +60,24 @@ class CoreServiceProvider extends ServiceProvider
 
     protected function registerConfigs(): self
     {
-        $this->mergeConfigFrom(__DIR__ . "/../config/$this->name.php", $this->name);
+        $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
 
         return $this;
     }
 
     protected function addRoutes(): self
     {
-        Route::domain((string)config('platform.domain'))
+        Route::domain((string) config('platform.domain'))
             ->prefix(Dashboard::prefix('/'))
             ->middleware(config('platform.middleware.private'))
-            ->group(__DIR__ . '/../routes/platform.php');
+            ->group(__DIR__.'/../routes/platform.php');
 
         return $this;
     }
 
     protected function addViews(): self
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', $this->name);
+        $this->loadViewsFrom(__DIR__.'/../resources/views', $this->name);
 
         return $this;
     }
@@ -86,8 +86,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . "/../config/$this->name.php" => config_path("$this->name.php"),
-                __DIR__ . "/../config/platform.php" => config_path("platform.php"),
+                __DIR__."/../config/$this->name.php" => config_path("$this->name.php"),
+                __DIR__.'/../config/platform.php' => config_path('platform.php'),
             ], "$this->name-config");
         }
 
@@ -98,8 +98,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../stubs/app/routes/' => base_path('routes'),
-                __DIR__ . '/../stubs/app/Orchid/' => app_path('Orchid'),
+                __DIR__.'/../stubs/app/routes/' => base_path('routes'),
+                __DIR__.'/../stubs/app/Orchid/' => app_path('Orchid'),
             ], "$this->name-stubs");
         }
 
@@ -110,7 +110,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../public' => public_path("vendor/$this->name"),
+                __DIR__.'/../public' => public_path("vendor/$this->name"),
             ], ["$this->name-assets", 'laravel-assets']);
         }
 

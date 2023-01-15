@@ -20,7 +20,7 @@ class InstallCommand extends Command
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => FoundationServiceProvider::class,
-                '--tag' => ['migrations','orchid-assets'],
+                '--tag' => ['migrations', 'orchid-assets'],
             ])
             ->executeCommand('migrate')
             ->executeCommand('storage:link')

@@ -6,6 +6,7 @@ class AdminKitModel
 {
     /**
      * Save to database cyrillic characters
+     *
      * @param $value
      * @return false|string
      */
@@ -13,5 +14,4 @@ class AdminKitModel
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
-
 }
