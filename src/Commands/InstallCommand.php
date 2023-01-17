@@ -25,20 +25,35 @@ class InstallCommand extends Command
             ->executeCommand('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations', 'admin-kit-assets'],
-            ])
-            ->executeCommand('storage:link')
-            ->setValueEnv('SCOUT_DRIVER');
+            ]);
 
-        if ($this->confirm('Migrate the database tables?', true)) {
+        // php artisan storage:link
+        if (! file_exists(public_path('storage'))) {
+            if ($this->confirm('Add storage link?')) {
+                $this->executeCommand('storage:link');
+            }
+        }
+
+        // php artisan migrate
+        if ($this->confirm('Migrate the database tables?')) {
             $this->executeCommand('migrate');
         }
 
-        if ($this->confirm('Create AdminUser?', true)) {
+        // php artisan orchid:admin
+        if ($this->confirm('Create AdminUser?')) {
             $this->call('orchid:admin');
         }
 
+        // set DASHBOARD_PREFIX environment
+        if ($this->confirm('Update DASHBOARD_PREFIX?')) {
+            $prefix = $this->ask('Set DASHBOARD_PREFIX=', config('platform.prefix'));
+            $this->setEnv('DASHBOARD_PREFIX', $prefix);
+        }
+
         $this->info('Admin Kit success installed =)');
-        $this->comment('Follow this link: '.asset(config('platform.prefix')));
+
+        $link = isset($prefix) ? asset($prefix) : asset(config('platform.prefix'));
+        $this->comment('Open the dashboard using this link: '.$link);
     }
 
     private function executeCommand(string $command, array $parameters = []): self
@@ -59,12 +74,16 @@ class InstallCommand extends Command
         return $this;
     }
 
-    private function setValueEnv(string $constant, string $value = 'null'): self
+    private function setEnv(string $key, string $value = 'null'): self
     {
-        $str = $this->fileGetContent(app_path('../.env'));
+        $str = $this->fileGetContent(base_path('.env'));
 
-        if ($str !== false && strpos($str, $constant) === false) {
-            file_put_contents(app_path('../.env'), $str.PHP_EOL.$constant.'='.$value.PHP_EOL);
+        if ($str !== false && ! str_contains($str, $key)) {
+            file_put_contents(base_path('.env'), $str.PHP_EOL.$key.'='.$value.PHP_EOL);
+        } elseif ($str !== false && str_contains($str, $key)) {
+            $collection = collect(file(base_path('.env')));
+            $collection->transform(fn ($env) => str_contains(explode('=', $env)[0], $key) ? "$key=$value\n" : $env);
+            file_put_contents(base_path('.env'), $collection->implode(''));
         }
 
         return $this;
