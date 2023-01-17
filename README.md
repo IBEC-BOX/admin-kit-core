@@ -9,28 +9,16 @@
 
 ## Installation
 
-Установку проще делать на новом Laravel.
+Установку производить на готовом проекте Laravel, с настроенной базой данных
 
-1. Установить пакет
+Установить пакет
 ```shell
 composer require admin-kit/core
 ```
 
-2. Настроить подключение к базе данных, в файле `.env`
-
-3. Запустить команду установки пакета
+Запустить команду настройки пакета
 ```shell
 php artisan admin-kit:install
-```
-
-4. Создать пользователя для админки
-```shell
-php artisan orchid:admin
-```
-
-Опционально, можно кастомизировать view файлы
-```bash
-php artisan vendor:publish --tag="admin-kit-views"
 ```
 
 ## Usage
