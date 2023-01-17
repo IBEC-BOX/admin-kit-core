@@ -38,7 +38,7 @@ class InstallCommand extends Command
         }
 
         $this->info('Admin Kit success installed =)');
-        $this->comment('Follow this link: ' . asset(config('platform.prefix')));
+        $this->comment('Follow this link: '.asset(config('platform.prefix')));
     }
 
     private function executeCommand(string $command, array $parameters = []): self
