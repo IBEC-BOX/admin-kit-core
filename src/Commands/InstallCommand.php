@@ -10,13 +10,13 @@ class InstallCommand extends Command
 {
     protected $signature = 'admin-kit:install';
 
-    protected $description = 'Install all of the AdminKit files';
+    protected $description = 'Install all of the AdminKit package';
 
     public function handle()
     {
         $this->comment('Installing Admin Kit...');
-        $this->info('Publishing configuration...');
 
+        $this->info('Publishing configuration...');
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => FoundationServiceProvider::class,
@@ -29,10 +29,16 @@ class InstallCommand extends Command
             ->executeCommand('storage:link')
             ->setValueEnv('SCOUT_DRIVER');
 
-        $this->info('Migrating the database tables...');
-        $this->executeCommand('migrate');
+        if ($this->confirm('Migrate the database tables?', true)) {
+            $this->executeCommand('migrate');
+        }
 
-        $this->info('Installed Admin Kit');
+        if ($this->confirm('Create AdminUser?', true)) {
+            $this->call('orchid:admin');
+        }
+
+        $this->info('Admin Kit success installed =)');
+        $this->comment('Follow this link: ' . asset(config('platform.prefix')));
     }
 
     private function executeCommand(string $command, array $parameters = []): self
