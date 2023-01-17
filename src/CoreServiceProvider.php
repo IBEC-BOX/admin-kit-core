@@ -29,7 +29,7 @@ class CoreServiceProvider extends ServiceProvider
             ->publishAssets()
             ->publishConfigs()
             ->publishMigrations()
-            ->bindUserModel();
+            ->bindingModels();
     }
 
     protected function registerCommands(): self
@@ -133,9 +133,10 @@ class CoreServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function bindUserModel(): self
+    protected function bindingModels(): self
     {
         Dashboard::useModel(\Orchid\Platform\Models\User::class, \AdminKit\Core\Models\AdminUser::class);
+        Dashboard::useModel(\Orchid\Platform\Models\Role::class, \AdminKit\Core\Models\Role::class);
 
         return $this;
     }

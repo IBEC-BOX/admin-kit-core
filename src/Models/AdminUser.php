@@ -3,6 +3,7 @@
 namespace AdminKit\Core\Models;
 
 use AdminKit\Core\Presenters\AdminUserPresenter;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -34,5 +35,13 @@ class AdminUser extends \Orchid\Platform\Models\User
     public function presenter()
     {
         return new AdminUserPresenter($this);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
     }
 }
