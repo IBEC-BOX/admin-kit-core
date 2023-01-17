@@ -2,6 +2,13 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.0 - 2023-01-17
+
+- change default user model to AdminUser
+- change default table names
+- add new provider and guard "admin-kit" for new AdminUser
+- update "admin-kit:install" command
+
 ## v1.1.0 - 2023-01-15
 
 - customize header and footer views
