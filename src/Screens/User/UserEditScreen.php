@@ -8,7 +8,7 @@ use AdminKit\Core\Layouts\Role\RolePermissionLayout;
 use AdminKit\Core\Layouts\User\UserEditLayout;
 use AdminKit\Core\Layouts\User\UserPasswordLayout;
 use AdminKit\Core\Layouts\User\UserRoleLayout;
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,17 +24,17 @@ use Orchid\Support\Facades\Toast;
 class UserEditScreen extends Screen
 {
     /**
-     * @var User
+     * @var AdminUser
      */
     public $user;
 
     /**
      * Query data.
      *
-     * @param  User  $user
+     * @param  AdminUser  $user
      * @return array
      */
-    public function query(User $user): iterable
+    public function query(AdminUser $user): iterable
     {
         $user->load(['roles']);
 
@@ -155,16 +155,16 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param  User  $user
+     * @param  AdminUser  $user
      * @param  Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(User $user, Request $request)
+    public function save(AdminUser $user, Request $request)
     {
         $request->validate([
             'user.email' => [
                 'required',
-                Rule::unique(User::class, 'email')->ignore($user),
+                Rule::unique(AdminUser::class, 'email')->ignore($user),
             ],
         ]);
 
@@ -192,12 +192,12 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param  User  $user
+     * @param  AdminUser  $user
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
      */
-    public function remove(User $user)
+    public function remove(AdminUser $user)
     {
         $user->delete();
 
@@ -207,10 +207,10 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param  User  $user
+     * @param  AdminUser  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function loginAs(User $user)
+    public function loginAs(AdminUser $user)
     {
         UserSwitch::loginAs($user);
 

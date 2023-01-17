@@ -20,18 +20,17 @@ class InstallCommand extends Command
         $this
             ->executeCommand('vendor:publish', [
                 '--provider' => FoundationServiceProvider::class,
-                '--tag' => ['migrations', 'orchid-assets'],
+                '--tag' => ['orchid-assets'],
             ])
-            ->executeCommand('migrate')
+            ->executeCommand('vendor:publish', [
+                '--provider' => CoreServiceProvider::class,
+                '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations', 'admin-kit-assets'],
+            ])
             ->executeCommand('storage:link')
             ->setValueEnv('SCOUT_DRIVER');
 
-        $this
-            ->executeCommand('vendor:publish', [
-                '--provider' => CoreServiceProvider::class,
-                '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-assets'],
-            ])
-            ->changeUserModel();
+        $this->info('Migrating the database tables...');
+        $this->executeCommand('migrate');
 
         $this->info('Installed Admin Kit');
     }
@@ -50,25 +49,6 @@ class InstallCommand extends Command
             $parameters = str_replace('%5C', '/', $parameters);
             $this->alert("An error has occurred. The '{$command} {$parameters}' command was not executed");
         }
-
-        return $this;
-    }
-
-    private function changeUserModel(string $path = 'Models/User.php'): self
-    {
-        $this->info('Attempting to set ORCHID User model as parent to App\User');
-
-        if (! file_exists(app_path($path))) {
-            $this->warn('Unable to locate "app/Models/User.php".  Did you move this file?');
-            $this->warn('You will need to update this manually.');
-            $this->warn('Change "extends Authenticatable" to "extends \AdminKit\Core\Models\User" in your User model');
-            $this->warn('Also pay attention to the properties so that they are not overwritten.');
-
-            return $this;
-        }
-
-        $user = file_get_contents(__DIR__.'/../../stubs/app/User.stub');
-        file_put_contents(app_path($path), $user);
 
         return $this;
     }

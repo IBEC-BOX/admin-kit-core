@@ -27,7 +27,9 @@ class CoreServiceProvider extends ServiceProvider
             ->addRoutes()
             ->publishStubs()
             ->publishAssets()
-            ->publishConfigs();
+            ->publishConfigs()
+            ->publishMigrations()
+            ->bindUserModel();
     }
 
     protected function registerCommands(): self
@@ -61,6 +63,8 @@ class CoreServiceProvider extends ServiceProvider
     protected function registerConfigs(): self
     {
         $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
 
         return $this;
     }
@@ -100,7 +104,19 @@ class CoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../stubs/app/routes/' => base_path('routes'),
                 __DIR__.'/../stubs/app/Orchid/' => app_path('Orchid'),
+                __DIR__.'/../stubs/app/AdminUser.stub' => app_path('Models/AdminUser.php'),
             ], "$this->name-stubs");
+        }
+
+        return $this;
+    }
+
+    protected function publishMigrations(): self
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../database/migrations' => database_path('migrations'),
+            ], "$this->name-migrations");
         }
 
         return $this;
@@ -113,6 +129,13 @@ class CoreServiceProvider extends ServiceProvider
                 __DIR__.'/../public' => public_path("vendor/$this->name"),
             ], ["$this->name-assets", 'laravel-assets']);
         }
+
+        return $this;
+    }
+
+    protected function bindUserModel(): self
+    {
+        Dashboard::useModel(\Orchid\Platform\Models\User::class, \AdminKit\Core\Models\AdminUser::class);
 
         return $this;
     }

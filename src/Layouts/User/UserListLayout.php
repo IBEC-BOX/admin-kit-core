@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\User;
 
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -32,7 +32,7 @@ class UserListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(function (User $user) {
+                ->render(function (AdminUser $user) {
                     return new Persona($user->presenter());
                 }),
 
@@ -40,7 +40,7 @@ class UserListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(function (User $user) {
+                ->render(function (AdminUser $user) {
                     return ModalToggle::make($user->email)
                         ->modal('asyncEditUserModal')
                         ->modalTitle($user->presenter()->title())
@@ -52,14 +52,14 @@ class UserListLayout extends Table
 
             TD::make('updated_at', __('Last edit'))
                 ->sort()
-                ->render(function (User $user) {
+                ->render(function (AdminUser $user) {
                     return $user->updated_at->toDateTimeString();
                 }),
 
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(function (User $user) {
+                ->render(function (AdminUser $user) {
                     return DropDown::make()
                         ->icon('options-vertical')
                         ->list([

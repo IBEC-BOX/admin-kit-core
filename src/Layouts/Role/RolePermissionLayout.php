@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\Role;
 
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Illuminate\Support\Collection;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\CheckBox;
@@ -15,7 +15,7 @@ use Throwable;
 class RolePermissionLayout extends Rows
 {
     /**
-     * @var User|null
+     * @var AdminUser|null
      */
     private $user;
 

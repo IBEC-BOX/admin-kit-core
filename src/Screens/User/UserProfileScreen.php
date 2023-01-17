@@ -6,7 +6,7 @@ namespace AdminKit\Core\Screens\User;
 
 use AdminKit\Core\Layouts\User\ProfilePasswordLayout;
 use AdminKit\Core\Layouts\User\UserEditLayout;
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -99,7 +99,7 @@ class UserProfileScreen extends Screen
             'user.name' => 'required|string',
             'user.email' => [
                 'required',
-                Rule::unique(User::class, 'email')->ignore($request->user()),
+                Rule::unique(AdminUser::class, 'email')->ignore($request->user()),
             ],
         ]);
 
@@ -122,7 +122,7 @@ class UserProfileScreen extends Screen
         ]);
 
         tap($request->user(), function ($user) use ($request) {
-            /** @var User $user */
+            /** @var AdminUser $user */
             $user->password = Hash::make($request->get('password'));
         })->save();
 

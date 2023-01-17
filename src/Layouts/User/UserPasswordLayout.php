@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Layouts\User;
 
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Password;
 use Orchid\Screen\Layouts\Rows;
@@ -18,7 +18,7 @@ class UserPasswordLayout extends Rows
      */
     public function fields(): array
     {
-        /** @var User $user */
+        /** @var AdminUser $user */
         $user = $this->query->get('user');
 
         $placeholder = $user->exists

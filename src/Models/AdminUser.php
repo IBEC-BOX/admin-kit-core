@@ -2,7 +2,7 @@
 
 namespace AdminKit\Core\Models;
 
-use AdminKit\Core\Presenters\UserPresenter;
+use AdminKit\Core\Presenters\AdminUserPresenter;
 use Illuminate\Support\Carbon;
 
 /**
@@ -16,13 +16,23 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property array $permissions
  */
-class User extends \Orchid\Platform\Models\User
+class AdminUser extends \Orchid\Platform\Models\User
 {
     /**
-     * @return UserPresenter
+     * Table name
+     */
+    protected $table = 'admin_users';
+
+    /**
+     * Model guard
+     */
+    protected $guard = 'admin-kit';
+
+    /**
+     * @return AdminUserPresenter
      */
     public function presenter()
     {
-        return new UserPresenter($this);
+        return new AdminUserPresenter($this);
     }
 }

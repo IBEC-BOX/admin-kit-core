@@ -7,7 +7,7 @@ namespace AdminKit\Core\Screens\User;
 use AdminKit\Core\Layouts\User\UserEditLayout;
 use AdminKit\Core\Layouts\User\UserFiltersLayout;
 use AdminKit\Core\Layouts\User\UserListLayout;
-use AdminKit\Core\Models\User;
+use AdminKit\Core\Models\AdminUser;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Actions\Link;
@@ -25,7 +25,7 @@ class UserListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'users' => User::with('roles')
+            'users' => AdminUser::with('roles')
                 ->filters()
                 ->filtersApplySelection(UserFiltersLayout::class)
                 ->defaultSort('id', 'desc')
@@ -94,10 +94,10 @@ class UserListScreen extends Screen
     }
 
     /**
-     * @param  User  $user
+     * @param  AdminUser  $user
      * @return array
      */
-    public function asyncGetUser(User $user): iterable
+    public function asyncGetUser(AdminUser $user): iterable
     {
         return [
             'user' => $user,
@@ -106,14 +106,14 @@ class UserListScreen extends Screen
 
     /**
      * @param  Request  $request
-     * @param  User  $user
+     * @param  AdminUser  $user
      */
-    public function saveUser(Request $request, User $user): void
+    public function saveUser(Request $request, AdminUser $user): void
     {
         $request->validate([
             'user.email' => [
                 'required',
-                Rule::unique(User::class, 'email')->ignore($user),
+                Rule::unique(AdminUser::class, 'email')->ignore($user),
             ],
         ]);
 
@@ -127,7 +127,7 @@ class UserListScreen extends Screen
      */
     public function remove(Request $request): void
     {
-        User::findOrFail($request->get('id'))->delete();
+        AdminUser::findOrFail($request->get('id'))->delete();
 
         Toast::info(__('User was removed'));
     }
