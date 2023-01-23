@@ -2,13 +2,21 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.2 - 2023-01-23
+
+- add CyillicChars trait
+
 ## v1.2.1 - 2023-01-17
 
 - add all commands in one with confirm question
 - - php artisan storage:link
+- 
 - - php artisan migrate
+- 
 - - php artisan orchid:admin
+- 
 - - function setEnv()
+- 
 - 
 
 ## v1.2.0 - 2023-01-17
