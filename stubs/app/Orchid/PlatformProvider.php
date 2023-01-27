@@ -37,8 +37,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles'),
 
-            // Remove this, if you don't need
-            ...$this->registerMenuFromPackages(),
+            ...$this->registerMenuFromPackages(), // Remove this, if you don't need
         ];
     }
 
