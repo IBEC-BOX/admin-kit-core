@@ -2,6 +2,11 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.3 - 2023-01-27
+
+- add registerMenuFromPackages() method in PlatformProvider
+- add is_dev() helper
+
 ## v1.2.2 - 2023-01-23
 
 - add CyillicChars trait
@@ -11,11 +16,15 @@ All notable changes to `AdminKit/Core` will be documented in this file.
 - add all commands in one with confirm question
 - - php artisan storage:link
 - 
+- 
 - - php artisan migrate
+- 
 - 
 - - php artisan orchid:admin
 - 
+- 
 - - function setEnv()
+- 
 - 
 - 
 
