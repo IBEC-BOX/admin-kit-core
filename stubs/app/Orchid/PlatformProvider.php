@@ -17,7 +17,6 @@ class PlatformProvider extends OrchidServiceProvider
     public function boot(Dashboard $dashboard): void
     {
         parent::boot($dashboard);
-
         // ...
     }
 
@@ -37,6 +36,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('lock')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles'),
+
+            // Remove this, if you don't need
+            ...$this->registerMenuFromPackages(),
         ];
     }
 
@@ -62,5 +64,22 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
         ];
+    }
+
+    public function registerMenuFromPackages(): array
+    {
+        $menus = [
+            Menu::make()->title(__('Modules')),
+        ];
+
+        foreach (config('admin-kit.packages') as $package) {
+            if (isset($package['name']) && isset($package['route_list'])) {
+                $menus[] = Menu::make(__($package['name']))
+                    ->icon($package['icon'] ?? 'question')
+                    ->route($package['route_list']);
+            }
+        }
+
+        return $menus;
     }
 }
