@@ -72,10 +72,15 @@ class PlatformProvider extends OrchidServiceProvider
         ];
 
         foreach (config('admin-kit.packages') as $package) {
-            if (isset($package['name']) && isset($package['route_list'])) {
-                $menus[] = Menu::make(__($package['name']))
-                    ->icon($package['icon'] ?? 'question')
-                    ->route($package['route_list']);
+            $instance = $package['instance'] ?? null;
+            if (isset($instance)
+                && defined("$instance::NAME")
+                && defined("$instance::ICON")
+                && defined("$instance::ROUTE_LIST")
+            ) {
+                $menus[] = Menu::make(__($instance::NAME))
+                    ->icon($instance::ICON)
+                    ->route($instance::ROUTE_LIST);
             }
         }
 
