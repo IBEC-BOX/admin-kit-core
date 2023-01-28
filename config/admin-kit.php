@@ -6,7 +6,6 @@ return [
 
     'packages' => [
         'directories' => [
-            // Значения по умолчанию
             // https://github.com/admin-kit/directories/blob/1.x/config/directories.php
         ],
     ],
