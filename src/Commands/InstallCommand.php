@@ -17,16 +17,17 @@ class InstallCommand extends Command
         $this->comment("Installing Admin Kit...\n");
 
         // publish configuration
-        $this->info('Publishing configuration...');
-        $this
-            ->executeCommand('vendor:publish', [
-                '--provider' => FoundationServiceProvider::class,
-                '--tag' => ['orchid-assets'],
-            ])
-            ->executeCommand('vendor:publish', [
-                '--provider' => CoreServiceProvider::class,
-                '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations', 'admin-kit-assets'],
-            ]);
+        if ($this->confirm('Publishing configurations and files?')) {
+            $this
+                ->executeCommand('vendor:publish', [
+                    '--provider' => FoundationServiceProvider::class,
+                    '--tag' => ['orchid-assets'],
+                ])
+                ->executeCommand('vendor:publish', [
+                    '--provider' => CoreServiceProvider::class,
+                    '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations', 'admin-kit-assets'],
+                ]);
+        }
 
         // php artisan storage:link
         if (! file_exists(public_path('storage'))) {
@@ -40,11 +41,6 @@ class InstallCommand extends Command
             $this->executeCommand('migrate');
         }
 
-        // php artisan orchid:admin
-        if ($this->confirm('Create AdminUser?')) {
-            $this->call('orchid:admin');
-        }
-
         // set APP_URL environment
         $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
 
@@ -52,10 +48,12 @@ class InstallCommand extends Command
         $prefix = $this->askToSetEnv('DASHBOARD_PREFIX', config('platform.prefix'));
 
         // completing the installation
-        $this->info('Admin Kit success installed =)');
+        $this->info('Admin Kit has been successfully installed =)');
+        $this->info("To create a user, run: <comment>php artisan orchid:admin</comment>");
+        $this->info("To start the embedded server, run: <comment>php artisan serve</comment>");
 
         $prefix = trim($prefix, "/ \t\n\r\0\x0B");
-        $this->info("Open the dashboard using this link: <comment>$appUrl/$prefix<comment>");
+        $this->info("Open the dashboard using this link: <comment>$appUrl/$prefix</comment>");
     }
 
     private function executeCommand(string $command, array $parameters = []): self
