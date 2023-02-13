@@ -16,6 +16,7 @@ class InstallCommand extends Command
     {
         $this->comment("Installing Admin Kit...\n");
 
+        // publish configuration
         $this->info('Publishing configuration...');
         $this
             ->executeCommand('vendor:publish', [
