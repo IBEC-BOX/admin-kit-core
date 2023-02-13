@@ -2,6 +2,10 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.5 - 2023-02-13
+
+- add set env APP_URL for install command
+
 ## v1.2.4 - 2023-01-27
 
 - fix registerMenuFromPackages() method
@@ -22,7 +26,9 @@ All notable changes to `AdminKit/Core` will be documented in this file.
 - 
 - 
 - 
+- 
 - - php artisan migrate
+- 
 - 
 - 
 - 
@@ -30,7 +36,9 @@ All notable changes to `AdminKit/Core` will be documented in this file.
 - 
 - 
 - 
+- 
 - - function setEnv()
+- 
 - 
 - 
 - 
