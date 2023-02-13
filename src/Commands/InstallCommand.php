@@ -45,17 +45,12 @@ class InstallCommand extends Command
         }
 
         // set APP_URL environment
-        $appUrl = $this->ask('Set APP_URL =', config('app.url'));
-        if (! empty($appUrl) && $appUrl !== config('app.url')) {
-            $this->setEnv('APP_URL', $appUrl);
-        }
+        $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
 
         // set DASHBOARD_PREFIX environment
-        $prefix = $this->ask('Set DASHBOARD_PREFIX =', config('platform.prefix'));
-        if (! empty($prefix) && $prefix !== config('platform.prefix')) {
-            $this->setEnv('DASHBOARD_PREFIX', $prefix);
-        }
+        $prefix = $this->askToSetEnv('DASHBOARD_PREFIX', config('platform.prefix'));
 
+        // completing the installation
         $this->info('Admin Kit success installed =)');
 
         $prefix = trim($prefix, "/ \t\n\r\0\x0B");
@@ -78,6 +73,16 @@ class InstallCommand extends Command
         }
 
         return $this;
+    }
+
+    private function askToSetEnv(string $env, string $default = 'null'): string
+    {
+        $value = $this->ask("Set $env =", $default);
+        if (! empty($value) && $value !== $default) {
+            $this->setEnv($env, $value);
+        }
+
+        return $value;
     }
 
     private function setEnv(string $key, string $value = 'null'): self
