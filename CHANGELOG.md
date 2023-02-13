@@ -25,12 +25,10 @@ All notable changes to `AdminKit/Core` will be documented in this file.
 
 ## v1.2.1 - 2023-01-17
 
-- add all commands in one with confirm question
-- - php artisan storage:link
-- - php artisan migrate
-- - php artisan orchid:admin
-- - function setEnv()
-- 
+- add command 'php artisan storage:link' in install command
+- add command 'php artisan migrate' in install command
+- add command 'php artisan orchid:admin' in install command
+- add command 'function setEnv()' in install command
 
 ## v1.2.0 - 2023-01-17
 
