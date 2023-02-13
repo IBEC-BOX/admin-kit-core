@@ -46,13 +46,13 @@ class InstallCommand extends Command
 
         // set APP_URL environment
         $appUrl = $this->ask('Set APP_URL =', config('app.url'));
-        if (!empty($appUrl) && $appUrl !== config('app.url')) {
+        if (! empty($appUrl) && $appUrl !== config('app.url')) {
             $this->setEnv('APP_URL', $appUrl);
         }
 
         // set DASHBOARD_PREFIX environment
         $prefix = $this->ask('Set DASHBOARD_PREFIX =', config('platform.prefix'));
-        if (!empty($prefix) && $prefix !== config('platform.prefix')) {
+        if (! empty($prefix) && $prefix !== config('platform.prefix')) {
             $this->setEnv('DASHBOARD_PREFIX', $prefix);
         }
 
