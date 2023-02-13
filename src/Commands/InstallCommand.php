@@ -14,7 +14,7 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        $this->comment('Installing Admin Kit...');
+        $this->comment("Installing Admin Kit...\n");
 
         $this->info('Publishing configuration...');
         $this
@@ -44,16 +44,22 @@ class InstallCommand extends Command
             $this->call('orchid:admin');
         }
 
+        // set APP_URL environment
+        $appUrl = $this->ask('Set APP_URL =', config('app.url'));
+        if (!empty($appUrl) && $appUrl !== config('app.url')) {
+            $this->setEnv('APP_URL', $appUrl);
+        }
+
         // set DASHBOARD_PREFIX environment
-        if ($this->confirm('Update DASHBOARD_PREFIX?')) {
-            $prefix = $this->ask('Set DASHBOARD_PREFIX=', config('platform.prefix'));
+        $prefix = $this->ask('Set DASHBOARD_PREFIX =', config('platform.prefix'));
+        if (!empty($prefix) && $prefix !== config('platform.prefix')) {
             $this->setEnv('DASHBOARD_PREFIX', $prefix);
         }
 
         $this->info('Admin Kit success installed =)');
 
-        $link = isset($prefix) ? asset($prefix) : asset(config('platform.prefix'));
-        $this->comment('Open the dashboard using this link: '.$link);
+        $prefix = trim($prefix, "/ \t\n\r\0\x0B");
+        $this->info("Open the dashboard using this link: <comment>$appUrl/$prefix<comment>");
     }
 
     private function executeCommand(string $command, array $parameters = []): self
