@@ -3,6 +3,7 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Porto\Loaders\AutoLoaderTrait;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Platform\Dashboard;
@@ -10,6 +11,8 @@ use Orchid\Screen\TD;
 
 class CoreServiceProvider extends ServiceProvider
 {
+    use AutoLoaderTrait;
+
     protected string $name = 'admin-kit';
 
     public function register()
@@ -17,7 +20,10 @@ class CoreServiceProvider extends ServiceProvider
         $this
             ->registerCommands()
             ->registerMacros()
-            ->registerConfigs();
+            ->registerConfigs()
+
+            ->initPorto(portoPath: __DIR__)
+            ->runLoaderRegister();
     }
 
     public function boot()
@@ -29,7 +35,10 @@ class CoreServiceProvider extends ServiceProvider
             ->publishAssets()
             ->publishConfigs()
             ->publishMigrations()
-            ->bindingModels();
+            ->bindingModels()
+
+            ->initPorto(portoPath: __DIR__)
+            ->runLoaderBoot();
     }
 
     protected function registerCommands(): self

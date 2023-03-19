@@ -17,8 +17,9 @@
     ],
     "require": {
         "php": "^8.1",
-        "orchid/platform": "^13.6",
-        "illuminate/contracts": "^9.0"
+        "admin-kit/porto": "^1.0",
+        "illuminate/contracts": "^9.0",
+        "orchid/platform": "^13.10"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
