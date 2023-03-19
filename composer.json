@@ -37,10 +37,7 @@
         "psr-4": {
             "AdminKit\\Core\\": "src",
             "AdminKit\\Core\\Database\\Factories\\": "database/factories"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -58,7 +55,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "wikimedia/composer-merge-plugin": false
         }
     },
     "extra": {
