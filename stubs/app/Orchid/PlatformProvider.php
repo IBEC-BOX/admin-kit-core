@@ -11,9 +11,6 @@ use Orchid\Screen\Actions\Menu;
 
 class PlatformProvider extends OrchidServiceProvider
 {
-    /**
-     * @param  Dashboard  $dashboard
-     */
     public function boot(Dashboard $dashboard): void
     {
         parent::boot($dashboard);

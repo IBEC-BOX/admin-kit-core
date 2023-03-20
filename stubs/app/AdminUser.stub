@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use AdminKit\Core\Models\AdminUser as Authenticatable;
+use AdminKit\Core\Containers\UserSection\User\Models\AdminUser as Authenticatable;
 
 class AdminUser extends Authenticatable
 {

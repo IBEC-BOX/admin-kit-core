@@ -3,10 +3,10 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Core\Facades\AdminKit;
+use AdminKit\Core\Providers\RouteServiceProvider;
 use AdminKit\Porto\Loaders\AutoLoaderTrait;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Orchid\Platform\Dashboard;
 use Orchid\Screen\TD;
 
 class CoreServiceProvider extends ServiceProvider
@@ -22,22 +22,22 @@ class CoreServiceProvider extends ServiceProvider
             ->registerMacros()
             ->registerConfigs()
 
-            ->initPorto(portoPath: __DIR__)
+            ->initPorto(AdminKit::srcPath())
             ->runLoaderRegister();
+
+        $this->app->register(RouteServiceProvider::class);
     }
 
     public function boot()
     {
         $this
             ->addViews()
-            ->addRoutes()
             ->publishStubs()
             ->publishAssets()
             ->publishConfigs()
             ->publishMigrations()
-            ->bindingModels()
 
-            ->initPorto(portoPath: __DIR__)
+            ->initPorto(AdminKit::srcPath())
             ->runLoaderBoot();
     }
 
@@ -74,16 +74,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
         $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
         $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
-
-        return $this;
-    }
-
-    protected function addRoutes(): self
-    {
-        Route::domain((string) config('platform.domain'))
-            ->prefix(Dashboard::prefix('/'))
-            ->middleware(config('platform.middleware.private'))
-            ->group(__DIR__.'/../routes/platform.php');
 
         return $this;
     }
@@ -126,6 +116,12 @@ class CoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../database/migrations' => database_path('migrations'),
             ], "$this->name-migrations");
+
+            foreach ($this->getAllContainerPaths() as $containerPath) {
+                $this->publishes([
+                    $containerPath.'/Migrations' => database_path('migrations'),
+                ], "$this->name-migrations");
+            }
         }
 
         return $this;
@@ -138,14 +134,6 @@ class CoreServiceProvider extends ServiceProvider
                 __DIR__.'/../public' => public_path("vendor/$this->name"),
             ], ["$this->name-assets", 'laravel-assets']);
         }
-
-        return $this;
-    }
-
-    protected function bindingModels(): self
-    {
-        Dashboard::useModel(\Orchid\Platform\Models\User::class, \AdminKit\Core\Models\AdminUser::class);
-        Dashboard::useModel(\Orchid\Platform\Models\Role::class, \AdminKit\Core\Models\Role::class);
 
         return $this;
     }
