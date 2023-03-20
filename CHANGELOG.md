@@ -2,6 +2,11 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.7 - 2023-03-20
+
+- use admin-kit/porto package
+- use Containers from porto
+
 ## v1.2.6 - 2023-02-13
 
 - remove 'orchid:admin' command from 'admin-kit:install' command
