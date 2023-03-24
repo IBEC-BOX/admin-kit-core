@@ -23,6 +23,7 @@ class CoreServiceProvider extends ServiceProvider
             ->registerCommands()
             ->registerMacros()
             ->registerConfigs()
+            ->registerLocalizations()
 
             ->initPorto(AdminKit::srcPath())
             ->runLoaderRegister();
@@ -76,6 +77,13 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
         $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
         $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
+
+        return $this;
+    }
+
+    protected function registerLocalizations(): self
+    {
+        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
 
         return $this;
     }

@@ -36,7 +36,7 @@ class ArticleListLayout extends Table
 
             // custom columns
             TD::make('title', __('Title')),
-            TD::make('published_at', __('Published at'))
+            TD::make('published_at', __('Publish date'))
                 ->alignCenter()
                 ->width(200)
                 ->sort()
