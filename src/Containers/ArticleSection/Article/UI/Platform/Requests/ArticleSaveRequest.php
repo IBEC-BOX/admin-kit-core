@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Containers\ArticleSection\Article\UI\Platform\Requests;
 
+use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ArticleSaveRequest extends FormRequest
 {
-    public function rules()
+    public function rules(Request $request)
     {
         return RuleFactory::make([
-            'slug' => ['nullable', 'string', 'max:255'],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique(Article::class, 'slug')->ignore($request->route('item'))],
             'pinned' => ['required', 'boolean'],
             'published_at' => ['nullable', 'date'],
             'image_id' => ['nullable', 'exists:attachments,id'],
