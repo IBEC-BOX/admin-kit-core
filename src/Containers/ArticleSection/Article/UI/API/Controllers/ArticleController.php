@@ -17,5 +17,4 @@ class ArticleController
     {
         return $article;
     }
-
 }
