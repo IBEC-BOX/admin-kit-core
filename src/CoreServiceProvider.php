@@ -131,6 +131,7 @@ class CoreServiceProvider extends ServiceProvider
                     $files = collect(File::files($migrationsPath))
                         ->mapWithKeys(function (SplFileInfo $file) {
                             $fileName = str_replace('.stub', '.php', $file->getFilename());
+
                             return [$file->getPathName() => database_path("migrations/$fileName")];
                         })
                         ->toArray();
