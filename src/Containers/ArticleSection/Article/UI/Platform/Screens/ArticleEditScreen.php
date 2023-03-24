@@ -12,6 +12,7 @@ use Orchid\Screen\Fields\Cropper;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
@@ -78,15 +79,16 @@ class ArticleEditScreen extends Screen
                     Input::make($locale.'[title]')
                         ->title(__('Title')." ($locale)")
                         ->required($locale === $defaultLocale)
-                        ->placeholder(__('Enter title'))
-                        ->value($translation?->title ?? ''),
+                        ->placeholder(__('Enter title...'))
+                        ->value($translation?->title),
                     Quill::make($locale.'[content]')
                         ->title(__('Content')." ($locale)")
                         ->required($locale === $defaultLocale)
-                        ->value($translation?->content ?? ''),
-                    Quill::make($locale.'[short_content]')
+                        ->value($translation?->content),
+                    TextArea::make($locale.'[short_content]')
                         ->title(__('Short content')." ($locale)")
-                        ->value($translation?->short_content ?? ''),
+                        ->placeholder(__('Enter short content...'))
+                        ->value($translation?->short_content),
                 ]),
             ];
         }
@@ -99,7 +101,7 @@ class ArticleEditScreen extends Screen
                         ->placeholder(__('enter-slug'))
                         ->value($this->item->slug),
                     DateTimer::make('published_at')->enableTime()
-                        ->title(__('Published at'))
+                        ->title(__('Publish date'))
                         ->value($this->item->published_at),
                     CheckBox::make('pinned')
                         ->value($this->item->pinned)
