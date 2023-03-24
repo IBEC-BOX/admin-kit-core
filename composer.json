@@ -18,6 +18,8 @@
     "require": {
         "php": "^8.1",
         "admin-kit/porto": "^1.0",
+        "astrotomic/laravel-translatable": "^11.12",
+        "cviebrock/eloquent-sluggable": "^9.0",
         "illuminate/contracts": "^9.0",
         "orchid/platform": "^13.10"
     },
