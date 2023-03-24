@@ -6,8 +6,10 @@ use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Facades\AdminKit;
 use AdminKit\Core\Providers\RouteServiceProvider;
 use AdminKit\Porto\Loaders\AutoLoaderTrait;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Screen\TD;
+use Symfony\Component\Finder\SplFileInfo;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -113,14 +115,20 @@ class CoreServiceProvider extends ServiceProvider
     protected function publishMigrations(): self
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../database/migrations' => database_path('migrations'),
-            ], "$this->name-migrations");
+            $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], "$this->name-migrations");
 
             foreach ($this->getAllContainerPaths() as $containerPath) {
-                $this->publishes([
-                    $containerPath.'/Migrations' => database_path('migrations'),
-                ], "$this->name-migrations");
+                $migrationsPath = $containerPath.'/Data/Migrations';
+                if (File::isDirectory($migrationsPath)) {
+                    $files = collect(File::files($migrationsPath))
+                        ->mapWithKeys(function (SplFileInfo $file) {
+                            $fileName = str_replace('.stub', '.php', $file->getFilename());
+                            return [$file->getPathName() => database_path("migrations/$fileName")];
+                        })
+                        ->toArray();
+
+                    $this->publishes($files, "$this->name-migrations");
+                }
             }
         }
 
