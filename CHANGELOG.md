@@ -2,6 +2,12 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.8 - 2023-03-28
+
+- use spatie/laravel-query-builder
+- use spatie/laravel-data
+- add articles API
+
 ## v1.2.7 - 2023-03-20
 
 - use admin-kit/porto package
