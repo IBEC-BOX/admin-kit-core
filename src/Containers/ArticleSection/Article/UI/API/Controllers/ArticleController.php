@@ -4,17 +4,27 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Containers\ArticleSection\Article\UI\API\Controllers;
 
-use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
+use AdminKit\Core\Containers\ArticleSection\Article\UI\API\Repositories\ArticleInterface;
 
 class ArticleController
 {
-    public function index()
-    {
-        return Article::all();
+    public function __construct(
+        public ArticleInterface $repository,
+    ) {
     }
 
-    public function show(Article $article)
+    public function index()
     {
-        return $article;
+        return $this->repository->getPaginatedList();
+    }
+
+    public function show(int $id)
+    {
+        return $this->repository->getById($id);
+    }
+
+    public function showBySlug(string $slug)
+    {
+        return $this->repository->getBySlug($slug);
     }
 }

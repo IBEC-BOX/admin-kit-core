@@ -25,6 +25,7 @@ class CoreServiceProvider extends ServiceProvider
             ->registerConfigs()
             ->registerLocalizations()
 
+            // use porto register
             ->initPorto(AdminKit::srcPath())
             ->runLoaderRegister();
 
@@ -40,6 +41,7 @@ class CoreServiceProvider extends ServiceProvider
             ->publishConfigs()
             ->publishMigrations()
 
+            // use porto boot
             ->initPorto(AdminKit::srcPath())
             ->runLoaderBoot();
     }

@@ -8,6 +8,7 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -19,9 +20,15 @@ use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
 /**
+ * @property int $id
  * @property string $slug
  * @property bool $pinned
  * @property Carbon|null $published_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property string $title
+ * @property string $content
+ * @property string $short_content
  * @property Collection<Attachment> $image
  */
 class Article extends Model implements TranslatableContract
@@ -82,7 +89,6 @@ class Article extends Model implements TranslatableContract
      */
     protected $allowedSorts = [
         'id',
-        'title',
         'published_at',
     ];
 
@@ -103,5 +109,44 @@ class Article extends Model implements TranslatableContract
     public function image(): MorphToMany
     {
         return $this->morphToMany(Attachment::class, 'attachmentable', 'attachmentable');
+    }
+
+    public function scopeIsPublished(Builder $query): Builder
+    {
+        return $query->whereNotNull('published_at');
+    }
+
+    public function scopeIsTitleNotNull(Builder $query): Builder
+    {
+        return $query->whereHas('translation', function ($query) {
+            return $query->whereNotNull('title');
+        });
+    }
+
+    public function scopeTitle(Builder $query, $search): Builder
+    {
+        return $query->whereHas('translation', function ($query) use ($search) {
+            $search = mb_strtolower($search);
+
+            return $query->whereRaw('LOWER(title) LIKE (?)', ["%$search%"]);
+        });
+    }
+
+    public function scopeContent(Builder $query, $search): Builder
+    {
+        return $query->whereHas('translation', function ($query) use ($search) {
+            $search = mb_strtolower($search);
+
+            return $query->whereRaw('LOWER(content) LIKE (?)', ["%$search%"]);
+        });
+    }
+
+    public function scopeShortContent(Builder $query, $search): Builder
+    {
+        return $query->whereHas('translation', function ($query) use ($search) {
+            $search = mb_strtolower($search);
+
+            return $query->whereRaw('LOWER(short_content) LIKE (?)', ["%$search%"]);
+        });
     }
 }
