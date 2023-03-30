@@ -2,6 +2,11 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.2.9 - 2023-03-30
+
+- add Directory admin
+- add Directory API
+
 ## v1.2.8 - 2023-03-28
 
 - use spatie/laravel-query-builder
