@@ -2,12 +2,14 @@
 
 namespace AdminKit\Core\Containers\DirectorySection\Directory\Models;
 
+use AdminKit\Core\Containers\DirectorySection\Directory\Data\Factories\DirectoryFactory;
 use AdminKit\Porto\Abstracts\Models\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
@@ -97,6 +99,11 @@ class Directory extends Model implements TranslatableContract
                 'source' => 'name',
             ],
         ];
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return DirectoryFactory::new();
     }
 
     public function scopeName(Builder $query, $search): Builder

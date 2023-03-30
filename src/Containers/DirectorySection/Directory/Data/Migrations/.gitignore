@@ -1,4 +1,5 @@
-# Do not save *.php files, becouse they autoload as migrations
-# But they uses for local development
+# Do not commit *.php files,
+# becouse that files autoload from Porto migrations
+# But they may uses for local development.
 *.php
 
