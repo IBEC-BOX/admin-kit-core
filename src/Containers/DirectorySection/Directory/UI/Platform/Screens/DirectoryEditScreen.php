@@ -5,15 +5,9 @@ namespace AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Screen
 use AdminKit\Core\Containers\DirectorySection\Directory\Models\Directory;
 use AdminKit\Core\Containers\DirectorySection\Directory\Models\DirectoryTranslation;
 use AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Requests\DirectorySaveRequest;
-use AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Requests\RootDirectorySaveRequest;
 use Illuminate\Http\RedirectResponse;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
@@ -35,7 +29,7 @@ class DirectoryEditScreen extends Screen
 
     public function name(): ?string
     {
-        return __('Edit') . ' ' . __(Directory::RECORD_NAME) . ' #' . $this->item->id;
+        return __('Edit').' '.__(Directory::RECORD_NAME).' #'.$this->item->id;
     }
 
     public function permission(): ?iterable
@@ -73,8 +67,8 @@ class DirectoryEditScreen extends Screen
             $translation = $this->item->getTranslation($locale);
             $tabs[$locale] = [
                 Layout::rows([
-                    Input::make($locale . '[name]')
-                        ->title(__('Name') . " ($locale)")
+                    Input::make($locale.'[name]')
+                        ->title(__('Name')." ($locale)")
                         ->required($locale === $defaultLocale)
                         ->placeholder(__('Enter name...'))
                         ->value($translation?->name),
@@ -96,7 +90,7 @@ class DirectoryEditScreen extends Screen
     public function save(Directory $root, Directory $item, DirectorySaveRequest $request): RedirectResponse
     {
         $item->fill($request->validated())->appendToNode($root)->save();
-        Alert::info(__('You have successfully saved') . ' ' . __(Directory::NAME));
+        Alert::info(__('You have successfully saved').' '.__(Directory::NAME));
 
         return redirect()->route(Directory::ROUTE_CHILD_LIST, ['root' => $root->id]);
     }
@@ -104,7 +98,7 @@ class DirectoryEditScreen extends Screen
     public function remove(Directory $root, Directory $item): RedirectResponse
     {
         $item->delete();
-        Alert::info(__('You have successfully deleted') . ' ' . __(Directory::NAME));
+        Alert::info(__('You have successfully deleted').' '.__(Directory::NAME));
 
         return redirect()->route(Directory::ROUTE_CHILD_LIST, ['root' => $root->id]);
     }

@@ -15,6 +15,7 @@ use Orchid\Support\Color;
 class DirectoryListLayout extends Table
 {
     public Directory $root;
+
     /**
      * Data source.
      *

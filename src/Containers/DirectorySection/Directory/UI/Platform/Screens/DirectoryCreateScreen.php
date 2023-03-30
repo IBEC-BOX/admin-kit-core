@@ -3,19 +3,11 @@
 namespace AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Screens;
 
 use AdminKit\Core\Containers\DirectorySection\Directory\Models\Directory;
-use AdminKit\Core\Containers\DirectorySection\Directory\Models\DirectoryTranslation;
 use AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Requests\DirectorySaveRequest;
-use AdminKit\Core\Containers\DirectorySection\Directory\UI\Platform\Requests\RootDirectorySaveRequest;
 use Illuminate\Http\RedirectResponse;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
-use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 
@@ -32,7 +24,7 @@ class DirectoryCreateScreen extends Screen
 
     public function name(): ?string
     {
-        return __('Create') . ' ' . __(Directory::RECORD_NAME);
+        return __('Create').' '.__(Directory::RECORD_NAME);
     }
 
     public function permission(): ?iterable
@@ -60,8 +52,8 @@ class DirectoryCreateScreen extends Screen
         foreach ($locales as $locale) {
             $tabs[$locale] = [
                 Layout::rows([
-                    Input::make($locale . '[name]')
-                        ->title(__('Name') . " ($locale)")
+                    Input::make($locale.'[name]')
+                        ->title(__('Name')." ($locale)")
                         ->required($locale === $defaultLocale)
                         ->placeholder(__('Enter name...')),
                 ]),
@@ -81,7 +73,7 @@ class DirectoryCreateScreen extends Screen
     public function save(Directory $root, DirectorySaveRequest $request): RedirectResponse
     {
         $root->children()->create($request->validated());
-        Alert::info(__('You have successfully saved') . ' ' . __(Directory::NAME));
+        Alert::info(__('You have successfully saved').' '.__(Directory::NAME));
 
         return redirect()->route(Directory::ROUTE_CHILD_LIST, ['root' => $root->id]);
     }
