@@ -19,18 +19,19 @@ class DirectoryFactory extends Factory
     {
         return [
             'slug' => fake()->unique()->slug,
-            ...$this->translatable()
+            ...$this->translatable(),
         ];
     }
 
     public function translatable()
     {
         $locales = config('translatable.locales');
+
         return collect($locales)
-            ->mapWithKeys(fn($locale) => [
+            ->mapWithKeys(fn ($locale) => [
                 $locale => [
                     'name' => fake()->realText(100),
-                ]
+                ],
             ])
             ->toArray();
     }

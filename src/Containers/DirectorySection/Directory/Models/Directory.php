@@ -23,7 +23,6 @@ use Orchid\Screen\AsSource;
  * @property array $properties
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
  * @property string $name
  */
 class Directory extends Model implements TranslatableContract
@@ -31,12 +30,10 @@ class Directory extends Model implements TranslatableContract
     use HasFactory, SoftDeletes;
     use AsSource, Attachable, Filterable;
     use Translatable;
-
     use NodeTrait, Sluggable {
         Sluggable::replicate as replicateSluggable;
         NodeTrait::replicate insteadof Sluggable;
     }
-
 
     public const NAME = 'Directory';
 
@@ -117,12 +114,9 @@ class Directory extends Model implements TranslatableContract
 
     /**
      * Return needed Directory model
-     *
-     * @param string $slug
-     * @return Builder
      */
-    public static function initial(string $slug): Builder
+    public function initial(string $slug): Builder
     {
-        return static::where('parent_id = (SELECT id FROM "directories" WHERE "slug" = ?)', [$slug]);
+        return $this->whereRaw('parent_id = (SELECT id FROM "directories" WHERE "slug" = ?)', [$slug]);
     }
 }

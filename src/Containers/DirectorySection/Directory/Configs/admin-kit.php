@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'directories' => [],
+    'directories' => [
+        'enable_routes' => false,
+    ],
 ];
