@@ -1,0 +1,4 @@
+# Do not save *.php files, becouse they autoload as migrations
+# But they uses for local development
+*.php
+

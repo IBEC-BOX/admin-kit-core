@@ -21,6 +21,7 @@
         "astrotomic/laravel-translatable": "^11.12",
         "cviebrock/eloquent-sluggable": "^9.0",
         "illuminate/contracts": "^9.0",
+        "kalnoy/nestedset": "^6.0",
         "orchid/platform": "^13.10",
         "spatie/laravel-data": "^3.2",
         "spatie/laravel-query-builder": "^5.2"
