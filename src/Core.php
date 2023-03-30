@@ -4,7 +4,7 @@ namespace AdminKit\Core;
 
 class Core
 {
-    public const VERSION = '1.2.9';
+    public const VERSION = '1.2.10';
 
     /**
      * Return source path
