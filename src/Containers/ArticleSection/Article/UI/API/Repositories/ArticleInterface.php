@@ -12,7 +12,5 @@ interface ArticleInterface extends RepositoryInterface
 {
     public function getPaginatedList(): PaginatedDataCollection;
 
-    public function getById(int $id): Data;
-
     public function getBySlug(string $slug): Data;
 }

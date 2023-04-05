@@ -15,7 +15,7 @@ class ArticleListScreen extends Screen
     {
         return [
             'items' => Article::query()
-                ->with('translations')
+                ->withTranslation()
                 ->filters()
                 ->filtersApplySelection(ArticleListFiltersLayout::class)
                 ->defaultSort('id', 'desc')

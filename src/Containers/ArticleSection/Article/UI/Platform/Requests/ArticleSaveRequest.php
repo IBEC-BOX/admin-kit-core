@@ -15,7 +15,7 @@ class ArticleSaveRequest extends FormRequest
     public function rules(Request $request)
     {
         return RuleFactory::make([
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique(Article::class, 'slug')->ignore($request->route('item'))],
+            'slug' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i', Rule::unique(Article::class, 'slug')->ignore($request->route('item'))],
             'pinned' => ['required', 'boolean'],
             'published_at' => ['nullable', 'date'],
             'image_id' => ['nullable', 'exists:attachments,id'],

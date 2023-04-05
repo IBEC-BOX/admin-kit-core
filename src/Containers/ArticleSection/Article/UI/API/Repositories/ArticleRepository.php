@@ -23,8 +23,6 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
 
     public function getPaginatedList(): PaginatedDataCollection
     {
-        $perPage = (int) request()->query('per_page');
-
         $articles = QueryBuilder::for($this->model())
             ->withTranslation()
             ->allowedFilters([
@@ -53,7 +51,7 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
             ->allowedSorts(['id', 'published_at'])
             ->isPublished()
             ->isTitleNotNull()
-            ->paginate($perPage);
+            ->paginate($this->perPage());
 
         return ArticleDTO::collection($articles)->except('content');
     }
@@ -61,25 +59,9 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
     /**
      * @throws Exception
      */
-    public function getById(int $id): Data
-    {
-        $article = $this->model->findOrFail($id);
-
-        $this->checkIsPublished($article);
-
-        return ArticleDTO::from($article);
-    }
-
-    /**
-     * @throws Exception
-     */
     public function getBySlug(string $slug): Data
     {
-        $article = $this->model->where('slug', $slug)->first();
-
-        if (is_null($article)) {
-            throw (new ModelNotFoundException)->setModel($this->model(), $slug);
-        }
+        $article = $this->model->withTranslation()->where('slug', $slug)->firstOrFail();
 
         $this->checkIsPublished($article);
 
@@ -91,5 +73,22 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
         if (is_null($article->published_at)) {
             throw new Exception(__('Article has not been published'));
         }
+    }
+
+    private function perPage()
+    {
+        $perPageDefault = 20; // TODO $perPageDefault to config
+        $perPageMax = 50; // TODO $perPageMax to config
+        $perPage = (int) request()->query('per_page');
+
+        if (empty($perPage)) {
+            $perPage = $perPageDefault;
+        }
+
+        if ($perPage > $perPageMax) {
+            $perPage = $perPageMax;
+        }
+
+        return $perPage;
     }
 }

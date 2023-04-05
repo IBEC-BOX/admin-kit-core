@@ -18,12 +18,7 @@ class ArticleController
         return $this->repository->getPaginatedList();
     }
 
-    public function show(int $id)
-    {
-        return $this->repository->getById($id);
-    }
-
-    public function showBySlug(string $slug)
+    public function show(string $slug)
     {
         return $this->repository->getBySlug($slug);
     }

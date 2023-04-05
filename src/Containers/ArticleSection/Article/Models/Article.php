@@ -2,6 +2,7 @@
 
 namespace AdminKit\Core\Containers\ArticleSection\Article\Models;
 
+use AdminKit\Core\Containers\ArticleSection\Article\Data\Factories\ArticleFactory;
 use AdminKit\Core\Containers\UserSection\User\Models\AdminUser;
 use AdminKit\Porto\Abstracts\Models\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -148,5 +149,10 @@ class Article extends Model implements TranslatableContract
 
             return $query->whereRaw('LOWER(short_content) LIKE (?)', ["%$search%"]);
         });
+    }
+
+    protected static function newFactory()
+    {
+        return new ArticleFactory();
     }
 }
