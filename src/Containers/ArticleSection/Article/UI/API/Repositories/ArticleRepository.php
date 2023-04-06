@@ -8,7 +8,6 @@ use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
 use AdminKit\Core\Containers\ArticleSection\Article\UI\API\DTO\ArticleDTO;
 use AdminKit\Core\Repositories\AbstractRepository;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
