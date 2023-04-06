@@ -1,8 +1,8 @@
 # Admin-Kit Core Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ibecsystems/admin-kit-core.svg?style=flat-square)](https://packagist.org/packages/ibecsystems/admin-kit-core)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ibecsystems/admin-kit-core/run-tests.yml?branch=1.x&label=tests&style=flat-square)](https://github.com/ibecsystems/admin-kit-core/actions?query=workflow%3Arun-tests+branch%3A1.x)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ibecsystems/admin-kit-core/fix-php-code-style-issues.yml?branch=1.x&label=code%20style&style=flat-square)](https://github.com/ibecsystems/admin-kit-core/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A1.x)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/run-tests.yml?branch=1.x&label=tests&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow%3Arun-tests+branch%3A1.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/fix-php-code-style-issues.yml?branch=1.x&label=code%20style&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A1.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibecsystems/admin-kit-core.svg?style=flat-square)](https://packagist.org/packages/ibecsystems/admin-kit-core)
 
 Пакет служит улучшением и ускорением разработки админ панелей.
