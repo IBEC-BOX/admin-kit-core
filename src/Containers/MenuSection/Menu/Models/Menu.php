@@ -20,7 +20,9 @@ use Orchid\Screen\AsSource;
 /**
  * @property int $id
  * @property string $slug
- * @property array $properties
+ * @property string url
+ * @property boolean url_in_new_window
+ * @property boolean is_active
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string $title
@@ -67,7 +69,9 @@ class Menu extends Model implements TranslatableContract
 
     protected $fillable = [
         'slug',
-        'properties',
+        'url',
+        'url_in_new_window',
+        'is_active',
     ];
 
     protected $translatedAttributes = [
@@ -83,10 +87,6 @@ class Menu extends Model implements TranslatableContract
     protected $allowedSorts = [
         'id',
         'slug',
-    ];
-
-    protected $casts = [
-        'properties' => 'array',
     ];
 
     public function sluggable(): array

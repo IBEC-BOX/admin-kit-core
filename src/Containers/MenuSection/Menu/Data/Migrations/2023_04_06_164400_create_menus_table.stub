@@ -13,7 +13,9 @@ return new class extends Migration
 
             // menus fields
             $table->string('slug')->unique();
-            $table->jsonb('properties')->default('{}');
+            $table->string('url')->nullable();
+            $table->boolean('url_in_new_window')->default(0);
+            $table->boolean('is_active')->default(0)->index();
 
             // nested sets
             $table->nestedSet();
