@@ -39,7 +39,12 @@ class MenuListLayout extends Table
                 ->render(fn (Menu $item) => Link::make((string) $item->id)->route(Menu::ROUTE_CHILD_EDIT, ['root' => $root->id, 'item' => $item->id])),
 
             // custom columns
-            TD::make('title', __('Title')),
+            TD::make('title', __('Title'))
+                ->render(function (Menu $item) {
+                    $dash = str_repeat('-', $item->depth);
+
+                    return $dash.' '.$item->title;
+                }),
 
             // actions
             TD::make('actions', __('Actions'))

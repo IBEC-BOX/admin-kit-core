@@ -16,6 +16,7 @@ class MenuSaveRequest extends FormRequest
     {
         return RuleFactory::make([
             'slug' => ['nullable', 'string', 'max:255', Rule::unique(Menu::class, 'slug')->ignore($request->route('item'))],
+            'parent_id' => ['required', 'exists:menus,id'],
 
             '%title%' => ['nullable', 'string', 'max:255'],
         ]);

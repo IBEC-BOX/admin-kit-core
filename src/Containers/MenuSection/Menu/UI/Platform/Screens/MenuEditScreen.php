@@ -8,6 +8,7 @@ use AdminKit\Core\Containers\MenuSection\Menu\UI\Platform\Requests\MenuSaveReque
 use Illuminate\Http\RedirectResponse;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
@@ -76,12 +77,30 @@ class MenuEditScreen extends Screen
             ];
         }
 
+        $nodes = Menu::get()->toTree();
+
+        $traverse = function ($categories, $prefix = '-') use (&$traverse) {
+            $options = [];
+            foreach ($categories as $category) {
+                $options[$prefix.' '.$category->title] = $category->id;
+
+                $options = array_merge($options, $traverse($category->children, $prefix.'-'));
+            }
+
+            return $options;
+        };
+
+        $options = array_flip($traverse($nodes));
+
         return [
             Layout::rows([
                 Input::make('slug')
                     ->title(__('Slug'))
                     ->placeholder(__('enter-slug'))
                     ->value($this->item->slug),
+                Select::make('parent_id')
+                    ->options($options)
+                    ->value($this->item->parent_id),
             ]),
             Layout::tabs($tabs),
         ];
@@ -89,7 +108,7 @@ class MenuEditScreen extends Screen
 
     public function save(Menu $root, Menu $item, MenuSaveRequest $request): RedirectResponse
     {
-        $item->fill($request->validated())->appendToNode($root)->save();
+        $item->fill($request->validated())->save();
         Alert::info(__('You have successfully saved').' '.__(Menu::NAME));
 
         return redirect()->route(Menu::ROUTE_CHILD_LIST, ['root' => $root->id]);

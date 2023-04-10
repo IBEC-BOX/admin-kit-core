@@ -19,10 +19,11 @@ use Orchid\Screen\AsSource;
 
 /**
  * @property int $id
+ * @property int $parent_id
  * @property string $slug
  * @property string url
- * @property boolean url_in_new_window
- * @property boolean is_active
+ * @property bool url_in_new_window
+ * @property bool is_active
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string $title
@@ -68,6 +69,7 @@ class Menu extends Model implements TranslatableContract
     public const PERMISSION_DELETE = 'platform.menus.delete';
 
     protected $fillable = [
+        'parent_id',
         'slug',
         'url',
         'url_in_new_window',

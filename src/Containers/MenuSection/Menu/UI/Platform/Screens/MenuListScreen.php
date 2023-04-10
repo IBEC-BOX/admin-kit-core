@@ -14,13 +14,14 @@ class MenuListScreen extends Screen
 
     public function query(Menu $root): iterable
     {
+        $items = Menu::withDepth()
+            ->withTranslation()
+            ->defaultOrder()
+            ->descendantsOf($root->id);
+
         return [
             'root' => $root,
-            'items' => Menu::where('parent_id', $root->id)
-                ->withTranslation()
-                ->filters()
-                ->defaultSort('id', 'desc')
-                ->paginate(),
+            'items' => $items,
         ];
     }
 
