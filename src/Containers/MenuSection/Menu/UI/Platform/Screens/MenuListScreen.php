@@ -63,13 +63,15 @@ class MenuListScreen extends Screen
         Alert::info(__('You have successfully deleted').' '.__(Menu::NAME));
     }
 
-    public function up(Request $request) {
+    public function up(Request $request)
+    {
         $item = Menu::findOrFail($request->get('id'));
         $item->up();
-        Alert::info(__('You have successfully up').': '. $item->title);
+        Alert::info(__('You have successfully up').': '.$item->title);
     }
 
-    public function down(Request $request) {
+    public function down(Request $request)
+    {
         $item = Menu::findOrFail($request->get('id'));
         $item->down();
         Alert::info(__('You have successfully down').': '.$item->title);

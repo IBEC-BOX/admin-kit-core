@@ -61,7 +61,7 @@ class MenuListLayout extends Table
                             ->method('down')
                             ->icon('arrow-down')
                             ->type(Color::SECONDARY())
-                            ->parameters(['id' => $item->id])
+                            ->parameters(['id' => $item->id]),
                     ])->autoWidth();
                 }),
 
