@@ -8,6 +8,7 @@ use AdminKit\Core\Containers\MenuSection\Menu\Models\Menu;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use Orchid\Support\Color;
@@ -44,6 +45,24 @@ class MenuListLayout extends Table
                     $dash = str_repeat('-', $item->depth);
 
                     return $dash.' '.$item->title;
+                }),
+
+            TD::make('position', __('Position'))
+                ->alignRight()
+                ->width(130)
+                ->render(function (Menu $item) {
+                    return Group::make([
+                        Button::make()
+                                ->method('up')
+                                ->icon('arrow-up')
+                                ->type(Color::SECONDARY())
+                                ->parameters(['id' => $item->id]),
+                        Button::make()
+                            ->method('down')
+                            ->icon('arrow-down')
+                            ->type(Color::SECONDARY())
+                            ->parameters(['id' => $item->id])
+                    ])->autoWidth();
                 }),
 
             // actions
