@@ -5,5 +5,9 @@
     "Record": "Запись",
     "Records": "Записи",
 
-    "Enter title...": "Введите наименование..."
+    "Enter title...": "Введите наименование...",
+
+    "Position": "Позиция",
+    "You have successfully up": "Элемент успешно поднят",
+    "You have successfully down": "Элемент успешно понижен"
 }
