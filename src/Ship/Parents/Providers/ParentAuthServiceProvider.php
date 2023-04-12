@@ -17,8 +17,6 @@ abstract class ParentAuthServiceProvider extends AbstractAuthServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
     public function boot(): void
     {

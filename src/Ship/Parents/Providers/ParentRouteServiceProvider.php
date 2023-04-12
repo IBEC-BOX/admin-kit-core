@@ -8,5 +8,4 @@ use AdminKit\Porto\Abstracts\Providers\RouteServiceProvider;
 
 class ParentRouteServiceProvider extends RouteServiceProvider
 {
-
 }
