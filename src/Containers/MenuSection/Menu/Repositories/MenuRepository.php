@@ -38,9 +38,8 @@ class MenuRepository extends AbstractRepository implements MenuInterface
      */
     private function checkIsActive(Menu $menu)
     {
-        if (!$menu->is_active) {
+        if (! $menu->is_active) {
             throw new Exception(__('Menu has not been published'));
         }
     }
-
 }
