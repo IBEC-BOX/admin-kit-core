@@ -4,5 +4,4 @@ namespace AdminKit\Core\Ship\Parents\Policies;
 
 abstract class Policy
 {
-
 }

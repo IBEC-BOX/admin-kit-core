@@ -11,9 +11,6 @@ use Orchid\Screen\Actions\Menu;
 
 abstract class ParentPlatformServiceProvider extends OrchidServiceProvider
 {
-    /**
-     * @param Dashboard $dashboard
-     */
     public function boot(Dashboard $dashboard): void
     {
         parent::boot($dashboard);
@@ -49,9 +46,6 @@ abstract class ParentPlatformServiceProvider extends OrchidServiceProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     public function registerMenuFromPackages(): array
     {
         $menus = [
