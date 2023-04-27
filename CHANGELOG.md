@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v1.3.2 - 2023-04-27
+
+- translation 'Read' to russian
+- use Ship folder
+- create Skeleton for copying
+
 ## v1.3.1 - 2023-04-27
 
 - [Articles] use jsonPaginate
