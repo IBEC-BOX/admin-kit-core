@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `AdminKit/Core` will be documented in this file.
+All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
 ## v1.3.1 - 2023-04-27
 
@@ -11,6 +11,11 @@ All notable changes to `AdminKit/Core` will be documented in this file.
 ## v1.3.0 - 2023-04-27
 
 add Menu to admin
+
+## v1.2.10 - 2023-04-04
+
+- move repository to IBEC-BOX organization
+- rename package to ibecsystems/admin-kit-core
 
 ## v1.2.9 - 2023-03-30
 
