@@ -7,12 +7,7 @@ use AdminKit\Core\Containers\SkeletonSection\Skeleton\Models\SkeletonTranslation
 use AdminKit\Core\Containers\SkeletonSection\Skeleton\UI\Platform\Requests\SkeletonSaveRequest;
 use Illuminate\Http\RedirectResponse;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;

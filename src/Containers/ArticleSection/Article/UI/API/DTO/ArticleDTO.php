@@ -7,7 +7,6 @@ namespace AdminKit\Core\Containers\ArticleSection\Article\UI\API\DTO;
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
 use AdminKit\Core\Ship\Abstracts\DTO\AbstractDTO;
 use Carbon\Carbon;
-use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Lazy;
 
 class ArticleDTO extends AbstractDTO

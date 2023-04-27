@@ -3,7 +3,6 @@
 namespace AdminKit\Core\Containers\SkeletonSection\Skeleton\UI\Platform\Screens;
 
 use AdminKit\Core\Containers\SkeletonSection\Skeleton\Models\Skeleton;
-use AdminKit\Core\Containers\SkeletonSection\Skeleton\UI\Platform\Layouts\SkeletonListFiltersLayout;
 use AdminKit\Core\Containers\SkeletonSection\Skeleton\UI\Platform\Layouts\SkeletonListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;

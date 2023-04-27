@@ -53,10 +53,10 @@ class MenuListLayout extends Table
                 ->render(function (Menu $item) {
                     return Group::make([
                         Button::make()
-                                ->method('up')
-                                ->icon('arrow-up')
-                                ->type(Color::SECONDARY())
-                                ->parameters(['id' => $item->id]),
+                            ->method('up')
+                            ->icon('arrow-up')
+                            ->type(Color::SECONDARY())
+                            ->parameters(['id' => $item->id]),
                         Button::make()
                             ->method('down')
                             ->icon('arrow-down')

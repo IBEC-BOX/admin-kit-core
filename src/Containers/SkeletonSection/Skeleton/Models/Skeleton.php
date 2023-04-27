@@ -3,20 +3,13 @@
 namespace AdminKit\Core\Containers\SkeletonSection\Skeleton\Models;
 
 use AdminKit\Core\Containers\SkeletonSection\Skeleton\Data\Factories\SkeletonFactory;
-use AdminKit\Core\Containers\UserSection\User\Models\AdminUser;
 use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Collection;
-use Orchid\Attachment\Attachable;
-use Orchid\Attachment\Models\Attachment;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
