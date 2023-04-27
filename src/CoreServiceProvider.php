@@ -2,9 +2,9 @@
 
 namespace AdminKit\Core;
 
-use AdminKit\Core\Commands\InstallCommand;
-use AdminKit\Core\Facades\AdminKit;
-use AdminKit\Core\Providers\RouteServiceProvider;
+use AdminKit\Core\Ship\Commands\InstallCommand;
+use AdminKit\Core\Ship\Facades\AdminKit;
+use AdminKit\Core\Ship\Providers\RouteServiceProvider;
 use AdminKit\Porto\Loaders\AutoLoaderTrait;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
