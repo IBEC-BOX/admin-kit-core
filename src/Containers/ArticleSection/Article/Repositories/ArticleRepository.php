@@ -42,7 +42,7 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
             ->allowedSorts(['id', 'published_at'])
             ->isPublished()
             ->isTitleNotNull()
-            ->paginate($this->perPage());
+            ->jsonPaginate();
     }
 
     public function getBySlug(string $slug): Model
@@ -52,22 +52,5 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
             ->where('slug', $slug)
             ->isPublished()
             ->firstOrFail();
-    }
-
-    private function perPage()
-    {
-        $perPageDefault = 20; // TODO $perPageDefault to config
-        $perPageMax = 50; // TODO $perPageMax to config
-        $perPage = (int) request()->query('per_page');
-
-        if (empty($perPage)) {
-            $perPage = $perPageDefault;
-        }
-
-        if ($perPage > $perPageMax) {
-            $perPage = $perPageMax;
-        }
-
-        return $perPage;
     }
 }
