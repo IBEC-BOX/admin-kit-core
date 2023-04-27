@@ -4,22 +4,18 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Containers\ArticleSection\Article\UI\API\Controllers;
 
-use AdminKit\Core\Containers\ArticleSection\Article\UI\API\Repositories\ArticleInterface;
+use AdminKit\Core\Containers\ArticleSection\Article\Actions\GetArticleBySlugAction;
+use AdminKit\Core\Containers\ArticleSection\Article\Actions\GetArticleListAction;
 
 class ArticleController
 {
-    public function __construct(
-        public ArticleInterface $repository,
-    ) {
-    }
-
     public function index()
     {
-        return $this->repository->getPaginatedList();
+        return app(GetArticleListAction::class)->run();
     }
 
-    public function show(string $slug)
+    public function showBySlug(string $slug)
     {
-        return $this->repository->getBySlug($slug);
+        return app(GetArticleBySlugAction::class)->run($slug);
     }
 }

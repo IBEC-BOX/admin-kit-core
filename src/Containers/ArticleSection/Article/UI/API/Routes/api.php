@@ -5,5 +5,5 @@ use Illuminate\Support\Facades\Route;
 
 if (config('admin-kit.articles.enable_routes')) {
     Route::get('/articles', [ArticleController::class, 'index']);
-    Route::get('/articles/{slug}', [ArticleController::class, 'show']);
+    Route::get('/articles/{slug}', [ArticleController::class, 'showBySlug']);
 }

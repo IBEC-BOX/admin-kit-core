@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AdminKit\Core\Containers\ArticleSection\Article\UI\API\Repositories;
+namespace AdminKit\Core\Containers\ArticleSection\Article\Repositories;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
-use AdminKit\Core\Containers\ArticleSection\Article\UI\API\DTO\ArticleDTO;
 use AdminKit\Core\Repositories\AbstractRepository;
-use Exception;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\PaginatedDataCollection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -20,9 +18,9 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
         return Article::class;
     }
 
-    public function getPaginatedList(): PaginatedDataCollection
+    public function getPaginatedList(): LengthAwarePaginator
     {
-        $articles = QueryBuilder::for($this->model())
+        return QueryBuilder::for($this->model())
             ->with('translations', function ($query) {
                 $query
                     ->select(['article_id', 'locale', 'title', 'short_content']) // without 'content' because it's too big
@@ -45,27 +43,15 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
             ->isPublished()
             ->isTitleNotNull()
             ->paginate($this->perPage());
-
-        return ArticleDTO::collection($articles)->except('content');
     }
 
-    /**
-     * @throws Exception
-     */
-    public function getBySlug(string $slug): Data
+    public function getBySlug(string $slug): Model
     {
-        $article = $this->model->withTranslation()->where('slug', $slug)->firstOrFail();
-
-        $this->checkIsPublished($article);
-
-        return ArticleDTO::from($article);
-    }
-
-    private function checkIsPublished(Article $article)
-    {
-        if (is_null($article->published_at)) {
-            throw new Exception(__('Article has not been published'));
-        }
+        return $this->model
+            ->withTranslation()
+            ->where('slug', $slug)
+            ->isPublished()
+            ->firstOrFail();
     }
 
     private function perPage()

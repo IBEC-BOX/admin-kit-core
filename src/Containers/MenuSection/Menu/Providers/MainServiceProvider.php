@@ -12,7 +12,6 @@ class MainServiceProvider extends \AdminKit\Porto\Abstracts\Providers\MainServic
 
     public function register(): void
     {
-
         parent::register();
     }
 }
