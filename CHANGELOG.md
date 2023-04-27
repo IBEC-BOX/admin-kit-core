@@ -2,6 +2,12 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.3.1 - 2023-04-27
+
+- [Articles] use jsonPaginate
+- [Articles] optimize get list query, without content
+- [Articles] use Actions for container
+
 ## v1.3.0 - 2023-04-27
 
 add Menu to admin
