@@ -7,7 +7,7 @@ namespace AdminKit\Core\Containers\DirectorySection\Directory\UI\API\Repositorie
 use AdminKit\Core\Containers\DirectorySection\Directory\Models\Directory;
 use AdminKit\Core\Containers\DirectorySection\Directory\UI\API\DTO\DirectoryDTO;
 use AdminKit\Core\Containers\DirectorySection\Directory\UI\API\DTO\RecordDTO;
-use AdminKit\Core\Repositories\AbstractRepository;
+use AdminKit\Core\Ship\Parents\Repositories\AbstractRepository;
 use Spatie\LaravelData\DataCollection;
 
 class DirectoryRepository extends AbstractRepository implements DirectoryInterface

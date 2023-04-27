@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\MenuSection\Menu\Repositories;
 
 use AdminKit\Core\Containers\MenuSection\Menu\Models\Menu;
-use AdminKit\Core\Repositories\AbstractRepository;
+use AdminKit\Core\Ship\Parents\Repositories\AbstractRepository;
 use Exception;
 use Spatie\LaravelData\Data;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\ArticleSection\Article\Repositories;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
-use AdminKit\Core\Repositories\AbstractRepository;
+use AdminKit\Core\Ship\Parents\Repositories\AbstractRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -35,9 +35,6 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
                 AllowedFilter::scope('title'),
                 AllowedFilter::scope('content'),
                 AllowedFilter::scope('short_content'),
-                'translation.title',
-                'translation.content',
-                'translation.short_content',
             ])
             ->allowedSorts(['id', 'published_at'])
             ->isPublished()
