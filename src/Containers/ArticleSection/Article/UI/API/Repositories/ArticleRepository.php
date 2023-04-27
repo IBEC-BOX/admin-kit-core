@@ -23,7 +23,11 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
     public function getPaginatedList(): PaginatedDataCollection
     {
         $articles = QueryBuilder::for($this->model())
-            ->withTranslation()
+            ->with('translations', function ($query) {
+                $query
+                    ->select(['article_id', 'locale', 'title', 'short_content']) // without 'content' because it's too big
+                    ->where('locale', app()->getLocale());
+            })
             ->allowedFilters([
                 'id',
                 'slug',
@@ -35,16 +39,6 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
                 AllowedFilter::scope('short_content'),
                 'translation.title',
                 'translation.content',
-                'translation.short_content',
-            ])
-            ->allowedFields([
-                'id',
-                'slug',
-                'published_at',
-                'created_at',
-                'updated_at',
-                'translation.title',
-                //'translation.content',
                 'translation.short_content',
             ])
             ->allowedSorts(['id', 'published_at'])
