@@ -2,6 +2,10 @@
 
 All notable changes to `AdminKit/Core` will be documented in this file.
 
+## v1.3.0 - 2023-04-27
+
+add Menu to admin
+
 ## v1.2.9 - 2023-03-30
 
 - add Directory admin
