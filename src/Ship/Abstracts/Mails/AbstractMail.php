@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Mails;
+namespace AdminKit\Core\Ship\Abstracts\Mails;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

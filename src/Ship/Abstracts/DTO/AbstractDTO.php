@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\DTO;
+namespace AdminKit\Core\Ship\Abstracts\DTO;
 
 use Spatie\LaravelData\Data;
 

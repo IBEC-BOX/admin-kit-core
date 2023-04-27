@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdminKit\Core\Ship\Parents\Providers;
+namespace AdminKit\Core\Ship\Abstracts\Providers;
 
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
@@ -44,27 +44,5 @@ abstract class AbstractPlatformServiceProvider extends OrchidServiceProvider
         return [
             //
         ];
-    }
-
-    public function registerMenuFromPackages(): array
-    {
-        $menus = [
-            Menu::make()->title(__('Modules')),
-        ];
-
-        foreach (config('admin-kit.packages') as $package) {
-            $instance = $package['instance'] ?? null;
-            if (isset($instance)
-                && defined("$instance::NAME")
-                && defined("$instance::ICON")
-                && defined("$instance::ROUTE_LIST")
-            ) {
-                $menus[] = Menu::make(__($instance::NAME))
-                    ->icon($instance::ICON)
-                    ->route($instance::ROUTE_LIST);
-            }
-        }
-
-        return $menus;
     }
 }

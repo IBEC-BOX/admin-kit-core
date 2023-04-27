@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Tasks;
+namespace AdminKit\Core\Ship\Abstracts\Tasks;
 
 abstract class AbstractTask
 {

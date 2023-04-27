@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Requests;
+namespace AdminKit\Core\Ship\Abstracts\Requests;
 
 use Illuminate\Foundation\Http\FormRequest as LaravelRequest;
 

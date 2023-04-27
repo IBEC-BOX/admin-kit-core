@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Middlewares;
+namespace AdminKit\Core\Ship\Abstracts\Middlewares;
 
 abstract class AbstractMiddleware
 {

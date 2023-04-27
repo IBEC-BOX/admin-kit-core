@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Models;
+namespace AdminKit\Core\Ship\Abstracts\Models;
 
 use AdminKit\Porto\Traits\CyrillicChars;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

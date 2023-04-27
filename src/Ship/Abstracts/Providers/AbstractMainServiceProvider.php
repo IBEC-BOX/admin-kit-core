@@ -1,10 +1,10 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Providers;
+namespace AdminKit\Core\Ship\Abstracts\Providers;
 
-use AdminKit\Porto\Abstracts\Providers\MainServiceProvider as AbstractMainServiceProvider;
+use AdminKit\Porto\Abstracts\Providers\MainServiceProvider;
 
-abstract class AbstractMainServiceProvider extends AbstractMainServiceProvider
+abstract class AbstractMainServiceProvider extends MainServiceProvider
 {
     public array $serviceProviders = [
         //

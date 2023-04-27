@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Tests\PhpUnit;
+namespace AdminKit\Core\Ship\Abstracts\Tests\PhpUnit;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;

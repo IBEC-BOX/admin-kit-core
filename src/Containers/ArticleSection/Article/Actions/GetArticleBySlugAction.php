@@ -6,9 +6,10 @@ namespace AdminKit\Core\Containers\ArticleSection\Article\Actions;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Repositories\ArticleRepository;
 use AdminKit\Core\Containers\ArticleSection\Article\UI\API\DTO\ArticleDTO;
+use AdminKit\Core\Ship\Abstracts\Actions\AbstractAction;
 use Spatie\LaravelData\Data;
 
-class GetArticleBySlugAction
+class GetArticleBySlugAction extends AbstractAction
 {
     public function __construct(
         private readonly ArticleRepository $articleRepository,

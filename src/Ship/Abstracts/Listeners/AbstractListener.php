@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Listeners;
+namespace AdminKit\Core\Ship\Abstracts\Listeners;
 
 abstract class AbstractListener
 {

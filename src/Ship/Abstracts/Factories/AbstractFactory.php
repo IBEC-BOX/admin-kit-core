@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Factories;
+namespace AdminKit\Core\Ship\Abstracts\Factories;
 
 abstract class AbstractFactory
 {

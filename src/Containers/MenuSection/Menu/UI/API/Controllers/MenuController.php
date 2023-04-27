@@ -6,8 +6,9 @@ namespace AdminKit\Core\Containers\MenuSection\Menu\UI\API\Controllers;
 
 use AdminKit\Core\Containers\MenuSection\Menu\Actions\GetMenuListAction;
 use AdminKit\Core\Containers\MenuSection\Menu\UI\API\DTO\MenuDTO;
+use AdminKit\Core\Ship\Abstracts\Controllers\AbstractApiController;
 
-class MenuController
+class MenuController extends AbstractApiController
 {
     public function index()
     {

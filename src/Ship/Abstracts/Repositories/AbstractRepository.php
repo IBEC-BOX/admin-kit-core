@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdminKit\Core\Ship\Parents\Repositories;
+namespace AdminKit\Core\Ship\Abstracts\Repositories;
 
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;

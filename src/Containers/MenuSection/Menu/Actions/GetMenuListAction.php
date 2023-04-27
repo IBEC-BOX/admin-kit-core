@@ -3,7 +3,7 @@
 namespace AdminKit\Core\Containers\MenuSection\Menu\Actions;
 
 use AdminKit\Core\Containers\MenuSection\Menu\Repositories\MenuRepository;
-use AdminKit\Core\Ship\Parents\Actions\AbstractAction;
+use AdminKit\Core\Ship\Abstracts\Actions\AbstractAction;
 
 class GetMenuListAction extends AbstractAction
 {

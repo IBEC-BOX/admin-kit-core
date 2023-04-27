@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Containers\UserSection\Role\Providers;
 
+use AdminKit\Core\Ship\Abstracts\Providers\AbstractMainServiceProvider;
 use Orchid\Platform\Dashboard;
 
-class MainServiceProvider extends \AdminKit\Porto\Abstracts\Providers\MainServiceProvider
+class MainServiceProvider extends AbstractMainServiceProvider
 {
     public function boot(): void
     {

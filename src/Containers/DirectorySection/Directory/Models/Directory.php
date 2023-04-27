@@ -3,6 +3,7 @@
 namespace AdminKit\Core\Containers\DirectorySection\Directory\Models;
 
 use AdminKit\Core\Containers\DirectorySection\Directory\Data\Factories\DirectoryFactory;
+use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
 use AdminKit\Porto\Abstracts\Models\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
@@ -25,7 +26,7 @@ use Orchid\Screen\AsSource;
  * @property Carbon $updated_at
  * @property string $name
  */
-class Directory extends Model implements TranslatableContract
+class Directory extends AbstractModel implements TranslatableContract
 {
     use HasFactory, SoftDeletes;
     use AsSource, Attachable, Filterable;

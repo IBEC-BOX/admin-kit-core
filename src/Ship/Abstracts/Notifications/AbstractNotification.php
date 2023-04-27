@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Notifications;
+namespace AdminKit\Core\Ship\Abstracts\Notifications;
 
 use Illuminate\Notifications\Notification as LaravelNotification;
 

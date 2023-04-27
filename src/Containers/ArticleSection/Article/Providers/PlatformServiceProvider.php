@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\ArticleSection\Article\Providers;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
+use AdminKit\Core\Ship\Abstracts\Providers\AbstractPlatformServiceProvider;
 use Orchid\Platform\ItemPermission;
-use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 
-class PlatformServiceProvider extends OrchidServiceProvider
+class PlatformServiceProvider extends AbstractPlatformServiceProvider
 {
     public function registerMainMenu(): array
     {

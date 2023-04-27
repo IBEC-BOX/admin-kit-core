@@ -4,7 +4,7 @@ namespace AdminKit\Core\Containers\ArticleSection\Article\Models;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Data\Factories\ArticleFactory;
 use AdminKit\Core\Containers\UserSection\User\Models\AdminUser;
-use AdminKit\Porto\Abstracts\Models\Model;
+use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
@@ -32,7 +32,7 @@ use Orchid\Screen\AsSource;
  * @property string $short_content
  * @property Collection<Attachment> $image
  */
-class Article extends Model implements TranslatableContract
+class Article extends AbstractModel implements TranslatableContract
 {
     use HasFactory, SoftDeletes;
     use AsSource, Attachable, Filterable;

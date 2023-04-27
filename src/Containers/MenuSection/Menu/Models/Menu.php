@@ -3,6 +3,7 @@
 namespace AdminKit\Core\Containers\MenuSection\Menu\Models;
 
 use AdminKit\Core\Containers\MenuSection\Menu\Data\Factories\MenuFactory;
+use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
 use AdminKit\Porto\Abstracts\Models\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
@@ -28,7 +29,7 @@ use Orchid\Screen\AsSource;
  * @property Carbon $updated_at
  * @property string $title
  */
-class Menu extends Model implements TranslatableContract
+class Menu extends AbstractModel implements TranslatableContract
 {
     use HasFactory, SoftDeletes;
     use AsSource, Attachable, Filterable;

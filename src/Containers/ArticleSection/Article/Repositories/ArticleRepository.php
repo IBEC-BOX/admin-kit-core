@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\ArticleSection\Article\Repositories;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
-use AdminKit\Core\Ship\Parents\Repositories\AbstractRepository;
+use AdminKit\Core\Ship\Abstracts\Repositories\AbstractRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\AllowedFilter;

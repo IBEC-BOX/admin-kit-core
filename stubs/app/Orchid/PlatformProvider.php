@@ -33,8 +33,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('lock')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles'),
-
-            ...$this->registerMenuFromPackages(), // Remove this, if you don't need
         ];
     }
 
@@ -60,27 +58,5 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
         ];
-    }
-
-    public function registerMenuFromPackages(): array
-    {
-        $menus = [
-            Menu::make()->title(__('Modules')),
-        ];
-
-        foreach (config('admin-kit.packages') as $package) {
-            $instance = $package['instance'] ?? null;
-            if (isset($instance)
-                && defined("$instance::NAME")
-                && defined("$instance::ICON")
-                && defined("$instance::ROUTE_LIST")
-            ) {
-                $menus[] = Menu::make(__($instance::NAME))
-                    ->icon($instance::ICON)
-                    ->route($instance::ROUTE_LIST);
-            }
-        }
-
-        return $menus;
     }
 }

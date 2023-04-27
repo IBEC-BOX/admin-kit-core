@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Core\Ship\Parents\Providers;
+namespace AdminKit\Core\Ship\Abstracts\Providers;
 
 use AdminKit\Porto\Abstracts\Providers\AuthServiceProvider as AbstractAuthServiceProvider;
 

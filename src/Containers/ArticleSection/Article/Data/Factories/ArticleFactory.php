@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\ArticleSection\Article\Data\Factories;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use AdminKit\Core\Ship\Abstracts\Factories\AbstractFactory;
 
-class ArticleFactory extends Factory
+class ArticleFactory extends AbstractFactory
 {
     protected $model = Article::class;
 

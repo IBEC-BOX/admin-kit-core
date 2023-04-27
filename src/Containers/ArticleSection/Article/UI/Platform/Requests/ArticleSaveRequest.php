@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace AdminKit\Core\Containers\ArticleSection\Article\UI\Platform\Requests;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
+use AdminKit\Core\Ship\Abstracts\Requests\AbstractRequest;
 use Astrotomic\Translatable\Validation\RuleFactory;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ArticleSaveRequest extends FormRequest
+class ArticleSaveRequest extends AbstractRequest
 {
     public function rules(Request $request)
     {
