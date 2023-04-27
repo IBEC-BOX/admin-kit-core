@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create('skeletons', function (Blueprint $table) {
+            $table->id();
+            $table->string('slug')->unique();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('skeleton_translations', function (Blueprint $table) {
+            $table->id();
+            $table->string('locale')->index();
+
+            // Foreign key to the main model
+            $table->unsignedBigInteger('skeleton_id');
+            $table->unique(['skeleton_id', 'locale']);
+            $table->foreign('skeleton_id')->references('id')->on('skeletons')->onDelete('cascade');
+
+            // fields to translate
+            $table->string('title')->nullable();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('skeleton_translations');
+        Schema::dropIfExists('skeletons');
+    }
+};
