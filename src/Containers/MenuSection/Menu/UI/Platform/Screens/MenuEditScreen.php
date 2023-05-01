@@ -60,7 +60,7 @@ class MenuEditScreen extends Screen
     public function layout(): iterable
     {
         $defaultLocale = config('app.locale');
-        $locales = config('translatable.locales');
+        $locales = app(Locales::class)->all();
 
         $tabs = [];
         foreach ($locales as $locale) {

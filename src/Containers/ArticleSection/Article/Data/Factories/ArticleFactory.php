@@ -13,7 +13,7 @@ class ArticleFactory extends AbstractFactory
 
     public function definition()
     {
-        $locales = config('translatable.locales');
+        $locales = app(Locales::class)->all();
         $translations = collect($locales)
             ->mapWithKeys(fn ($value) => [
                 $value => [

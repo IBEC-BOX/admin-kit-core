@@ -26,7 +26,7 @@ class MenuFactory extends AbstractFactory
 
     public function translatable()
     {
-        $locales = config('translatable.locales');
+        $locales = app(Locales::class)->all();
 
         return collect($locales)
             ->mapWithKeys(fn ($locale) => [

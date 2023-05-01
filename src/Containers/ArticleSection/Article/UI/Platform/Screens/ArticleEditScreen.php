@@ -5,6 +5,7 @@ namespace AdminKit\Core\Containers\ArticleSection\Article\UI\Platform\Screens;
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
 use AdminKit\Core\Containers\ArticleSection\Article\Models\ArticleTranslation;
 use AdminKit\Core\Containers\ArticleSection\Article\UI\Platform\Requests\ArticleSaveRequest;
+use Astrotomic\Translatable\Locales;
 use Illuminate\Http\RedirectResponse;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\CheckBox;
@@ -68,7 +69,7 @@ class ArticleEditScreen extends Screen
     public function layout(): iterable
     {
         $defaultLocale = config('app.locale');
-        $locales = config('translatable.locales');
+        $locales = app(Locales::class)->all();
 
         $tabs = [];
         foreach ($locales as $locale) {
