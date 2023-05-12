@@ -2,6 +2,16 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.0 - 2023-05-12
+
+- removed Orchid
+- added Filament
+- updated Porto to v2
+- removed Astrotomic translatable
+- added Spatie translatable
+- updated Article container
+- removed all orchid files(static, code)
+
 ## v1.3.2 - 2023-04-27
 
 - translation 'Read' to russian
