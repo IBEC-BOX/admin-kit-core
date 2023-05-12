@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.1 - 2023-05-12
+
+fix deploy branch name 2.x
+
 ## v1.3.2 - 2023-04-27
 
 - translation 'Read' to russian
