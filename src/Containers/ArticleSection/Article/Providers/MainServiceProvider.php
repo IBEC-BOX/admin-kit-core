@@ -11,7 +11,8 @@ use AdminKit\Core\Ship\Abstracts\Providers\AbstractMainServiceProvider;
 class MainServiceProvider extends AbstractMainServiceProvider
 {
     public array $serviceProviders = [
-        PlatformServiceProvider::class,
+        RouteServiceProvider::class,
+        FilamentServiceProvider::class,
     ];
 
     public function register(): void

@@ -2,10 +2,10 @@
 
 namespace AdminKit\Core\Ship\Abstracts\Providers;
 
-use AdminKit\Porto\Abstracts\Providers\BroadcastServiceProvider as AbstractBroadcastServiceProvider;
+use AdminKit\Porto\Abstracts\BroadcastServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 
-abstract class AbstractBroadcastServiceProvider extends AbstractBroadcastServiceProvider
+abstract class AbstractBroadcastServiceProvider extends BroadcastServiceProvider
 {
     /**
      * Bootstrap any application services.

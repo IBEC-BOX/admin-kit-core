@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminKit\Porto\Traits;
+namespace AdminKit\Core\Ship\Traits;
 
 trait CyrillicChars
 {

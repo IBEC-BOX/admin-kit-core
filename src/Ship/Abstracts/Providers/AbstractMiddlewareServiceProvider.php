@@ -2,9 +2,9 @@
 
 namespace AdminKit\Core\Ship\Abstracts\Providers;
 
-use AdminKit\Porto\Abstracts\Providers\MiddlewareServiceProvider as AbstractMiddlewareServiceProvider;
+use AdminKit\Porto\Abstracts\MiddlewareServiceProvider;
 
-abstract class AbstractMiddlewareServiceProvider extends AbstractMiddlewareServiceProvider
+abstract class AbstractMiddlewareServiceProvider extends MiddlewareServiceProvider
 {
     protected array $middlewares = [];
 

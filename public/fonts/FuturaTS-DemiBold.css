@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Futura TS';
-    src: local('Futura TS DemiBold'), local('Futura-TS-DemiBold'),
-    url('FuturaTS-DemiBold.woff2') format('woff2'),
-    url('FuturaTS-DemiBold.woff') format('woff'),
-    url('FuturaTS-DemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-}

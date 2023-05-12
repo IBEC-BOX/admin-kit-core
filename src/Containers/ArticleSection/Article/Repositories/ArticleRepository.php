@@ -21,11 +21,6 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
     public function getPaginatedList(): LengthAwarePaginator
     {
         return QueryBuilder::for($this->model())
-            ->with('translations', function ($query) {
-                $query
-                    ->select(['article_id', 'locale', 'title', 'short_content']) // without 'content' because it's too big
-                    ->where('locale', app()->getLocale());
-            })
             ->allowedFilters([
                 'id',
                 'slug',
@@ -45,7 +40,6 @@ class ArticleRepository extends AbstractRepository implements ArticleInterface
     public function getBySlug(string $slug): Model
     {
         return $this->model
-            ->withTranslation()
             ->where('slug', $slug)
             ->isPublished()
             ->firstOrFail();

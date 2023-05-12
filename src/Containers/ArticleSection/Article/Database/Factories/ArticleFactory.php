@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdminKit\Core\Containers\ArticleSection\Article\Data\Factories;
+namespace AdminKit\Core\Containers\ArticleSection\Article\Database\Factories;
 
 use AdminKit\Core\Containers\ArticleSection\Article\Models\Article;
 use AdminKit\Core\Ship\Abstracts\Factories\AbstractFactory;
@@ -13,7 +13,7 @@ class ArticleFactory extends AbstractFactory
 
     public function definition()
     {
-        $locales = app(Locales::class)->all();
+        $locales = config('app.locales');
         $translations = collect($locales)
             ->mapWithKeys(fn ($value) => [
                 $value => [

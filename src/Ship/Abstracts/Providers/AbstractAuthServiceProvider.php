@@ -2,9 +2,9 @@
 
 namespace AdminKit\Core\Ship\Abstracts\Providers;
 
-use AdminKit\Porto\Abstracts\Providers\AuthServiceProvider as AbstractAuthServiceProvider;
+use AdminKit\Porto\Abstracts\AuthServiceProvider;
 
-abstract class AbstractAuthServiceProvider extends AbstractAuthServiceProvider
+abstract class AbstractAuthServiceProvider extends AuthServiceProvider
 {
     /**
      * The policy mappings for the application.
