@@ -20,12 +20,11 @@ class InstallCommand extends Command
         if ($this->confirm('Publishing configurations and files?')) {
             $this
                 ->executeCommand('vendor:publish', [
-                    '--provider' => FoundationServiceProvider::class,
-                    '--tag' => ['orchid-assets'],
+                    '--tag' => ['filament-config'],
                 ])
                 ->executeCommand('vendor:publish', [
                     '--provider' => CoreServiceProvider::class,
-                    '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations', 'admin-kit-assets'],
+                    '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
                 ]);
         }
 
@@ -44,12 +43,15 @@ class InstallCommand extends Command
         // set APP_URL environment
         $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
 
-        // set DASHBOARD_PREFIX environment
-        $prefix = $this->askToSetEnv('DASHBOARD_PREFIX', config('platform.prefix'));
+        // set FILAMENT_AUTH_GUARD to "admin-kit"
+        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit', 'web']);
+
+        // set FILAMENT_PATH environment
+        $prefix = $this->askToSetEnv('FILAMENT_PATH', config('filament.path'));
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
-        $this->info('To create a user, run: <comment>php artisan orchid:admin</comment>');
+        $this->info('To create a user, run: <comment>php artisan make:filament-user</comment>');
         $this->info('To start the embedded server, run: <comment>php artisan serve</comment>');
 
         $prefix = trim($prefix, "/ \t\n\r\0\x0B");
@@ -78,6 +80,15 @@ class InstallCommand extends Command
     {
         $value = $this->ask("Set $env =", $default);
         if (! empty($value) && $value !== $default) {
+            $this->setEnv($env, $value);
+        }
+
+        return $value;
+    }
+    private function choiceToSetEnv(string $env, array $enum): string
+    {
+        $value = $this->choice("Set $env =", $enum, $enum[0]);
+        if (! empty($value)) {
             $this->setEnv($env, $value);
         }
 

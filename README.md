@@ -5,11 +5,14 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/fix-php-code-style-issues.yml?branch=1.x&label=code%20style&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A1.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibecsystems/admin-kit-core.svg?style=flat-square)](https://packagist.org/packages/ibecsystems/admin-kit-core)
 
-Пакет служит улучшением и ускорением разработки админ панелей.
+Пакет имеет готовые модули для быстрого старта проекта. 
+Использует админ панель Filament, и содержит готовые API эндпоинты, что и служит улучшением и ускорением разработки админ панелей.
+
+Для кастомизации нужно скопировать папку модуля, и добавить **MainServiceProvider.php** в загружаемые провайдеры. 
 
 ## Installation
 
-Установку производить на готовом проекте Laravel, с настроенной базой данных
+Установку производить на проекте Laravel, с настроенной базой данных
 
 Установить пакет
 ```shell
@@ -23,7 +26,7 @@ php artisan admin-kit:install
 
 Создать пользователя
 ```shell
-php artisan orchid:admin
+php artisan make:filament-user
 ```
 
 ## Usage
