@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.3 - 2023-05-14
+
+rename auth guard to admin-kit-web
+
 ## v2.0.2 - 2023-05-14
 
 - upgrade install command with Filament
