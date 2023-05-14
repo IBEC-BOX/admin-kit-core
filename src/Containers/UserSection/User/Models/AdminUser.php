@@ -2,9 +2,7 @@
 
 namespace AdminKit\Core\Containers\UserSection\User\Models;
 
-use AdminKit\Core\Containers\UserSection\Role\Models\Role;
-use AdminKit\Core\Containers\UserSection\User\UI\Platform\Presenters\AdminUserPresenter;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
 /**
@@ -18,28 +16,12 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property array $permissions
  */
-class AdminUser extends \Orchid\Platform\Models\User
+class AdminUser extends Authenticatable
 {
-    /**
-     * Table name
-     */
-    protected $table = 'admin_users';
+    protected string $guard = 'admin-kit';
 
-    /**
-     * Model guard
-     */
-    protected $guard = 'admin-kit';
-
-    /**
-     * @return AdminUserPresenter
-     */
-    public function presenter()
-    {
-        return new AdminUserPresenter($this);
-    }
-
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
-    }
+//    public function roles(): BelongsToMany
+//    {
+//        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
+//    }
 }

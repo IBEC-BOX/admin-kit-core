@@ -40,6 +40,8 @@ class CoreServiceProvider extends ServiceProvider
     protected function registerConfigs(): self
     {
         $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
 
         return $this;
     }
