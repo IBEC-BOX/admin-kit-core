@@ -42,8 +42,8 @@ class InstallCommand extends Command
         // set APP_URL environment
         $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
 
-        // set FILAMENT_AUTH_GUARD to "admin-kit"
-        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit', 'web']);
+        // set FILAMENT_AUTH_GUARD to "admin-kit-web"
+        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit-web', 'web']);
 
         // set FILAMENT_PATH environment
         $prefix = $this->askToSetEnv('FILAMENT_PATH', config('filament.path'));

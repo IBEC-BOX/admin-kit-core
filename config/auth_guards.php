@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin-kit' => [
+    'admin-kit-web' => [
         'driver' => 'session',
         'provider' => 'admin_users',
     ],
