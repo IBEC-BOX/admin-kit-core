@@ -10,7 +10,7 @@ return [
     'containers' => [
         UserSection\User\Providers\MainServiceProvider::class,
         ArticleSection\Article\Providers\MainServiceProvider::class,
-//        DirectorySection\Directory\Providers\MainServiceProvider::class,
-//        MenuSection\Menu\Providers\MainServiceProvider::class,
+        //        DirectorySection\Directory\Providers\MainServiceProvider::class,
+        //        MenuSection\Menu\Providers\MainServiceProvider::class,
     ],
 ];

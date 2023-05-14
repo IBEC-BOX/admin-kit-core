@@ -20,8 +20,8 @@ class AdminUser extends Authenticatable
 {
     protected string $guard = 'admin-kit';
 
-//    public function roles(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
-//    }
+    //    public function roles(): BelongsToMany
+    //    {
+    //        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
+    //    }
 }

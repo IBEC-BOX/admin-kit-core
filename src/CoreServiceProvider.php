@@ -76,7 +76,7 @@ class CoreServiceProvider extends ServiceProvider
 
     protected function registerContainers(): self
     {
-        foreach(config("$this->name.containers") as $container) {
+        foreach (config("$this->name.containers") as $container) {
             $this->app->register($container);
         }
 
