@@ -4,7 +4,6 @@ namespace AdminKit\Core\Ship\Commands;
 
 use AdminKit\Core\CoreServiceProvider;
 use Illuminate\Console\Command;
-use Orchid\Platform\Providers\FoundationServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -85,6 +84,7 @@ class InstallCommand extends Command
 
         return $value;
     }
+
     private function choiceToSetEnv(string $env, array $enum): string
     {
         $value = $this->choice("Set $env =", $enum, $enum[0]);
