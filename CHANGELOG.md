@@ -2,6 +2,14 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.2 - 2023-05-14
+
+- upgrade install command with Filament
+- add publish Containers migrations
+- enable UserContainer
+- register Containers from config file
+- add guard 'admin-kit'
+
 ## v2.0.1 - 2023-05-12
 
 fix deploy branch name 2.x
