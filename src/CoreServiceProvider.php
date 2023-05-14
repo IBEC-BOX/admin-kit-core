@@ -14,9 +14,8 @@ class CoreServiceProvider extends ServiceProvider
         $this
             ->registerCommands()
             ->registerConfigs()
-            ->registerLocalizations();
-
-        $this->app->register(\AdminKit\Core\Containers\ArticleSection\Article\Providers\MainServiceProvider::class);
+            ->registerLocalizations()
+            ->registerContainers();
     }
 
     public function boot(): void
@@ -70,6 +69,15 @@ class CoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../stubs/app/AdminUser.stub' => app_path('Models/AdminUser.php'),
             ], "$this->name-stubs");
+        }
+
+        return $this;
+    }
+
+    protected function registerContainers(): self
+    {
+        foreach(config("$this->name.containers") as $container) {
+            $this->app->register($container);
         }
 
         return $this;
