@@ -7,6 +7,8 @@ use AdminKit\Core\Containers\UserSection;
 
 // config for AdminKit/Core
 return [
+    'locales' => ['ru', 'en', 'kk'],
+
     'containers' => [
         UserSection\User\Providers\MainServiceProvider::class,
         ArticleSection\Article\Providers\MainServiceProvider::class,
