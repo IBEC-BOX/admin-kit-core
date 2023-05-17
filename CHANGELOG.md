@@ -2,6 +2,14 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.4 - 2023-05-17
+
+- add forceJsonApiResponse middleware
+- add SetLocaleFromAcceptLanguageHeader middleware
+- remove unused code
+- add Documentation.md file
+- update for laravel v10
+
 ## v2.0.3 - 2023-05-14
 
 rename auth guard to admin-kit-web
