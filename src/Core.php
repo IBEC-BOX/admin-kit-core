@@ -4,5 +4,5 @@ namespace AdminKit\Core;
 
 class Core
 {
-    public const VERSION = '2.0.3';
+    public const VERSION = '2.0.4';
 }

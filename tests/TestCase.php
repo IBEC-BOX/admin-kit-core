@@ -4,8 +4,8 @@ namespace AdminKit\Core\Tests;
 
 use AdminKit\Core\CoreServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Orchid\Platform\Providers\FoundationServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -22,7 +22,7 @@ class TestCase extends Orchestra
     {
         return [
             CoreServiceProvider::class,
-            FoundationServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 
