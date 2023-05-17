@@ -38,10 +38,9 @@ class SetLocaleFromAcceptLanguageHeader
 
                 return $mapping;
             })
-            ->sortByDesc(fn($locale) => $locale['factor'])
-            ->filter(fn($locale) => in_array($locale['locale'], $localeList));
+            ->sortByDesc(fn ($locale) => $locale['factor'])
+            ->filter(fn ($locale) => in_array($locale['locale'], $localeList));
 
         return $locales->first() ? $locales->first()['locale'] : $defaultLocale;
     }
-
 }
