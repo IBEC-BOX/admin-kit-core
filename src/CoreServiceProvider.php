@@ -3,6 +3,7 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Ship\Commands\InstallCommand;
+use AdminKit\Core\Ship\Providers\ShipProvider;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider
@@ -16,6 +17,8 @@ class CoreServiceProvider extends ServiceProvider
             ->registerConfigs()
             ->registerLocalizations()
             ->registerContainers();
+
+        $this->app->register(ShipProvider::class);
     }
 
     public function boot(): void
