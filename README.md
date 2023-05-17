@@ -32,6 +32,8 @@ php artisan make:filament-user
 ## Usage
 
 Переходите по ссылке `/admin`, введите логин и пароль, и вы попали в админ панель.
+ 
+Полная документация по пакету находится в файле [Documentation](Documentation.md).
 
 ## Testing
 
