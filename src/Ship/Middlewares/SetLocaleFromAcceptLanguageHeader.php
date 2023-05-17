@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class AcceptLanguageLocale
+class SetLocaleFromAcceptLanguageHeader
 {
     public function handle(Request $request, Closure $next)
     {
