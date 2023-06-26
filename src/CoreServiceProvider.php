@@ -48,10 +48,9 @@ class CoreServiceProvider extends PackageServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs/app/AdminUser.stub' => app_path('Models/AdminUser.php'),
-            ], "admin-kit-stubs");
+            ], 'admin-kit-stubs');
         }
 
         return $this;
     }
-
 }
