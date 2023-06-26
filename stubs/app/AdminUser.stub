@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use AdminKit\Core\Containers\UserSection\User\Models\AdminUser as Authenticatable;
+use AdminKit\Core\Models\AdminUser as Authenticatable;
 
 class AdminUser extends Authenticatable
 {
@@ -15,7 +15,6 @@ class AdminUser extends Authenticatable
         'name',
         'email',
         'password',
-        'permissions',
     ];
 
     /**
@@ -26,7 +25,6 @@ class AdminUser extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'permissions',
     ];
 
     /**
@@ -35,32 +33,6 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'permissions'          => 'array',
         'email_verified_at'    => 'datetime',
-    ];
-
-    /**
-     * The attributes for which you can use filters in url.
-     *
-     * @var array
-     */
-    protected $allowedFilters = [
-        'id',
-        'name',
-        'email',
-        'permissions',
-    ];
-
-    /**
-     * The attributes for which can use sort in url.
-     *
-     * @var array
-     */
-    protected $allowedSorts = [
-        'id',
-        'name',
-        'email',
-        'updated_at',
-        'created_at',
     ];
 }

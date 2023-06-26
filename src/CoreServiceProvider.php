@@ -2,66 +2,43 @@
 
 namespace AdminKit\Core;
 
-use AdminKit\Core\Ship\Commands\InstallCommand;
-use AdminKit\Core\Ship\Providers\ShipProvider;
-use Illuminate\Support\ServiceProvider;
+use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Core\Providers\MiddlewareServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class CoreServiceProvider extends ServiceProvider
+class CoreServiceProvider extends PackageServiceProvider
 {
-    protected string $name = 'admin-kit';
-
-    public function register(): void
+    public function configurePackage(Package $package): void
     {
-        $this
-            ->registerCommands()
-            ->registerConfigs()
-            ->registerLocalizations()
-            ->registerContainers();
-
-        $this->app->register(ShipProvider::class);
+        /*
+         * This class is a Package Service Provider
+         *
+         * More info: https://github.com/spatie/laravel-package-tools
+         */
+        $package
+            ->name('admin-kit')
+            ->hasConfigFile()
+            ->hasMigration('create_admin_users_table')
+            ->hasCommand(InstallCommand::class);
     }
 
-    public function boot(): void
+    public function registeringPackage()
     {
-        $this
-            ->publishStubs()
-            ->publishConfigs();
+        $this->registerAuthConfigs();
+
+        $this->app->register(MiddlewareServiceProvider::class);
     }
 
-    protected function registerCommands(): self
+    public function bootingPackage(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallCommand::class,
-            ]);
-        }
-
-        return $this;
+        $this->publishStubs();
     }
 
-    protected function registerConfigs(): self
+    protected function registerAuthConfigs(): self
     {
-        $this->mergeConfigFrom(__DIR__."/../config/$this->name.php", $this->name);
         $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
         $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
-
-        return $this;
-    }
-
-    protected function registerLocalizations(): self
-    {
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
-
-        return $this;
-    }
-
-    protected function publishConfigs(): self
-    {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__."/../config/$this->name.php" => config_path("$this->name.php"),
-            ], "$this->name-config");
-        }
 
         return $this;
     }
@@ -71,18 +48,10 @@ class CoreServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs/app/AdminUser.stub' => app_path('Models/AdminUser.php'),
-            ], "$this->name-stubs");
+            ], "admin-kit-stubs");
         }
 
         return $this;
     }
 
-    protected function registerContainers(): self
-    {
-        foreach (config("$this->name.containers") as $container) {
-            $this->app->register($container);
-        }
-
-        return $this;
-    }
 }

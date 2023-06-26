@@ -1,5 +1,0 @@
-# Do not commit *.php files,
-# becouse that files autoload from Porto migrations
-# But they may uses for local development.
-*.php
-
