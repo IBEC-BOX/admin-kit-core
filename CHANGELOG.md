@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.0.5 - 2023-06-26
+
+- remove porto architecture
+
 ## v2.0.4 - 2023-05-17
 
 - add forceJsonApiResponse middleware
