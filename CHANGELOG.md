@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.0 - 2023-06-28
+
+- change admin_users to admin_kit_users
+
 ## v2.0.5 - 2023-06-26
 
 - remove porto architecture
