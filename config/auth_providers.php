@@ -3,6 +3,6 @@
 return [
     'admin_users' => [
         'driver' => 'eloquent',
-        'model' => 'App\Models\AdminUser',
+        'model' => 'App\Models\AdminKitUser',
     ],
 ];

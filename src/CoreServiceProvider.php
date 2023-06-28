@@ -19,7 +19,7 @@ class CoreServiceProvider extends PackageServiceProvider
         $package
             ->name('admin-kit')
             ->hasConfigFile()
-            ->hasMigration('create_admin_users_table')
+            ->hasMigration('create_admin_kit_users_table')
             ->hasCommand(InstallCommand::class);
     }
 
@@ -47,7 +47,7 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../stubs/app/AdminUser.stub' => app_path('Models/AdminUser.php'),
+                __DIR__.'/../stubs/app/AdminKitUser.stub' => app_path('Models/AdminKitUser.php'),
             ], 'admin-kit-stubs');
         }
 

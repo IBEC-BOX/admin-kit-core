@@ -14,14 +14,8 @@ use Illuminate\Support\Carbon;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property array $permissions
  */
-class AdminUser extends Authenticatable
+class AdminKitUser extends Authenticatable
 {
-    protected string $guard = 'admin-kit';
-
-    //    public function roles(): BelongsToMany
-    //    {
-    //        return $this->belongsToMany(Role::class, 'admin_role_has_users', 'user_id', 'role_id');
-    //    }
+    protected string $guard = 'admin-kit-web';
 }
