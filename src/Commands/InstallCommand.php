@@ -22,6 +22,9 @@ class InstallCommand extends Command
                     '--tag' => ['filament-config'],
                 ])
                 ->executeCommand('vendor:publish', [
+                    '--provider' => 'Spatie\Permission\PermissionServiceProvider',
+                ])
+                ->executeCommand('vendor:publish', [
                     '--provider' => CoreServiceProvider::class,
                     '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
                 ]);
