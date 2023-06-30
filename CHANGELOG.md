@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.1 - 2023-06-30
+
+- add Users page
+- add Roles page
+- add commands
+
 ## v2.1.0 - 2023-06-28
 
 - change admin_users to admin_kit_users
