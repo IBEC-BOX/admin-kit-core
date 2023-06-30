@@ -8,7 +8,35 @@
 Пакет имеет готовые модули для быстрого старта проекта. 
 Использует админ панель Filament, и содержит готовые API эндпоинты, что и служит улучшением и ускорением разработки админ панелей.
 
-Для кастомизации нужно скопировать папку модуля, и добавить **MainServiceProvider.php** в загружаемые провайдеры. 
+На текущий момент созданы следующие пакеты для Admin Kit:
+
+| Название   | Ссылка                                            | Готовность |
+|------------|---------------------------------------------------|------------|
+| Core       | https://github.com/IBEC-IBOX/admin-kit-core       | 90%        |
+| Articles   | https://github.com/IBEC-IBOX/admin-kit-articles   | 60%        |
+| Banners    | https://github.com/IBEC-IBOX/admin-kit-banners    | 10%        |
+| FAQs       | https://github.com/IBEC-IBOX/admin-kit-faqs       | 10%        |
+| Navigation | https://github.com/IBEC-IBOX/admin-kit-navigation | 10%        |
+| Pages      | https://github.com/IBEC-IBOX/admin-kit-pages      | 10%        |
+| Polls      | https://github.com/IBEC-IBOX/admin-kit-polls      | 10%        |
+| Vacancies  | https://github.com/IBEC-IBOX/admin-kit-vacancies  | 10%        |
+| Porto      | https://github.com/IBEC-IBOX/laravel-porto        | 90%        |
+
+И использует следующие пакеты Laravel и Filament:
+
+| Название              | Composer пакет                              |
+|-----------------------|---------------------------------------------|
+| Package tools         | spatie/laravel-package-tools                |
+| Laravel               | laravel/framework                           |
+| Laravel Translatable  | spatie/laravel-translatable                 |
+| Laravel Query Builder | spatie/laravel-query-builder                |
+| Laravel API Paginate  | spatie/laravel-json-api-paginate            |
+| Laravel Data          | spatie/laravel-data                         |
+| Laravel Sluggable     | cviebrock/eloquent-sluggable                |
+| Filament              | filament/filament                           |
+| Filament Permissions  | bezhansalleh/filament-shield                |
+| Filament Impersonate  | stechstudio/filament-impersonate            |
+| Filament Translatable | filament/spatie-laravel-translatable-plugin |
 
 ## Installation
 
