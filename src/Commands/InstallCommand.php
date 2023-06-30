@@ -16,30 +16,34 @@ class InstallCommand extends Command
         $this->comment("Installing Admin Kit...\n");
 
         // publish configuration
-        if ($this->confirm('Publishing configurations and files?')) {
-            $this
-                ->executeCommand('vendor:publish', [
-                    '--tag' => ['filament-config'],
-                ])
-                ->executeCommand('vendor:publish', [
-                    '--provider' => 'Spatie\Permission\PermissionServiceProvider',
-                ])
-                ->executeCommand('vendor:publish', [
-                    '--provider' => CoreServiceProvider::class,
-                    '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
-                ]);
+        if ($this->confirm('Publishing configurations and files?', true)) {
+            $this->call('vendor:publish', [
+                '--tag' => ['filament-config'],
+            ]);
+            $this->call('vendor:publish', [
+                '--provider' => 'Spatie\Permission\PermissionServiceProvider',
+            ]);
+            $this->call('vendor:publish', [
+                '--provider' => CoreServiceProvider::class,
+                '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
+            ]);
         }
 
         // php artisan storage:link
         if (! file_exists(public_path('storage'))) {
-            if ($this->confirm('Add storage link?')) {
+            if ($this->confirm('Add storage link?', true)) {
                 $this->executeCommand('storage:link');
             }
         }
 
         // php artisan migrate
-        if ($this->confirm('Migrate the database tables?')) {
-            $this->executeCommand('migrate');
+        if ($this->confirm('Migrate the database tables?', true)) {
+            $this->call('migrate');
+        }
+
+        // php artisan shield:generate --all
+        if ($this->confirm('Generate the user Policies and Permissions?', true)) {
+            $this->call('shield:generate', ['--all' => true]);
         }
 
         // set APP_URL environment
