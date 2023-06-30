@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.6 - 2023-06-30
+
+- call shield:generate command from Install command
+
 ## v2.1.5 - 2023-06-30
 
 - add HasRoles trait to AdminKitUser
