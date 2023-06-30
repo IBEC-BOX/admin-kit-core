@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.4 - 2023-06-30
+
+- add spatie/permission migration to admin-kit:install command
+
 ## v2.1.3 - 2023-06-30
 
 - add User to config
