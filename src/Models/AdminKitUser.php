@@ -4,6 +4,7 @@ namespace AdminKit\Core\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -17,5 +18,7 @@ use Illuminate\Support\Carbon;
  */
 class AdminKitUser extends Authenticatable
 {
+    use HasRoles;
+
     protected string $guard = 'admin-kit-web';
 }
