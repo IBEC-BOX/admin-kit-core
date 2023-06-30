@@ -32,7 +32,7 @@ class InstallCommand extends Command
         // php artisan storage:link
         if (! file_exists(public_path('storage'))) {
             if ($this->confirm('Add storage link?', true)) {
-                $this->executeCommand('storage:link');
+                $this->call('storage:link');
             }
         }
 
@@ -47,17 +47,19 @@ class InstallCommand extends Command
         }
 
         // set APP_URL environment
-        $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
+        $appUrl = $this->askToSetEnv(['APP_URL'], config('app.url'));
 
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
-        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit-web', 'web'], [
+        $guard = $this->choiceToSetEnv([
             'FILAMENT_IMPERSONATE_GUARD',
-        ]);
+            'FILAMENT_AUTH_GUARD',
+        ], ['admin-kit-web', 'web']);
 
         // set FILAMENT_PATH environment
-        $prefix = $this->askToSetEnv('FILAMENT_PATH', config('filament.path'), [
+        $prefix = $this->askToSetEnv([
             'FILAMENT_IMPERSONATE_REDIRECT',
-        ]);
+            'FILAMENT_PATH',
+        ], config('filament.path'));
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
@@ -68,30 +70,11 @@ class InstallCommand extends Command
         $this->info("Open the dashboard using this link: <comment>$appUrl/$prefix</comment>");
     }
 
-    private function executeCommand(string $command, array $parameters = []): self
+    private function askToSetEnv(array $envs, string $default): string
     {
-        try {
-            $result = $this->callSilent($command, $parameters);
-        } catch (\Exception $exception) {
-            $result = 1;
-            $this->alert($exception->getMessage());
-        }
-
-        if ($result) {
-            $parameters = http_build_query($parameters, '', ' ');
-            $parameters = str_replace('%5C', '/', $parameters);
-            $this->alert("An error has occurred. The '{$command} {$parameters}' command was not executed");
-        }
-
-        return $this;
-    }
-
-    private function askToSetEnv(string $env, string $default, array $moreEnv = []): string
-    {
-        $value = $this->ask("Set $env =", $default);
+        $value = $this->ask("Set $envs[0] =", $default);
         if (! empty($value)) {
-            array_push($moreEnv, $env);
-            foreach ($moreEnv as $env) {
+            foreach ($envs as $env) {
                 $this->setEnv($env, $value);
             }
         }
@@ -99,12 +82,11 @@ class InstallCommand extends Command
         return $value;
     }
 
-    private function choiceToSetEnv(string $env, array $enum, array $moreEnv = []): string
+    private function choiceToSetEnv(array $envs, array $enum): string
     {
-        $value = $this->choice("Set $env =", $enum, $enum[0]);
+        $value = $this->choice("Set $envs[0] =", $enum, $enum[0]);
         if (! empty($value)) {
-            array_push($moreEnv, $env);
-            foreach ($moreEnv as $env) {
+            foreach ($envs as $env) {
                 $this->setEnv($env, $value);
             }
         }
