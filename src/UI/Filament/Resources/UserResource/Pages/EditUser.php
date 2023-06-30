@@ -18,6 +18,7 @@ class EditUser extends EditRecord
                 $data['password'] = $getUser->password;
             }
         }
+
         return $data;
     }
 

@@ -2,18 +2,18 @@
 
 namespace AdminKit\Core\UI\Filament\Resources;
 
+use AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 use App\Models\AdminKitUser;
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
-use Filament\Resources\Resource;
-use Illuminate\Support\Facades\Hash;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\Form;
+use Filament\Resources\Resource;
+use Filament\Resources\Table;
+use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
+use Illuminate\Support\Facades\Hash;
 use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends Resource
@@ -60,10 +60,10 @@ class UserResource extends Resource
                 ->label(trans('admin-kit::user.resource.password'))
                 ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                 ->dehydrated(fn ($state) => filled($state))
-                ->required(fn (string $context): bool => $context === 'create')
+                ->required(fn (string $context): bool => $context === 'create'),
         ];
 
-        if(config('admin-kit.user.shield')){
+        if (config('admin-kit.user.shield')) {
             $rows[] = Forms\Components\MultiSelect::make('roles')->relationship('roles', 'name')->label(trans('admin-kit::user.resource.roles'));
         }
 
@@ -95,7 +95,7 @@ class UserResource extends Resource
                     ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
             ]);
 
-        if(config('admin-kit.user.impersonate')){
+        if (config('admin-kit.user.impersonate')) {
             $table->prependActions([
                 Impersonate::make('impersonate'),
             ]);

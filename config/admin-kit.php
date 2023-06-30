@@ -8,16 +8,16 @@ return [
         /*
          * The Group name of the resource.
          */
-        "group" => "Filament Shield",
+        'group' => 'Filament Shield',
 
         /*
          * User Filament Impersonate
          */
-        "impersonate" => true,
+        'impersonate' => true,
 
         /*
          * User Filament Shield
          */
-        "shield" => true,
+        'shield' => true,
     ],
 ];
