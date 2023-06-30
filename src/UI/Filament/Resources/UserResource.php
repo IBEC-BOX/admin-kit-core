@@ -24,6 +24,11 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
+    public static function getSlug(): string
+    {
+        return 'users';
+    }
+
     protected static function getNavigationLabel(): string
     {
         return trans('admin-kit::user.resource.label');
