@@ -3,7 +3,6 @@
 namespace AdminKit\Core\UI\Filament\Resources;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
-use App\Models\AdminKitUser;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -18,7 +17,10 @@ use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = AdminKitUser::class;
+    public static function getModel(): string
+    {
+        return config('admin-kit.user.model');
+    }
 
     protected static ?int $navigationSort = 9;
 

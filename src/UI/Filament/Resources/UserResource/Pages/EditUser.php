@@ -3,7 +3,6 @@
 namespace AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
-use App\Models\AdminKitUser;
 use Filament\Resources\Pages\EditRecord;
 
 class EditUser extends EditRecord
@@ -12,7 +11,8 @@ class EditUser extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $getUser = AdminKitUser::where('email', $data['email'])->first();
+        $model = config('admin-kit.user.model');
+        $getUser = $model::where('email', $data['email'])->first();
         if ($getUser) {
             if (empty($data['password'])) {
                 $data['password'] = $getUser->password;

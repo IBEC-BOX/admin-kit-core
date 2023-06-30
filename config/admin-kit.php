@@ -6,6 +6,11 @@ return [
 
     'user' => [
         /*
+         * User Model
+         */
+        'model' => 'App\Models\AdminKitUser',
+
+        /*
          * The Group name of the resource.
          */
         'group' => 'Filament Shield',
