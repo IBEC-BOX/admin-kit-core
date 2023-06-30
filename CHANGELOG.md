@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.2 - 2023-06-30
+
+- fix v2.1.1
+
 ## v2.1.1 - 2023-06-30
 
 - add Users page
