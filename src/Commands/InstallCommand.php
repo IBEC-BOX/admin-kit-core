@@ -43,10 +43,14 @@ class InstallCommand extends Command
         $appUrl = $this->askToSetEnv('APP_URL', config('app.url'));
 
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
-        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit-web', 'web']);
+        $guard = $this->choiceToSetEnv('FILAMENT_AUTH_GUARD', ['admin-kit-web', 'web'], [
+            'FILAMENT_IMPERSONATE_GUARD',
+        ]);
 
         // set FILAMENT_PATH environment
-        $prefix = $this->askToSetEnv('FILAMENT_PATH', config('filament.path'));
+        $prefix = $this->askToSetEnv('FILAMENT_PATH', config('filament.path'), [
+            'FILAMENT_IMPERSONATE_REDIRECT',
+        ]);
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
@@ -75,21 +79,27 @@ class InstallCommand extends Command
         return $this;
     }
 
-    private function askToSetEnv(string $env, string $default = 'null'): string
+    private function askToSetEnv(string $env, string $default, array $moreEnv = []): string
     {
         $value = $this->ask("Set $env =", $default);
-        if (! empty($value) && $value !== $default) {
-            $this->setEnv($env, $value);
+        if (! empty($value)) {
+            array_push($moreEnv, $env);
+            foreach ($moreEnv as $env) {
+                $this->setEnv($env, $value);
+            }
         }
 
         return $value;
     }
 
-    private function choiceToSetEnv(string $env, array $enum): string
+    private function choiceToSetEnv(string $env, array $enum, array $moreEnv = []): string
     {
         $value = $this->choice("Set $env =", $enum, $enum[0]);
         if (! empty($value)) {
-            $this->setEnv($env, $value);
+            array_push($moreEnv, $env);
+            foreach ($moreEnv as $env) {
+                $this->setEnv($env, $value);
+            }
         }
 
         return $value;

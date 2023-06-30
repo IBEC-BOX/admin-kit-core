@@ -3,6 +3,7 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -20,14 +21,16 @@ class CoreServiceProvider extends PackageServiceProvider
             ->name('admin-kit')
             ->hasConfigFile()
             ->hasMigration('create_admin_kit_users_table')
+            ->hasTranslations()
             ->hasCommand(InstallCommand::class);
     }
 
     public function registeringPackage()
     {
-        $this->registerAuthConfigs();
-
+        $this->app->register(FilamentServiceProvider::class);
         $this->app->register(MiddlewareServiceProvider::class);
+
+        $this->registerAuthConfigs();
     }
 
     public function bootingPackage(): void
