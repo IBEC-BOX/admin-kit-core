@@ -4,6 +4,12 @@
 return [
     'locales' => ['ru', 'en', 'kk'],
 
+    /*
+     * Timezone для отображения в админ панели Filament,
+     * при сохранении используется config('app.timezone')
+     */
+    'timezone' => 'Asia/Almaty',
+
     'user' => [
         /*
          * User Model

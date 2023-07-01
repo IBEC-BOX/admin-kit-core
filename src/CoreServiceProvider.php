@@ -5,6 +5,8 @@ namespace AdminKit\Core;
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Tables\Columns\TextColumn;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -36,6 +38,7 @@ class CoreServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this->publishStubs();
+        $this->configureTimezoneForFilament();
     }
 
     protected function registerAuthConfigs(): self
@@ -57,5 +60,11 @@ class CoreServiceProvider extends PackageServiceProvider
         }
 
         return $this;
+    }
+
+    private function configureTimezoneForFilament(): void
+    {
+        DateTimePicker::configureUsing(fn (DateTimePicker $component) => $component->timezone(config('admin-kit.timezone')));
+        TextColumn::configureUsing(fn (TextColumn $column) => $column->timezone(config('admin-kit.timezone')));
     }
 }
