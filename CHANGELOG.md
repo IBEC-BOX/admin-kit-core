@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.10 - 2023-07-01
+
+- add filament/spatie-laravel-media-library-plugin
+
 ## v2.1.9 - 2023-07-01
 
 - configure timezone for Filament admin
