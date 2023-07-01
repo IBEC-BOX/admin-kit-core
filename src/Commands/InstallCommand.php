@@ -25,7 +25,7 @@ class InstallCommand extends Command
             ]);
             $this->call('vendor:publish', [
                 '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
-                '--tag' => "migrations",
+                '--tag' => 'migrations',
             ]);
             $this->call('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
