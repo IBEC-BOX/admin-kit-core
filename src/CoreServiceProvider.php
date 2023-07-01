@@ -51,7 +51,8 @@ class CoreServiceProvider extends PackageServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs/app/AdminKitUser.stub' => app_path('Models/AdminKitUser.php'),
-                __DIR__.'/../config/filament-shield.php' => config_path('filament-shield.php'),
+                __DIR__.'/../stubs/config/filament-shield.php' => config_path('filament-shield.php'),
+                __DIR__.'/../stubs/config/filament-language-switch.php' => config_path('filament-language-switch.php'),
             ], 'admin-kit-stubs');
         }
 
