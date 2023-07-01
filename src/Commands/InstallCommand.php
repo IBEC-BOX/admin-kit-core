@@ -24,6 +24,10 @@ class InstallCommand extends Command
                 '--provider' => 'Spatie\Permission\PermissionServiceProvider',
             ]);
             $this->call('vendor:publish', [
+                '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
+                '--tag' => "migrations",
+            ]);
+            $this->call('vendor:publish', [
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
             ]);
