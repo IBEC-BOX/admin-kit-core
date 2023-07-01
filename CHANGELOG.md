@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.7 - 2023-07-01
+
+- add filament language switcher
+
 ## v2.1.6 - 2023-06-30
 
 - call shield:generate command from Install command
