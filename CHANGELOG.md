@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.8 - 2023-07-01
+
+- configure timezone for Filament admin
+
 ## v2.1.7 - 2023-07-01
 
 - add filament language switcher
