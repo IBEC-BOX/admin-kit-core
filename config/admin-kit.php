@@ -2,11 +2,11 @@
 
 // config for AdminKit/Core
 return [
-    'locales' => ['ru', 'en', 'kk'],
+    'locales' => ['ru', 'kk', 'en'],
 
     /*
      * Timezone для отображения в админ панели Filament,
-     * при сохранении используется config('app.timezone')
+     * при сохранении в базу данных используется UTC config('app.timezone')
      */
     'timezone' => 'Asia/Almaty',
 
