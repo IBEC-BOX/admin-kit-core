@@ -67,7 +67,7 @@ class InstallCommand extends Command
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
-        $this->info('To create a user, run: <comment>php artisan make:filament-user</comment>');
+        $this->info('To create a SuperAdmin user, run: <comment>php artisan shield:super-admin</comment>');
         $this->info('To start the embedded server, run: <comment>php artisan serve</comment>');
 
         $prefix = trim($prefix, "/ \t\n\r\0\x0B");
