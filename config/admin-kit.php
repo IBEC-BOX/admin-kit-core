@@ -41,7 +41,7 @@ return [
                 'subnet' => null,
                 'description' => 'IBEC Systems',
             ],
-        ]
+        ],
     ],
 
 ];
