@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Providers;
 
+use AdminKit\Core\Middlewares\CheckAdminIpMiddleware;
 use AdminKit\Core\Middlewares\ForceJsonApiResponse;
 use AdminKit\Core\Middlewares\SetLocaleFromAcceptLanguageHeader;
 
@@ -11,6 +12,7 @@ class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServ
 {
     protected array $middlewares = [
         ForceJsonApiResponse::class,
+        CheckAdminIpMiddleware::class,
     ];
 
     protected array $middlewareGroups = [

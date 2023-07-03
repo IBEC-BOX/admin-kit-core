@@ -31,4 +31,17 @@ return [
          */
         'shield' => true,
     ],
+    'adminWhiteIps' => [
+        'white_list_enable' => env('ADMIN_WHITE_LIST_ENABLE', false),
+        'white_list_access_by_token_enable' => env('ADMIN_WHITE_LIST_ACCESS_BY_TOKEN_ENABLE', false),
+        'token' => env('ADMIN_WHITE_LIST_TOKEN', 'g9M5f3MGRQpB6vP3WSVaVVzemwYfqrpm'),
+        'list' => [
+            [
+                'ip' => '188.0.151.149',
+                'subnet' => null,
+                'description' => 'IBEC Systems',
+            ],
+        ],
+    ],
+
 ];
