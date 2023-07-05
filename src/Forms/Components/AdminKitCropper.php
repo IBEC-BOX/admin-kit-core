@@ -4,9 +4,9 @@ namespace AdminKit\Core\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Nuhel\FilamentCropper\Concerns\CanFlipImage;
 use Nuhel\FilamentCropper\Concerns\CanGenerateThumbnail;
 use Nuhel\FilamentCropper\Concerns\CanRotateImage;
-use Nuhel\FilamentCropper\Concerns\CanFlipImage;
 use Nuhel\FilamentCropper\Concerns\CanZoomImage;
 use Nuhel\FilamentCropper\Concerns\HasAspectRatio;
 use Nuhel\FilamentCropper\Concerns\HasViewMode;
@@ -35,11 +35,12 @@ class AdminKitCropper extends SpatieMediaLibraryFileUpload
 
     public function getAcceptedFileTypes(): ?array
     {
-        if ( parent::getAcceptedFileTypes() == null){
+        if (parent::getAcceptedFileTypes() == null) {
             $this->acceptedFileTypes([
-                "image/png", " image/gif", "image/jpeg"
+                'image/png', ' image/gif', 'image/jpeg',
             ]);
         }
+
         return parent::getAcceptedFileTypes();
     }
 
@@ -70,6 +71,7 @@ class AdminKitCropper extends SpatieMediaLibraryFileUpload
     public function dragMode(DragMode|Closure $dragMode): static
     {
         $this->dragMode = $dragMode;
+
         return $this;
     }
 
@@ -78,6 +80,7 @@ class AdminKitCropper extends SpatieMediaLibraryFileUpload
         if (empty($this->dragMode)) {
             return DragMode::NONE;
         }
+
         return $this->evaluate($this->dragMode);
     }
 }
