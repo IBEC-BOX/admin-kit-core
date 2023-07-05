@@ -2,6 +2,13 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.1.11 - 2023-07-05
+
+- add AdminKitCropper field
+- add ip address permissions
+- remove kk from filament languages
+- change sort admin-kit.locales, ru/kk/en
+
 ## v2.1.10 - 2023-07-01
 
 - add filament/spatie-laravel-media-library-plugin
