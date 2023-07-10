@@ -51,7 +51,7 @@ return [
                 'subnet' => null,
                 'description' => 'IBEC Frankfurt Oracle Cloud rezerv',
             ],
-        ]
+        ],
     ],
 
 ];

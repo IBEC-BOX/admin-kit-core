@@ -11,7 +11,6 @@ class CheckAdminIpMiddleware
      * Проверяет IP адрес в белом списке.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -29,7 +28,7 @@ class CheckAdminIpMiddleware
         }
 
         // Проверяем IP адрес, если он не в белом списке, то не даем доступ к админке.
-        if ($whiteListEnable && !in_array($request->ip(), $this->getFilteredIps($whiteIps))) {
+        if ($whiteListEnable && ! in_array($request->ip(), $this->getFilteredIps($whiteIps))) {
             return response()->json(['error' => 403, 'message' => 'Access denied!'], 403);
         }
 
@@ -44,14 +43,14 @@ class CheckAdminIpMiddleware
     {
         $filteredWhiteIps = [];
 
-        foreach($whiteIps as $ip => $ipData) {
-            if(isset($ipData['ip']) && isset($ipData['subnet'])) {
+        foreach ($whiteIps as $ip => $ipData) {
+            if (isset($ipData['ip']) && isset($ipData['subnet'])) {
                 $subnet = new \IPv4\SubnetCalculator($ipData['ip'], $ipData['subnet']);
 
                 foreach ($subnet->getAllIPAddresses() as $ip_address) {
                     array_push($filteredWhiteIps, $ip_address);
                 }
-            } elseif(isset($ipData['ip'])) {
+            } elseif (isset($ipData['ip'])) {
                 array_push($filteredWhiteIps, $ipData['ip']);
             }
         }
