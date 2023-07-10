@@ -37,9 +37,19 @@ return [
         'token' => env('ADMIN_WHITE_LIST_TOKEN', 'g9M5f3MGRQpB6vP3WSVaVVzemwYfqrpm'),
         'list' => [
             [
-                'ip' => '188.0.151.149',
+                'ip' => '46.34.147.110',
                 'subnet' => null,
-                'description' => 'IBEC Systems',
+                'description' => 'IBEC VPN Almaty new',
+            ],
+            [
+                'ip' => '130.61.22.113',
+                'subnet' => null,
+                'description' => 'IBEC VPN DevOps rezerv',
+            ],
+            [
+                'ip' => '130.61.175.129',
+                'subnet' => null,
+                'description' => 'IBEC Frankfurt Oracle Cloud rezerv',
             ],
         ]
     ],
