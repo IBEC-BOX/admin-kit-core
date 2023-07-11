@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array locales()
  * @method static string timezone()
 
+ *
  * @see \AdminKit\Core\Core
  */
 class AdminKit extends Facade

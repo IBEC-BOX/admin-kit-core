@@ -13,8 +13,7 @@ use Filament\Forms\Components\Tabs;
 class TranslatableTabs
 {
     /**
-     * @param callable(Locale): array $callback
-     * @return Tabs
+     * @param  callable(Locale): array  $callback
      */
     public static function make(callable $callback): Tabs
     {
