@@ -72,7 +72,7 @@
                 "AdminKit\\Core\\CoreServiceProvider"
             ],
             "aliases": {
-                "AdminKit": "AdminKit\\Core\\Ship\\Facades\\AdminKit"
+                "AdminKit": "AdminKit\\Core\\Facades\\AdminKit"
             }
         }
     },
