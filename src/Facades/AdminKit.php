@@ -7,6 +7,8 @@ namespace AdminKit\Core\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static array locales()
+
  * @see \AdminKit\Core\Core
  */
 class AdminKit extends Facade
