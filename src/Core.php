@@ -8,4 +8,9 @@ class Core
     {
         return config('admin-kit.locales');
     }
+
+    public function timezone()
+    {
+        return config('admin-kit.timezone');
+    }
 }
