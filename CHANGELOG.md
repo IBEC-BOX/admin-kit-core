@@ -2,13 +2,6 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
-## v2.2.0 - 2023-07-11
-
-- fix: correct alias for AdminKit facade
-- feat: add locales() function in AdminKit facade
-- feat: add timezone() function in AdminKit facade
-- feat: add TranslatableTabs filament layout
-
 ## v2.1.11 - 2023-07-05
 
 - add AdminKitCropper field
