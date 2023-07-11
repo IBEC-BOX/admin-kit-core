@@ -4,5 +4,8 @@ namespace AdminKit\Core;
 
 class Core
 {
-    public const VERSION = '2.0.4';
+    public function locales()
+    {
+        return config('admin-kit.locales');
+    }
 }
