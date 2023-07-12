@@ -10,21 +10,22 @@
 
 На текущий момент созданы следующие пакеты для Admin Kit:
 
-| Название   | Ссылка                                           | Готовность |
-|------------|--------------------------------------------------|------------|
-| Core       | https://github.com/IBEC-BOX/admin-kit-core       | 90%        |
-| Users      | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
-| Roles      | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
-| Navigation | https://github.com/IBEC-BOX/admin-kit-navigation | 100%       |
-| SEO        | https://github.com/IBEC-BOX/admin-kit-seo        | 100%       |
-| Articles   | https://github.com/IBEC-BOX/admin-kit-articles   | 100%       |
-| Pages      | https://github.com/IBEC-BOX/admin-kit-pages      | 50%        |
-| Documents  | https://github.com/IBEC-BOX/admin-kit-articles   | 50%        |
-| Banners    | https://github.com/IBEC-BOX/admin-kit-banners    | 10%        |
-| FAQs       | https://github.com/IBEC-BOX/admin-kit-faqs       | 10%        |
-| Polls      | https://github.com/IBEC-BOX/admin-kit-polls      | 10%        |
-| Vacancies  | https://github.com/IBEC-BOX/admin-kit-vacancies  | 10%        |
-| Porto      | https://github.com/IBEC-BOX/laravel-porto        | 90%        |
+| Название      | Ссылка                                           | Готовность |
+|---------------|--------------------------------------------------|------------|
+| Core          | https://github.com/IBEC-BOX/admin-kit-core       | 90%        |
+| Users         | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
+| Roles         | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
+| Navigation    | https://github.com/IBEC-BOX/admin-kit-navigation | 100%       |
+| SEO           | https://github.com/IBEC-BOX/admin-kit-seo        | 100%       |
+| Articles      | https://github.com/IBEC-BOX/admin-kit-articles   | 100%       |
+| Pages         | https://github.com/IBEC-BOX/admin-kit-pages      | 50%        |
+| Documents     | https://github.com/IBEC-BOX/admin-kit-articles   | 50%        |
+| Localizations | https://github.com/IBEC-BOX/admin-kit-articles   | 50%        |
+| Banners       | https://github.com/IBEC-BOX/admin-kit-banners    | 10%        |
+| FAQs          | https://github.com/IBEC-BOX/admin-kit-faqs       | 10%        |
+| Polls         | https://github.com/IBEC-BOX/admin-kit-polls      | 10%        |
+| Vacancies     | https://github.com/IBEC-BOX/admin-kit-vacancies  | 10%        |
+| Porto         | https://github.com/IBEC-BOX/laravel-porto        | 90%        |
 
 И использует следующие пакеты Laravel и Filament:
 
