@@ -13,4 +13,9 @@ class CreateUser extends CreateRecord
     {
         return trans('admin-kit::user.resource.title.create');
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return UserResource::getUrl();
+    }
 }
