@@ -13,11 +13,13 @@
 | Название   | Ссылка                                            | Готовность |
 |------------|---------------------------------------------------|------------|
 | Core       | https://github.com/IBEC-IBOX/admin-kit-core       | 90%        |
-| Articles   | https://github.com/IBEC-IBOX/admin-kit-articles   | 60%        |
+| Navigation | https://github.com/IBEC-IBOX/admin-kit-navigation | 100%       |
+| SEO        | https://github.com/IBEC-IBOX/admin-kit-seo        | 100%       |
+| Articles   | https://github.com/IBEC-IBOX/admin-kit-articles   | 100%       |
+| Pages      | https://github.com/IBEC-IBOX/admin-kit-pages      | 50%        |
+| Documents  | https://github.com/IBEC-IBOX/admin-kit-articles   | 50%        |
 | Banners    | https://github.com/IBEC-IBOX/admin-kit-banners    | 10%        |
 | FAQs       | https://github.com/IBEC-IBOX/admin-kit-faqs       | 10%        |
-| Navigation | https://github.com/IBEC-IBOX/admin-kit-navigation | 10%        |
-| Pages      | https://github.com/IBEC-IBOX/admin-kit-pages      | 10%        |
 | Polls      | https://github.com/IBEC-IBOX/admin-kit-polls      | 10%        |
 | Vacancies  | https://github.com/IBEC-IBOX/admin-kit-vacancies  | 10%        |
 | Porto      | https://github.com/IBEC-IBOX/laravel-porto        | 90%        |
@@ -26,8 +28,8 @@
 
 | Название              | Composer пакет                              |
 |-----------------------|---------------------------------------------|
-| Package tools         | spatie/laravel-package-tools                |
 | Laravel               | laravel/framework                           |
+| Package tools         | spatie/laravel-package-tools                |
 | Laravel Translatable  | spatie/laravel-translatable                 |
 | Laravel Query Builder | spatie/laravel-query-builder                |
 | Laravel API Paginate  | spatie/laravel-json-api-paginate            |
@@ -36,7 +38,6 @@
 | Filament              | filament/filament                           |
 | Filament Permissions  | bezhansalleh/filament-shield                |
 | Filament Impersonate  | stechstudio/filament-impersonate            |
-| Filament Translatable | filament/spatie-laravel-translatable-plugin |
 
 ## Installation
 
