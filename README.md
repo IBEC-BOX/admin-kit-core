@@ -13,6 +13,8 @@
 | Название   | Ссылка                                           | Готовность |
 |------------|--------------------------------------------------|------------|
 | Core       | https://github.com/IBEC-BOX/admin-kit-core       | 90%        |
+| Users      | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
+| Roles      | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
 | Navigation | https://github.com/IBEC-BOX/admin-kit-navigation | 100%       |
 | SEO        | https://github.com/IBEC-BOX/admin-kit-seo        | 100%       |
 | Articles   | https://github.com/IBEC-BOX/admin-kit-articles   | 100%       |
