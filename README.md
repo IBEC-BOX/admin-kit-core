@@ -8,24 +8,28 @@
 Пакет имеет готовые модули для быстрого старта проекта. 
 Использует админ панель Filament, и содержит готовые API эндпоинты, что и служит улучшением и ускорением разработки админ панелей.
 
+## Структура пакетов Admin Kit
+
 На текущий момент созданы следующие пакеты для Admin Kit:
 
-| Название      | Ссылка                                           | Готовность |
-|---------------|--------------------------------------------------|------------|
-| Core          | https://github.com/IBEC-BOX/admin-kit-core       | 90%        |
-| Users         | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
-| Roles         | https://github.com/IBEC-BOX/admin-kit-core       | 100%       |
-| Navigation    | https://github.com/IBEC-BOX/admin-kit-navigation | 100%       |
-| SEO           | https://github.com/IBEC-BOX/admin-kit-seo        | 100%       |
-| Articles      | https://github.com/IBEC-BOX/admin-kit-articles   | 100%       |
-| Pages         | https://github.com/IBEC-BOX/admin-kit-pages      | 50%        |
-| Documents     | https://github.com/IBEC-BOX/admin-kit-articles   | 50%        |
-| Localizations | https://github.com/IBEC-BOX/admin-kit-articles   | 50%        |
-| Banners       | https://github.com/IBEC-BOX/admin-kit-banners    | 10%        |
-| FAQs          | https://github.com/IBEC-BOX/admin-kit-faqs       | 10%        |
-| Polls         | https://github.com/IBEC-BOX/admin-kit-polls      | 10%        |
-| Vacancies     | https://github.com/IBEC-BOX/admin-kit-vacancies  | 10%        |
-| Porto         | https://github.com/IBEC-BOX/laravel-porto        | 90%        |
+| Название                      | Код           | Тип                      | Описание                                                                                                                                                                                                               | Ссылка                                           | Готовность                 |
+|-------------------------------|---------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|----------------------------|
+| Ядро                          | Core          | Базовый пакет            | Пакет содержит идеологию, настройки по умолчанию, кастомные поля и модуль Users                                                                                                                                        | https://github.com/IBEC-BOX/admin-kit-core       | Готово :white_check_mark:  |
+| Пользователи                  | Users         | -                        | Находится в составе пакета Core, незаменимый модуль Core пакета                                                                                                                                                        | https://github.com/IBEC-BOX/admin-kit-core       | Готово :white_check_mark:  |
+| Роли                          | Roles         | Внешний пакет            | Используется пакет [Filament Shield](https://github.com/bezhanSalleh/filament-shield), настройки по умолчанию интегрированы с в пакет Core                                                                             | https://github.com/bezhanSalleh/filament-shield  | Готово :white_check_mark:  |
+| Меню                          | Navigation    | Полноценный пакет (Форк) | Пакет для создания элементов меню. Сделан форк внешнего пакета [Filament Navigation](https://github.com/ryangjchandler/filament-navigation), который кастомизирован под идеологию Admin Kit. Доступна мультиязычность. | https://github.com/IBEC-BOX/admin-kit-navigation | Готово :white_check_mark:  |
+| Новости                       | Articles      | Полноценный пакет        | Пакет для создания новостей. Доступна мультиязычность.                                                                                                                                                                 | https://github.com/IBEC-BOX/admin-kit-articles   | Готово :white_check_mark:  |
+| Страницы                      | Pages         | Полноценный пакет        | В разработке. Пакет для создания WYSIWYG страниц. Доступна мультиязычность.                                                                                                                                            | https://github.com/IBEC-BOX/admin-kit-pages      | 50% :large_orange_diamond: |
+| Документы                     | Documents     | Полноценный пакет        | В разработке. Пакет для загрузки документов(файлов). Доступна мультиязычность.                                                                                                                                         | https://github.com/IBEC-BOX/admin-kit-documents  | 50% :large_orange_diamond: |
+| Локализация                   | Localizations | Полноценный пакет        | В разработке. Пакет для создания переводов для фронт разработчиков. Доступна мультиязычность.                                                                                                                          | Not initialized                                  | 50% :large_orange_diamond: |
+| Баннеры                       | Banners       | Полноценный пакет        | На стадии идеи. Пакет для создания Баннеров. Доступна мультиязычность.                                                                                                                                                 | https://github.com/IBEC-BOX/admin-kit-banners    | 10% :o:                    |
+| Частые вопросы                | FAQs          | Полноценный пакет        | На стадии идеи. Пакет для создания Частых Вопросов. Доступна мультиязычность.                                                                                                                                          | https://github.com/IBEC-BOX/admin-kit-faqs       | 10% :o:                    |
+| Опросы                        | Polls         | Полноценный пакет        | На стадии идеи. Пакет для создания Опросов.                                                                                                                                                                            | https://github.com/IBEC-BOX/admin-kit-polls      | 10% :o:                    |
+| Вакансии                      | Vacancies     | Полноценный пакет        | На стадии идеи. Пакет для создания Вакансий. Дополнительно содержит города, должности, форму для заявок.                                                                                                               | https://github.com/IBEC-BOX/admin-kit-vacancies  | 10% :o:                    |
+| Галерея                       | Gallery       | Полноценный пакет        | На стадии идеи. Пакет для создания Фото/Видео галереи.                                                                                                                                                                 | Not initialized                                  | 0% :o:                     |
+| Хранилище файлов (Документы?) | FileStorage   | Полноценный пакет        | На стадии идеи. Пакет для загрузки и хранения разных файлов.                                                                                                                                                           | Not initialized                                  | 0% :o:                     |
+| Настройки SEO                 | SEO           | Вспомогательный пакет    | Вспомогательный пакет для добавления SEO настроек к необходимым пакетам (пример: Новости, Страницы). Доступна мультиязычность.                                                                                         | https://github.com/IBEC-BOX/admin-kit-seo        | Готово :white_check_mark:  |
+| Архитектурный паттерн Porto   | Porto         | Полноценный пакет        | Для реализации Архитектурного паттерна [Porto](https://github.com/Mahmoudz/Porto)([ru](https://github.com/dnsoftware/porto_ru)) при разработке проекта. В Core пакете используется для автозагрузки Middleware.        | https://github.com/IBEC-BOX/laravel-porto        | 90% :white_check_mark:     |
 
 И использует следующие пакеты Laravel и Filament:
 
