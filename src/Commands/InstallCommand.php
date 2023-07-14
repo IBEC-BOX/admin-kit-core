@@ -45,24 +45,30 @@ class InstallCommand extends Command
             $this->call('migrate');
         }
 
-        // php artisan shield:generate --all
-        if ($this->confirm('Generate the user Policies and Permissions?', true)) {
-            $this->call('shield:generate', ['--all' => true]);
-        }
-
-        // set APP_URL environment
-        $appUrl = $this->askToSetEnv(['APP_URL'], config('app.url'));
-
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
         $guard = $this->choiceToSetEnv([
             'FILAMENT_IMPERSONATE_GUARD',
             'FILAMENT_AUTH_GUARD',
         ], ['admin-kit-web', 'web']);
 
+        config()->set('filament.auth.guard', $guard);
+        // php artisan shield:generate --all
+        if ($this->confirm('Generate the user Policies and Permissions?', true)) {
+            $this->call('shield:generate', ['--all' => true]);
+        }
+
+        // php artisan shield:superadmin
+        if ($this->confirm('Create new SuperAdmin User?', false)) {
+            $this->call('shield:super-admin');
+        }
+
+        // set APP_URL environment
+        $appUrl = $this->askToSetEnv(['APP_URL'], config('app.url'));
+
         // set FILAMENT_PATH environment
         $prefix = $this->askToSetEnv([
-            'FILAMENT_IMPERSONATE_REDIRECT',
             'FILAMENT_PATH',
+            'FILAMENT_IMPERSONATE_REDIRECT',
         ], config('filament.path'));
 
         // completing the installation
