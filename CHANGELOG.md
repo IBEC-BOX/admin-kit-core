@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.2.2 - 2023-07-14
+
+- fix FILAMENT_AUTH_GUARD question
+
 ## v2.2.1 - 2023-07-14
 
 - fix: correct admin-kit:install command
