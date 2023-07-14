@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.2.3 - 2023-07-14
+
+- add admin white list IP in config
+
 ## v2.2.2 - 2023-07-14
 
 - fix FILAMENT_AUTH_GUARD question
