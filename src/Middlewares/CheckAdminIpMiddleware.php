@@ -15,9 +15,9 @@ class CheckAdminIpMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $whiteIps = config('project.adminWhiteIps.list');
-        $whiteIpsToken = config('project.adminWhiteIps.token');
-        $whiteListEnable = config('project.adminWhiteIps.white_list_enable');
+        $whiteIps = config('admin-kit.adminWhiteIps.list');
+        $whiteIpsToken = config('admin-kit.adminWhiteIps.token');
+        $whiteListEnable = config('admin-kit.adminWhiteIps.white_list_enable');
         $whiteListAccessByTokenEnable = config('project.adminWhiteIps.white_list_access_by_token_enable');
 
         $requestToken = $request->get('token');

@@ -12,13 +12,15 @@ class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServ
 {
     protected array $middlewares = [
         ForceJsonApiResponse::class,
-        CheckAdminIpMiddleware::class,
     ];
 
     protected array $middlewareGroups = [
         'api' => [
             SetLocaleFromAcceptLanguageHeader::class,
         ],
+        'web' => [
+            CheckAdminIpMiddleware::class
+        ]
     ];
 
     protected array $middlewarePriority = [];
