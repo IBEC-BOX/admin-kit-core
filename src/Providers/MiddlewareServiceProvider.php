@@ -19,8 +19,8 @@ class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServ
             SetLocaleFromAcceptLanguageHeader::class,
         ],
         'web' => [
-            CheckAdminIpMiddleware::class
-        ]
+            CheckAdminIpMiddleware::class,
+        ],
     ];
 
     protected array $middlewarePriority = [];
