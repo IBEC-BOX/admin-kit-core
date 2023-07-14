@@ -47,8 +47,8 @@ class InstallCommand extends Command
 
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
         $guard = $this->choiceToSetEnv([
-            'FILAMENT_IMPERSONATE_GUARD',
             'FILAMENT_AUTH_GUARD',
+            'FILAMENT_IMPERSONATE_GUARD',
         ], ['admin-kit-web', 'web']);
 
         config()->set('filament.auth.guard', $guard);
