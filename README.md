@@ -31,7 +31,7 @@
 | Настройки SEO                 | [SEO](https://github.com/IBEC-BOX/admin-kit-seo)               | Вспомогательный    | Вспомогательный пакет для добавления SEO настроек к необходимым пакетам (пример: Новости, Страницы). Доступна мультиязычность.                                                                                         | Готово :white_check_mark:  | :heavy_minus_sign:        |
 | Архитектурный паттерн Porto   | [Porto](https://github.com/IBEC-BOX/laravel-porto)             | Вспомогательный    | Для реализации Архитектурного паттерна [Porto](https://github.com/Mahmoudz/Porto)([ru](https://github.com/dnsoftware/porto_ru)) при разработке проекта. В Core пакете используется для автозагрузки Middleware.        | 90% :white_check_mark:     | :heavy_minus_sign:        |
 
-И использует следующие пакеты Laravel и Filament:
+И использует следующие пакеты [Spatie](https://github.com/spatie) и [Filament](https://github.com/filamentphp):
 
 | Название              | Composer пакет                              |
 |-----------------------|---------------------------------------------|
