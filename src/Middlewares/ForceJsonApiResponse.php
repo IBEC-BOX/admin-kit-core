@@ -9,10 +9,22 @@ class ForceJsonApiResponse
 {
     public function handle(Request $request, Closure $next)
     {
+        /**
+         * Force JSON Response
+         */
         if ($request->is('api/*')) {
             $request->headers->set('Accept', 'application/json');
         }
 
-        return $next($request);
+        $response = $next($request);
+
+        /**
+         * Returns Cyrillic characters in Response
+         */
+        if ($request->is('api/*')) {
+            $response->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+        }
+
+        return $response;
     }
 }
