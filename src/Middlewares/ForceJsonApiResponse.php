@@ -21,7 +21,7 @@ class ForceJsonApiResponse
         /**
          * Returns Cyrillic characters in Response
          */
-        if ($request->is('api/*')  && method_exists($response, 'setEncodingOptions')) {
+        if ($request->is('api/*') && method_exists($response, 'setEncodingOptions')) {
             $response->setEncodingOptions(JSON_UNESCAPED_UNICODE);
         }
 
