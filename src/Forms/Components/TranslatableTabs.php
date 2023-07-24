@@ -13,14 +13,15 @@ use Filament\Forms\Components\Tabs;
 class TranslatableTabs
 {
     /**
-     * @param callable(Locale): array $callback
+     * @param  callable(Locale): array  $callback
      */
     public static function make(callable $callback): Tabs
     {
         if (gettype($callback(app()->getLocale())) === 'array') {
-            $tabs = array_map(fn($locale) => Tabs\Tab::make($locale)->schema($callback($locale)), AdminKit::locales());
+            $tabs = array_map(fn ($locale) => Tabs\Tab::make($locale)->schema($callback($locale)), AdminKit::locales());
+
             return Tabs::make('Translatable')->tabs($tabs);
-        };
+        }
 
         return Tabs::make('Translatable')->tabs(array_map($callback, AdminKit::locales()));
     }
