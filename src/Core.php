@@ -13,4 +13,14 @@ class Core
     {
         return config('admin-kit.timezone');
     }
+
+    public function mapLocales(callable $callback): array
+    {
+        return collect($this->locales())->map($callback)->toArray();
+    }
+
+    public function mapLocalesWithKeys(callable $callback): array
+    {
+        return collect($this->locales())->mapWithKeys($callback)->toArray();
+    }
 }
