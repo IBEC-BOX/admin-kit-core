@@ -2,6 +2,11 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.2.6 - 2023-07-24
+
+- fix: set 'admin-kit-web' guard without asking
+- fix: set config('filament-shield.auth_provider_model.fqcn') to 'App\Models\AdminKitUser' in command `php artisan admin-kit:install`
+
 ## v2.2.4 - 2023-07-17
 
 - fix: Returns Cyrillic characters in Response
