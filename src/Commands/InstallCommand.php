@@ -46,19 +46,20 @@ class InstallCommand extends Command
         }
 
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
-        $guard = $this->choiceToSetEnv([
-            'FILAMENT_AUTH_GUARD',
-            'FILAMENT_IMPERSONATE_GUARD',
-        ], ['admin-kit-web', 'web']);
+        $guard = 'admin-kit-web';
+        $fqcn = 'App\Models\AdminKitUser';
+        $this->setEnv('FILAMENT_AUTH_GUARD', $guard);
+        $this->setEnv('FILAMENT_IMPERSONATE_GUARD', $guard);
 
-        config()->set('filament.auth.guard', $guard);
         // php artisan shield:generate --all
+        config()->set('filament.auth.guard', $guard);
+        config()->set('filament-shield.auth_provider_model.fqcn', $fqcn);
         if ($this->confirm('Generate the user Policies and Permissions?', true)) {
             $this->call('shield:generate', ['--all' => true]);
         }
 
-        // php artisan shield:superadmin
-        if ($this->confirm('Create new SuperAdmin User?', false)) {
+        // php artisan shield:super-admin
+        if ($this->confirm('Create new SuperAdmin User?')) {
             $this->call('shield:super-admin');
         }
 
