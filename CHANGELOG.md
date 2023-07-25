@@ -2,6 +2,17 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.3.0 - 2023-07-25
+
+- feat: add AdminKit::mapLocales($callback) method
+- 
+- feat: add AdminKit::mapLocalesWithKeys($callback) method
+- 
+- feat: add TranslatableTabs $callback with array returns
+- 
+- refactor: facade AdminKit with return types
+- 
+
 ## v2.2.6 - 2023-07-24
 
 - fix: set 'admin-kit-web' guard without asking
