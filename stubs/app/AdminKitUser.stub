@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use AdminKit\Core\Models\AdminKitUser as Authenticatable;
+use Filament\Models\Contracts\FilamentUser;
 
-class AdminKitUser extends Authenticatable
+class AdminKitUser extends Authenticatable implements FilamentUser
 {
     protected $fillable = [
         'name',
@@ -20,4 +21,9 @@ class AdminKitUser extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@ibecsystems.com') && $this->hasVerifiedEmail();
+    }
 }
