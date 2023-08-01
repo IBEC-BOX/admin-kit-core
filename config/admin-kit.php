@@ -5,7 +5,7 @@ return [
     /*
      * Информация о разработчике
      */
-    'developer' => 'iBEC Systems ' . date('Y'),
+    'developer' => 'iBEC Systems '.date('Y'),
 
     /*
      * Мультиязычность админ панели.
