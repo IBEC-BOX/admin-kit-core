@@ -104,7 +104,7 @@ php artisan make:filament-user
 ### Layouts
 
 #### TranslatableTabs
-Шаблон выводит стандартный [Filament Tabs](https://filamentphp.com/docs/2.x/forms/layout#tabs).
+Шаблон выводит стандартный [Filament Tabs](https://filamentphp.com/docs/2.x/forms/layout#tabs) вместе с пакетом [spatie/laravel-translatable](https://spatie.be/docs/laravel-translatable).
 Пример использования:
 ```php
     // Filament/Resources/Resource.php
