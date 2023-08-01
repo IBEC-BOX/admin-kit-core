@@ -24,6 +24,7 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasMigration('create_admin_kit_users_table')
             ->hasTranslations()
+            ->hasRoute('api')
             ->hasCommand(InstallCommand::class);
     }
 

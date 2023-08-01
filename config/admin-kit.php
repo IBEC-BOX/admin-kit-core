@@ -2,6 +2,15 @@
 
 // config for AdminKit/Core
 return [
+    /*
+     * Информация о разработчике
+     */
+    'developer' => 'iBEC Systems ' . date('Y'),
+
+    /*
+     * Мультиязычность админ панели.
+     * Так же используется Фасад AdminKit\Core\Facades\AdminKit::locales()
+     */
     'locales' => ['ru', 'kk', 'en'],
 
     /*
