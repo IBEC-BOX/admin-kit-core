@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.3.1 - 2023-08-01
+
+- add Health Check /api route
+
 ## v2.3.0 - 2023-07-25
 
 - feat: add AdminKit::mapLocales($callback) method
