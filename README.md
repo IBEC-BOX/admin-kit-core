@@ -112,12 +112,11 @@ php artisan make:filament-user
     {
         return $form->schema([
             // other fields ...
-            TranslatableTabs::make(fn ($locale) => Tabs\Tab::make($locale)
-                ->schema([
-                    Forms\Components\TextInput::make("title.$locale")
-                        ->label('title'))
-                        ->required($locale === app()->getLocale()),
-                ])),
+            TranslatableTabs::make(fn ($locale) => [
+                Forms\Components\TextInput::make("title.$locale")
+                    ->label('Title')
+                    ->required($locale === app()->getLocale()),
+            ]),
         ]);
     }
 ```
