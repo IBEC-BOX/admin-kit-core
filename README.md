@@ -63,7 +63,7 @@ php artisan admin-kit:install
 
 Создать пользователя
 ```shell
-php artisan make:filament-user
+php artisan shield:super-admin
 ```
 
 ## Usage
