@@ -63,7 +63,7 @@ class CoreServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    private function configureTimezoneForFilament(): void
+    protected function configureTimezoneForFilament(): void
     {
         DateTimePicker::configureUsing(fn (DateTimePicker $component) => $component->timezone(config('admin-kit.timezone')));
         TextColumn::configureUsing(fn (TextColumn $column) => $column->timezone(config('admin-kit.timezone')));
