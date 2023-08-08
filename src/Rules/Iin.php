@@ -12,6 +12,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class Iin implements ValidationRule
 {
     private const FIRST_SEQ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
     private const SECOND_SEQ = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
 
     /**
@@ -21,22 +22,20 @@ class Iin implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!preg_match('/^[0-9]{12}$/', $value)) {
+        if (! preg_match('/^[0-9]{12}$/', $value)) {
             $fail('admin-kit::validation.iin.count')->translate(['attribute' => $attribute]);
+
             return;
         }
 
         $calculatedCheckSum = $this->calculateCheckSum($value);
-        $realCheckSum = (int)substr($value, -1);
+        $realCheckSum = (int) substr($value, -1);
 
         if ($calculatedCheckSum !== $realCheckSum) {
             $fail('admin-kit::validation.iin.checksum')->translate(['attribute' => $attribute]);
         }
     }
-    /**
-     * @param string $iin
-     * @return int
-     */
+
     private function calculateCheckSum(string $iin): int
     {
         $nums = str_split($iin);

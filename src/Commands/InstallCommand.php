@@ -3,7 +3,6 @@
 namespace AdminKit\Core\Commands;
 
 use AdminKit\Core\CoreServiceProvider;
-use Dotenv\Dotenv;
 use Illuminate\Console\Command;
 
 class InstallCommand extends Command
