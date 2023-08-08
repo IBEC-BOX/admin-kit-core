@@ -3,6 +3,7 @@
 namespace AdminKit\Core\Commands;
 
 use AdminKit\Core\CoreServiceProvider;
+use Dotenv\Dotenv;
 use Illuminate\Console\Command;
 
 class InstallCommand extends Command
@@ -46,13 +47,16 @@ class InstallCommand extends Command
         }
 
         // set FILAMENT_AUTH_GUARD to "admin-kit-web"
-        $guard = 'admin-kit-web';
-        $fqcn = 'App\Models\AdminKitUser';
-        $this->setEnv('FILAMENT_AUTH_GUARD', $guard);
-        $this->setEnv('FILAMENT_IMPERSONATE_GUARD', $guard);
+        $guard = $this->choiceToSetEnv(
+            ['FILAMENT_AUTH_GUARD', 'FILAMENT_IMPERSONATE_GUARD'],
+            ['admin-kit-web', 'web'],
+            config('filament.auth.guard')
+        );
+        config()->set('filament.auth.guard', $guard);
 
         // php artisan shield:generate --all
-        config()->set('filament.auth.guard', $guard);
+        $provider = config("auth.guards.$guard.provider");
+        $fqcn = config("auth.providers.$provider.model");
         config()->set('filament-shield.auth_provider_model.fqcn', $fqcn);
         if ($this->confirm('Generate the user Policies and Permissions?', true)) {
             $this->call('shield:generate', ['--all' => true]);
@@ -93,9 +97,9 @@ class InstallCommand extends Command
         return $value;
     }
 
-    private function choiceToSetEnv(array $envs, array $enum): string
+    private function choiceToSetEnv(array $envs, array $enum, string $default): string
     {
-        $value = $this->choice("Set $envs[0] =", $enum, $enum[0]);
+        $value = $this->choice("Set $envs[0] =", $enum, $default);
         if (! empty($value)) {
             foreach ($envs as $env) {
                 $this->setEnv($env, $value);
