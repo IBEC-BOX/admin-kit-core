@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.0 - 2023-08-11
+
+- fix: correct set shield fqcn
+- feat: add Iin rule for validation
+- refactor: change protected function
+
 ## v2.3.1 - 2023-08-01
 
 - add Health Check /api route
