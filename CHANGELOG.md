@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.1 - 2023-08-18
+
+- update ibecsystems/laravel-porto to v2.1
+
 ## v2.4.0 - 2023-08-11
 
 - fix: correct set shield fqcn
