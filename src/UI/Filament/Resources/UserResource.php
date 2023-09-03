@@ -28,7 +28,7 @@ class UserResource extends Resource
 
     public static function getSlug(): string
     {
-        return 'users';
+        return config('admin-kit.user.slug');
     }
 
     protected static function getNavigationLabel(): string
