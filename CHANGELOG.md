@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.2 - 2023-09-03
+
+- add config('admin-kit.user.slug')
+
 ## v2.4.1 - 2023-08-18
 
 - update ibecsystems/laravel-porto to v2.1
