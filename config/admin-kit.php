@@ -25,6 +25,11 @@ return [
          */
         'model' => 'App\Models\AdminKitUser',
 
+        /**
+         * User Resource slug
+         */
+        'slug' => 'admin-kit-users',
+
         /*
          * The Group name of the resource.
          */

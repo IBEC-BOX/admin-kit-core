@@ -19,8 +19,8 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class AdminKitUser extends Authenticatable
 {
-    use HasRoles;
     use CyrillicChars;
+    use HasRoles;
 
     /**
      * Он тут нужен?

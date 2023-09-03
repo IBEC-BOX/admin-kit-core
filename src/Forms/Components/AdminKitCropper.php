@@ -19,7 +19,7 @@ use Nuhel\FilamentCropper\Values\DragMode;
  */
 class AdminKitCropper extends SpatieMediaLibraryFileUpload
 {
-    use CanFlipImage, CanRotateImage, CanZoomImage, HasViewMode, HasAspectRatio, CanGenerateThumbnail;
+    use CanFlipImage, CanGenerateThumbnail, CanRotateImage, CanZoomImage, HasAspectRatio, HasViewMode;
 
     protected string $view = 'filament-cropper::components.cropper';
 

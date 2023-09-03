@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model as LaravelEloquentModel;
 
 abstract class AbstractModel extends LaravelEloquentModel
 {
-    use HasFactory;
     use CyrillicChars;
+    use HasFactory;
 }
