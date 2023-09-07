@@ -22,7 +22,7 @@ class EditUser extends EditRecord
         return $data;
     }
 
-    protected function getTitle(): string
+    public function getTitle(): string
     {
         return trans('admin-kit::user.resource.title.edit');
     }

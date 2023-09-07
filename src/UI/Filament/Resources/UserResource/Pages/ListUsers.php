@@ -9,7 +9,7 @@ class ListUsers extends ListRecords
 {
     protected static string $resource = UserResource::class;
 
-    protected function getTitle(): string
+    public function getTitle(): string
     {
         return trans('admin-kit::user.resource.title.list');
     }

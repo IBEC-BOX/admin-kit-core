@@ -3,6 +3,7 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Core\Providers\AdminPanelProvider;
 use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
@@ -30,7 +31,7 @@ class CoreServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
-        $this->app->register(FilamentServiceProvider::class);
+        $this->app->register(AdminPanelProvider::class);
         $this->app->register(MiddlewareServiceProvider::class);
 
         $this->registerAuthConfigs();

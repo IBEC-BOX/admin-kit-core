@@ -19,6 +19,16 @@ return [
      */
     'timezone' => 'Asia/Almaty',
 
+    /**
+     * Конфиги для Admin Panel Filament v3
+     */
+    'panel' => [
+        'brand' => env('APP_NAME'),
+        'domain' => env('FILAMENT_DOMAIN'),
+        'path' => env('FILAMENT_PATH', 'admin'),
+        'guard' => env('FILAMENT_AUTH_GUARD', 'admin-kit-web'),
+    ],
+
     'user' => [
         /*
          * User Model

@@ -3,17 +3,17 @@
 namespace AdminKit\Core\UI\Filament\Resources;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
-use STS\FilamentImpersonate\Impersonate;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\ToggleColumn;
+use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
 {
@@ -31,7 +31,7 @@ class UserResource extends Resource
         return config('admin-kit.user.slug');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return trans('admin-kit::user.resource.label');
     }
@@ -46,7 +46,7 @@ class UserResource extends Resource
         return trans('admin-kit::user.resource.single');
     }
 
-    protected static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): ?string
     {
         return config('admin-kit.user.group');
     }
@@ -71,7 +71,12 @@ class UserResource extends Resource
         ];
 
         if (config('admin-kit.user.shield')) {
-            $rows[] = Forms\Components\MultiSelect::make('roles')->relationship('roles', 'name')->label(trans('admin-kit::user.resource.roles'));
+            $rows[] = Select::make('roles')
+                ->multiple()
+                ->searchable()
+                ->preload()
+                ->relationship('roles', 'name')
+                ->label(trans('admin-kit::user.resource.roles'));
         }
 
         $form->schema($rows);
@@ -86,7 +91,7 @@ class UserResource extends Resource
                 TextColumn::make('id')->sortable()->label(trans('admin-kit::user.resource.id')),
                 TextColumn::make('name')->sortable()->searchable()->label(trans('admin-kit::user.resource.name')),
                 TextColumn::make('email')->sortable()->searchable()->label(trans('admin-kit::user.resource.email')),
-                BooleanColumn::make('email_verified_at')->sortable()->searchable()->label(trans('admin-kit::user.resource.email_verified_at')),
+                ToggleColumn::make('email_verified_at')->sortable()->searchable()->label(trans('admin-kit::user.resource.email_verified_at')),
                 TextColumn::make('created_at')->label(trans('admin-kit::user.resource.created_at'))
                     ->dateTime('M j, Y')->sortable(),
                 TextColumn::make('updated_at')->label(trans('admin-kit::user.resource.updated_at'))
@@ -103,7 +108,7 @@ class UserResource extends Resource
             ]);
 
         if (config('admin-kit.user.impersonate')) {
-            $table->prependActions([
+            $table->pushActions([
                 Impersonate::make('impersonate'),
             ]);
         }
