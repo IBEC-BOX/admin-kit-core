@@ -4,7 +4,6 @@ namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Providers\AdminPanelProvider;
-use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;

@@ -3,16 +3,16 @@
 namespace AdminKit\Core\UI\Filament\Resources;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\ToggleColumn;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
