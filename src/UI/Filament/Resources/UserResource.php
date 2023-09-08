@@ -60,7 +60,11 @@ class UserResource extends Resource
     {
         $rows = [
             TextInput::make('name')->required()->label(trans('admin-kit::user.resource.name')),
-            TextInput::make('email')->email()->required()->label(trans('admin-kit::user.resource.email')),
+            TextInput::make('email')
+                ->email()
+                ->required()
+                ->unique(ignoreRecord: true)
+                ->label(trans('admin-kit::user.resource.email')),
             TextInput::make('password')
                 ->password()
                 ->maxLength(255)
