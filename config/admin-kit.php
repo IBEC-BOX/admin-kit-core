@@ -15,7 +15,7 @@ return [
 
     /*
      * Timezone для отображения в админ панели Filament,
-     * при сохранении в базу данных используется UTC config('app.timezone')
+     * при сохранении в базу данных используется config('app.timezone')
      */
     'timezone' => 'Asia/Almaty',
 
@@ -25,10 +25,10 @@ return [
          */
         'model' => 'App\Models\AdminKitUser',
 
-        /**
-         * User Resource slug
+        /*
+         * User Resource slug url
          */
-        'slug' => 'admin-kit-users',
+        'slug' => 'admin-users',
 
         /*
          * The Group name of the resource.
