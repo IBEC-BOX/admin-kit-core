@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.4 - 2023-09-08
+
+- fix: edit admin-kit.php config file
+
 ## v2.4.3 - 2023-09-08
 
 - fix: email is unique, and ignore current record
