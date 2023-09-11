@@ -49,7 +49,7 @@ class InstallCommand extends Command
         $guard = $this->choiceToSetEnv(
             ['FILAMENT_AUTH_GUARD', 'FILAMENT_IMPERSONATE_GUARD'],
             ['admin-kit-web', 'web'],
-            config('filament.auth.guard')
+            config('admin-kit.panel.guard')
         );
         config()->set('filament.auth.guard', $guard);
 
@@ -73,7 +73,7 @@ class InstallCommand extends Command
         $prefix = $this->askToSetEnv([
             'FILAMENT_PATH',
             'FILAMENT_IMPERSONATE_REDIRECT',
-        ], config('filament.path'));
+        ], config('admin-kit.panel.path'));
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');

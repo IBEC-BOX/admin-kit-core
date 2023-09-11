@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Filament\Panel;
 use AdminKit\Core\Models\AdminKitUser as Authenticatable;
 use Filament\Models\Contracts\FilamentUser;
 
