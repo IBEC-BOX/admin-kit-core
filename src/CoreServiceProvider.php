@@ -21,7 +21,6 @@ class CoreServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('admin-kit')
-            ->hasConfigFile()
             ->hasMigration('create_admin_kit_users_table')
             ->hasTranslations()
             ->hasRoute('api')
@@ -30,10 +29,10 @@ class CoreServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
+        $this->registerConfigs();
+
         $this->app->register(AdminPanelProvider::class);
         $this->app->register(MiddlewareServiceProvider::class);
-
-        $this->registerAuthConfigs();
     }
 
     public function bootingPackage(): void
@@ -42,8 +41,9 @@ class CoreServiceProvider extends PackageServiceProvider
         $this->configureTimezoneForFilament();
     }
 
-    protected function registerAuthConfigs(): self
+    protected function registerConfigs(): self
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/admin-kit.php', 'admin-kit');
         $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php', 'auth.guards');
         $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php', 'auth.providers');
 

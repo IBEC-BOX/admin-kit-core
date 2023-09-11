@@ -75,6 +75,11 @@ class InstallCommand extends Command
             'FILAMENT_IMPERSONATE_REDIRECT',
         ], config('admin-kit.panel.path'));
 
+        // load asset files
+        if ($this->confirm('Load asset files?', true)) {
+            $this->call('filament:assets');
+        }
+
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
         $this->info('To create a SuperAdmin user, run: <comment>php artisan shield:super-admin</comment>');
