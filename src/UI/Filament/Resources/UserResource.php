@@ -91,7 +91,7 @@ class UserResource extends Resource
                 TextColumn::make('id')->sortable()->label(trans('admin-kit::user.resource.id')),
                 TextColumn::make('name')->sortable()->searchable()->label(trans('admin-kit::user.resource.name')),
                 TextColumn::make('email')->sortable()->searchable()->label(trans('admin-kit::user.resource.email')),
-                ToggleColumn::make('email_verified_at')->sortable()->searchable()->label(trans('admin-kit::user.resource.email_verified_at')),
+                TextColumn::make('email_verified_at')->since()->label(trans('admin-kit::user.resource.email_verified_at')),
                 TextColumn::make('created_at')->label(trans('admin-kit::user.resource.created_at'))
                     ->dateTime('M j, Y')->sortable(),
                 TextColumn::make('updated_at')->label(trans('admin-kit::user.resource.updated_at'))

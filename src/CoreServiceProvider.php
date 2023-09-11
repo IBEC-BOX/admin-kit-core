@@ -37,7 +37,7 @@ class CoreServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        $this->publishStubs();
+        $this->publishFiles();
         $this->configureTimezoneForFilament();
     }
 
@@ -50,13 +50,14 @@ class CoreServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    protected function publishStubs(): self
+    protected function publishFiles(): self
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs/app/AdminKitUser.stub' => app_path('Models/AdminKitUser.php'),
                 __DIR__.'/../stubs/config/filament-shield.php' => config_path('filament-shield.php'),
                 __DIR__.'/../stubs/config/filament-language-switch.php' => config_path('filament-language-switch.php'),
+                __DIR__.'/../config/admin-kit.php' => config_path('admin-kit.php'),
             ], 'admin-kit-stubs');
         }
 
