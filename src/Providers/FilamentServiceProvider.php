@@ -2,7 +2,6 @@
 
 namespace AdminKit\Core\Providers;
 
-use BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Livewire\LivewireServiceProvider;
