@@ -3,7 +3,7 @@
 namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\InstallCommand;
-use AdminKit\Core\Providers\AdminPanelProvider;
+use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
@@ -31,7 +31,7 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         $this->registerConfigs();
 
-        $this->app->register(AdminPanelProvider::class);
+        $this->app->register(FilamentServiceProvider::class);
         $this->app->register(MiddlewareServiceProvider::class);
     }
 
@@ -54,10 +54,10 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
+                __DIR__.'/../config/admin-kit.php' => config_path('admin-kit.php'),
                 __DIR__.'/../stubs/app/AdminKitUser.stub' => app_path('Models/AdminKitUser.php'),
                 __DIR__.'/../stubs/config/filament-shield.php' => config_path('filament-shield.php'),
                 __DIR__.'/../stubs/config/filament-language-switch.php' => config_path('filament-language-switch.php'),
-                __DIR__.'/../config/admin-kit.php' => config_path('admin-kit.php'),
             ], 'admin-kit-stubs');
         }
 
