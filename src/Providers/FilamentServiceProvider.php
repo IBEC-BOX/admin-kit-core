@@ -2,11 +2,21 @@
 
 namespace AdminKit\Core\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Livewire\LivewireServiceProvider;
 
 class FilamentServiceProvider extends PanelProvider
 {
+    public function register(): void
+    {
+        // нужно чтобы плагины содержащие Livewire корректно сели
+        $this->app->registerDeferredProvider(LivewireServiceProvider::class);
+
+        parent::register();
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -17,6 +27,7 @@ class FilamentServiceProvider extends PanelProvider
             ->resources(config('admin-kit.panel.resources'))
             ->pages(config('admin-kit.panel.pages'))
             ->widgets(config('admin-kit.panel.widgets'))
+            ->plugins(config('admin-kit.panel.plugins'))
             ->middleware(config('admin-kit.panel.middleware'))
             ->authMiddleware(config('admin-kit.panel.authMiddleware'))
             ->discoverPages(

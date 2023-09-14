@@ -1,6 +1,7 @@
 <?php
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
+use BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin;
 use BezhanSalleh\FilamentShield\Resources\RoleResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -59,6 +60,9 @@ return [
         'widgets' => [
             Filament\Widgets\AccountWidget::class,
             Filament\Widgets\FilamentInfoWidget::class,
+        ],
+        'plugins' => [
+            FilamentLanguageSwitchPlugin::make()
         ],
 
         'middleware' => [

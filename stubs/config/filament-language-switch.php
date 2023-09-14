@@ -38,7 +38,7 @@ return [
 
     'locales' => [
         'ru' => ['name' => 'Russian',                'script' => 'Cyrl', 'native' => 'русский', 'flag_code' => 'ru'],
-        'en' => ['name' => 'English',                'script' => 'Latn', 'native' => 'English', 'flag_code' => 'us'],
+        //'en' => ['name' => 'English',                'script' => 'Latn', 'native' => 'English', 'flag_code' => 'us'],
         //'kk' => ['name' => 'Kazakh',                 'script' => 'Cyrl', 'native' => 'қазақ тілі', 'flag_code' => 'kz'],
 
         //'ar'          => ['name' => 'Arabic',                 'script' => 'Arab', 'native' => 'العربية', 'flag_code' => 'sa' ],
