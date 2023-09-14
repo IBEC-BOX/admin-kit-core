@@ -2,6 +2,13 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.0.0-alpha2 - 2023-09-14
+
+- fix: publish admin-kit config file
+- fix: configs and add command for assets
+- fix: configs and uses
+- feat: update packages in composer.json
+
 ## v2.4.4 - 2023-09-08
 
 - fix: edit admin-kit.php config file
