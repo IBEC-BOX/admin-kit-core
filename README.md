@@ -1,8 +1,8 @@
 # Admin-Kit Core Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ibecsystems/admin-kit-core.svg?style=flat-square)](https://packagist.org/packages/ibecsystems/admin-kit-core)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/run-tests.yml?branch=2.x&label=tests&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow:run-tests+branch:2.x)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/fix-php-code-style-issues.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow:"Fix+PHP+code+style+issues"+branch:2.x)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/run-tests.yml?branch=3.x&label=tests&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow:run-tests+branch:3.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/IBEC-BOX/admin-kit-core/fix-php-code-style-issues.yml?branch=3.x&label=code%20style&style=flat-square)](https://github.com/IBEC-BOX/admin-kit-core/actions?query=workflow:"Fix+PHP+code+style+issues"+branch:3.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibecsystems/admin-kit-core.svg?style=flat-square)](https://packagist.org/packages/ibecsystems/admin-kit-core)
 
 Пакет имеет готовые модули для быстрого старта проекта. 
@@ -104,7 +104,7 @@ php artisan shield:super-admin
 ### Layouts
 
 #### TranslatableTabs
-Шаблон выводит стандартный [Filament Tabs](https://filamentphp.com/docs/2.x/forms/layout#tabs) вместе с пакетом [spatie/laravel-translatable](https://spatie.be/docs/laravel-translatable).
+Шаблон выводит стандартный [Filament Tabs](https://filamentphp.com/docs/3.x/forms/layout#tabs) вместе с пакетом [spatie/laravel-translatable](https://spatie.be/docs/laravel-translatable).
 Пример использования:
 ```php
     // Filament/Resources/Resource.php
