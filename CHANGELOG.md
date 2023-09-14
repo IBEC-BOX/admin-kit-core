@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.0.0 - 2023-09-14
+
+- chore: change branch name from 2.x to 3.x
+- fix: add language switcher to filament v3
+- feat: move all filament settings to config file
+
 ## v2.4.2 - 2023-09-03
 
 - add config('admin-kit.user.slug')
