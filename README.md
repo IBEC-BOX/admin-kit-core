@@ -53,7 +53,7 @@
 
 Поменять значение `minimum-stability` на `dev`, в файле `composer.json`
 ```json
-    "minimum-stability": "dev",
+"minimum-stability": "dev",
 ```
 
 Установить пакет
