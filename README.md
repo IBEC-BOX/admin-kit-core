@@ -51,6 +51,15 @@
 
 Установку производить на проекте Laravel, с настроенной базой данных
 
+Поменять значение `minimum-stability` на `dev`, в файле `composer.json`
+```json
+{
+    // ...
+    "minimum-stability": "dev",
+    // ...
+}
+```
+
 Установить пакет
 ```shell
 composer require ibecsystems/admin-kit-core
