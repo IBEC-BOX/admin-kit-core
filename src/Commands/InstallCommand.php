@@ -49,9 +49,9 @@ class InstallCommand extends Command
         $guard = $this->choiceToSetEnv(
             ['FILAMENT_AUTH_GUARD', 'FILAMENT_IMPERSONATE_GUARD'],
             ['admin-kit-web', 'web'],
-            config('admin-kit.panel.guard')
+            config('admin-kit.panel.auth_guard')
         );
-        config()->set('filament.auth.guard', $guard);
+        config()->set('admin-kit.panel.auth_guard', $guard);
 
         // php artisan shield:generate --all
         $provider = config("auth.guards.$guard.provider");
