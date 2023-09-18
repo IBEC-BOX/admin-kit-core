@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.0.1 - 2023-09-18
+
+- fix: add default() method to panel, fix config path
+- fix: use filament-shield stable version
+- fix: change config PANEL_PATH to FILAMENT_PATH
+
 ## v3.0.0 - 2023-09-14
 
 - chore: change branch name from 2.x to 3.x
