@@ -19,6 +19,7 @@ class FilamentServiceProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->default()
             ->id('admin-kit')
             ->path(config('admin-kit.panel.path'))
             ->login()
