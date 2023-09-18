@@ -42,14 +42,14 @@ class Iin implements ValidationRule
 
         $sum = 0;
         foreach (self::FIRST_SEQ as $i => $j) {
-            $sum += $nums[$i] * $j;
+            $sum += (int)$nums[$i] * $j;
         }
 
         if ($sum % 11 === 10) {
             $sum = 0;
 
             foreach (self::SECOND_SEQ as $i => $j) {
-                $sum += $nums[$i] * $j;
+                $sum += (int)$nums[$i] * $j;
             }
 
         }
