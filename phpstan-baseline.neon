@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^PHPDoc tag @template for class AdminKit\\\\Core\\\\Forms\\\\Components\\\\TranslatableTabs cannot have existing class Locale as its name\\.$#"
+			count: 1
+			path: src/Forms/Components/TranslatableTabs.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: src/Forms/Components/TranslatableTabs.php
