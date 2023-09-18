@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.0.2 - 2023-09-18
+
+- fix: phpstan errors
+
 ## v3.0.1 - 2023-09-18
 
 - fix: add default() method to panel, fix config path
