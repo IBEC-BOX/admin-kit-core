@@ -62,7 +62,7 @@ return [
             Filament\Widgets\FilamentInfoWidget::class,
         ],
         'plugins' => [
-//            FilamentLanguageSwitchPlugin::make(),
+            //            FilamentLanguageSwitchPlugin::make(),
         ],
 
         'middleware' => [
