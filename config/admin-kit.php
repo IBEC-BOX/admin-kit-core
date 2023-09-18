@@ -40,11 +40,11 @@ return [
     'panel' => [
         'brand_name' => env('APP_NAME'),
 
-        'auth_guard' => env('PANEL_AUTH_GUARD', 'admin-kit-web'),
+        'auth_guard' => env('FILAMENT_AUTH_GUARD', 'admin-kit-web'),
 
-        'domain' => env('PANEL_DOMAIN'),
-        'path' => env('PANEL_PATH', 'admin'),
-        'home_url' => env('PANEL_PATH', 'admin'),
+        'domain' => env('FILAMENT_DOMAIN'),
+        'path' => env('FILAMENT_PATH', 'admin'),
+        'home_url' => env('FILAMENT_PATH', 'admin'),
 
         'colors' => [
             'primary' => Filament\Support\Colors\Color::Amber,
