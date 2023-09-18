@@ -75,37 +75,6 @@ php artisan shield:super-admin
 
 Переходите по ссылке `/admin`, введите логин и пароль, и вы попали в админ панель.
 
-### Fields
-
-#### AdminKitCropper
-Поле Cropper, скопированный у пакета [`nuhel/filament-cropper`](https://github.com/Nuhel/filament-cropper).
-Отличие лишь в том, что `AdminKitCropper` наследуется от класса `SpatieMediaLibraryFileUpload`, что позволяет конвертировать и создавать thumbnail файлы изображений.
-Пример использования:
-```php
-    // Filament/Resources/Resource.php
-    public static function form(Form $form): Form
-    {
-        return $form->schema([
-            // other fields ...
-            AdminKitCropper::make('image')
-                // field properties
-                ->label('Изображение')
-                ->image()
-                ->required()
-                ->columnSpan(2)
-
-                // image properties
-                ->imageCropAspectRatio('16:9')
-                ->imageResizeTargetWidth('1280')
-                ->imageResizeTargetHeight('720')
-
-                // cropper properties
-                ->modalHeading('Обрезать изображение')
-                ->modalSize('2xl')
-                ->zoomable(false);
-        ]);
-    }
-```
 ### Layouts
 
 #### TranslatableTabs
