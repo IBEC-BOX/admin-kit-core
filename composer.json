@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": "^8.1",
-        "bezhansalleh/filament-language-switch": "^2.0",
         "bezhansalleh/filament-shield": "^3.0",
         "filament/filament": "^3.0-stable",
         "filament/spatie-laravel-media-library-plugin": "^3.0-stable",
