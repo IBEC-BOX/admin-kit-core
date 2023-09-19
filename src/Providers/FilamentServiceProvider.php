@@ -9,14 +9,6 @@ use Filament\PanelProvider;
 
 class FilamentServiceProvider extends PanelProvider
 {
-    //    public function register(): void
-    //    {
-    //        // нужно чтобы плагины содержащие Livewire корректно сели
-    //        $this->app->registerDeferredProvider(LivewireServiceProvider::class);
-    //
-    //        parent::register();
-    //    }
-
     public function panel(Panel $panel): Panel
     {
         return $panel
