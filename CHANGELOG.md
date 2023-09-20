@@ -2,6 +2,15 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.5 - 2023-09-20
+
+### What's Changed
+
+- chore(deps): bump actions/checkout from 3 to 4 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/12
+- refactor!: remove bezhansalleh/filament-language-switch plugin
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v2.4.4...v2.4.5
+
 ## v3.0.0-alpha2 - 2023-09-14
 
 - fix: publish admin-kit config file
