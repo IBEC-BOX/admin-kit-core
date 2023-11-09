@@ -33,12 +33,13 @@ class CoreServiceProvider extends PackageServiceProvider
 
         $this->app->register(FilamentServiceProvider::class);
         $this->app->register(MiddlewareServiceProvider::class);
+
+        $this->configureTimezoneForFilament();
     }
 
     public function bootingPackage(): void
     {
         $this->publishFiles();
-        $this->configureTimezoneForFilament();
     }
 
     protected function registerConfigs(): self
