@@ -2,6 +2,12 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v2.4.6 - 2023-11-09
+
+- fix configureTimezoneForFilament
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v2.4.5...v2.4.6
+
 ## v2.4.5 - 2023-09-20
 
 ### What's Changed
