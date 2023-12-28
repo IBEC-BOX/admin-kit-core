@@ -7,7 +7,6 @@ namespace AdminKit\Core\Providers;
 use AdminKit\Core\Middlewares\CheckAdminIpMiddleware;
 use AdminKit\Core\Middlewares\ForceJsonApiResponse;
 use AdminKit\Core\Middlewares\SetLocaleFromAcceptLanguageHeader;
-use App\Http\Middleware\CustomCKFinderAuth;
 
 class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServiceProvider
 {
