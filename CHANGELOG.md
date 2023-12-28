@@ -2,6 +2,16 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.1.0 - 2023-12-28
+
+### What's Changed
+
+* chore(deps): bump actions/checkout from 3 to 4 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/13
+* chore(deps): bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/17
+* feat: integrate ckeditor 5 with ckfinder by @NursultanIITU in https://github.com/IBEC-BOX/admin-kit-core/pull/18
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.0.3...v3.1.0
+
 ## v3.0.3 - 2023-09-19
 
 - fix: remove filament-language-switch plugin from Filament
