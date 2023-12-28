@@ -7,6 +7,7 @@ namespace AdminKit\Core\Providers;
 use AdminKit\Core\Middlewares\CheckAdminIpMiddleware;
 use AdminKit\Core\Middlewares\ForceJsonApiResponse;
 use AdminKit\Core\Middlewares\SetLocaleFromAcceptLanguageHeader;
+use App\Http\Middleware\CustomCKFinderAuth;
 
 class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServiceProvider
 {
@@ -25,5 +26,7 @@ class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServ
 
     protected array $middlewarePriority = [];
 
-    protected array $routeMiddleware = [];
+    protected array $routeMiddleware = [
+        'customCkfinderAuth' => \AdminKit\Core\Middlewares\CustomCKFinderAuth::class,
+    ];
 }
