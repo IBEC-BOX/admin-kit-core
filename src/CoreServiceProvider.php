@@ -22,6 +22,8 @@ class CoreServiceProvider extends PackageServiceProvider
         $package
             ->name('admin-kit')
             ->hasMigration('create_admin_kit_users_table')
+            ->hasViews()
+            ->hasAssets()
             ->hasTranslations()
             ->hasRoute('api')
             ->hasCommand(InstallCommand::class);
@@ -40,6 +42,7 @@ class CoreServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this->publishFiles();
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     protected function registerConfigs(): self
@@ -56,8 +59,10 @@ class CoreServiceProvider extends PackageServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/admin-kit.php' => config_path('admin-kit.php'),
+                __DIR__.'/../config/ckfinder.php' => config_path('ckfinder.php'),
                 __DIR__.'/../stubs/app/AdminKitUser.stub' => app_path('Models/AdminKitUser.php'),
                 __DIR__.'/../stubs/config/filament-shield.php' => config_path('filament-shield.php'),
+                __DIR__.'/../public/js' => public_path('js/'),
             ], 'admin-kit-stubs');
         }
 

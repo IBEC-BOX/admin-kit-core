@@ -95,6 +95,24 @@ php artisan shield:super-admin
     }
 ```
 
+
+### Ckeditor
+Пакет дает возможность использовать текстовый редактор [CKEditor](https://ckeditor.com/docs/ckeditor5/latest/installation/integrations/laravel.html) c расширением [CKFinder]()https://ckeditor.com/ckfinder/
+ для работы с изображением и файлами
+Пример использования:
+```php
+    // Filament/Resources/Resource.php
+    public static function form(Form $form): Form
+    {
+        return $form->schema([
+            // other fields ...
+           CkeditorField::make('description')
+                    ->columnSpan('full')
+                    ->label('description')
+        ]);
+    }
+```
+
 ### Middlewares
 
 #### SetLocaleFromAcceptLanguageHeader

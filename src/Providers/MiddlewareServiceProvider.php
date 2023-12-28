@@ -25,5 +25,7 @@ class MiddlewareServiceProvider extends \AdminKit\Porto\Abstracts\MiddlewareServ
 
     protected array $middlewarePriority = [];
 
-    protected array $routeMiddleware = [];
+    protected array $routeMiddleware = [
+        'customCkfinderAuth' => \AdminKit\Core\Middlewares\CustomCKFinderAuth::class,
+    ];
 }
