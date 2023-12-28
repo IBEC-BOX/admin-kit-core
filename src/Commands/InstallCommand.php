@@ -80,6 +80,11 @@ class InstallCommand extends Command
             $this->call('filament:assets');
         }
 
+        // php artisan
+        if ($this->confirm('Download ckfinder asset files?')) {
+            $this->call('ckfinder:download');
+        }
+
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
         $this->info('To create a SuperAdmin user, run: <comment>php artisan shield:super-admin</comment>');
