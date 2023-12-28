@@ -17,27 +17,27 @@ class CkeditorField extends Field
 
     protected string $view = 'admin-kit::forms.components.ckeditor-field';
 
-    protected int | Closure | null $cols = null;
+    protected int|Closure|null $cols = null;
 
-    protected int | Closure | null $rows = null;
+    protected int|Closure|null $rows = null;
 
-    protected bool | Closure $shouldAutosize = false;
+    protected bool|Closure $shouldAutosize = false;
 
-    public function autosize(bool | Closure $condition = true): static
+    public function autosize(bool|Closure $condition = true): static
     {
         $this->shouldAutosize = $condition;
 
         return $this;
     }
 
-    public function cols(int | Closure | null $cols): static
+    public function cols(int|Closure|null $cols): static
     {
         $this->cols = $cols;
 
         return $this;
     }
 
-    public function rows(int | Closure | null $rows): static
+    public function rows(int|Closure|null $rows): static
     {
         $this->rows = $rows;
 
