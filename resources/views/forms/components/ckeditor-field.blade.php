@@ -8,6 +8,8 @@
     $shouldAutosize = $shouldAutosize();
     $statePath = $getStatePath();
     $fieldName = substr($statePath, strpos($statePath, ".") + 1);
+    $value = $getRecord() != null ? $getRecord()->$fieldName : null;
+
     $initialHeight = (($rows ?? 2) * 1.5) + 0.75;
 @endphp
 
@@ -36,6 +38,7 @@
         <div x-data="{ state: $wire.$entangle('name') }" wire:ignore>
             <textarea
                     id="editor"
+                    wire:key="key:{{now()}}"
                     @if ($shouldAutosize)
                         @if (FilamentView::hasSpaMode())
                             ax-load="visible"
@@ -74,7 +77,7 @@
                                 "height: {$initialHeight}rem" => $shouldAutosize,
                             ])
                     }}
-        >    {{ $getRecord()->$fieldName }}</textarea>
+        >    {{ $value }}</textarea>
         </div>
     </x-filament::input.wrapper>
 </x-dynamic-component>
