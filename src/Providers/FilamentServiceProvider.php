@@ -11,6 +11,8 @@ class FilamentServiceProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        $plugins = $this->getPlugins();
+
         return $panel
             ->default()
             ->id('admin-kit')
@@ -20,7 +22,7 @@ class FilamentServiceProvider extends PanelProvider
             ->resources(config('admin-kit.panel.resources'))
             ->pages(config('admin-kit.panel.pages'))
             ->widgets(config('admin-kit.panel.widgets'))
-            ->plugins(config('admin-kit.panel.plugins'))
+            ->plugins($plugins)
             ->middleware(config('admin-kit.panel.middleware'))
             ->authMiddleware(config('admin-kit.panel.authMiddleware'))
             ->discoverPages(
@@ -39,5 +41,24 @@ class FilamentServiceProvider extends PanelProvider
             ->authGuard(config('admin-kit.panel.auth_guard'))
             ->homeUrl(config('admin-kit.panel.home_url'))
             ->brandName(config('admin-kit.panel.brand_name'));
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    private function getPlugins(): array
+    {
+        $pluginsClasses = config('admin-kit.panel.plugins');
+        $plugins = [];
+
+        foreach ($pluginsClasses as $pluginsClass) {
+            $reflect = new \ReflectionClass($pluginsClass);
+
+            $plugins[] = $reflect->hasMethod('make')
+                ? $pluginsClass::make()
+                : new $pluginsClass();
+        }
+
+        return $plugins;
     }
 }
