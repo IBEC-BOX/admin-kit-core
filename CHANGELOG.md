@@ -2,6 +2,10 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.1.1 - 2024-02-13
+
+Now you can add a class to `admin-kit.php` and it will be automatically maked in the `FilamentServiceProvider.php`
+
 ## v3.1.0 - 2023-12-28
 
 ### What's Changed
