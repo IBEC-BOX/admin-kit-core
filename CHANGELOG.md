@@ -2,6 +2,18 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.2.0 - 2024-03-20
+
+### What's Changed
+
+* [Support laravel 11](https://github.com/IBEC-BOX/admin-kit-core/commit/2efa051f5e88cb730551c2ddacdb1050ecdd3eb2)
+* [Move command "filament:assets" to publishing](https://github.com/IBEC-BOX/admin-kit-core/commit/e906b3693ddac76bc3cb025ec1bada922f12e038)
+* Revert "feat: integrate ckeditor 5 with ckfinder" by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/21
+* chore(deps): bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/20
+* chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/16
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.1.1...v3.2.0
+
 ## v3.1.1 - 2024-02-13
 
 Now you can add a class to `admin-kit.php` and it will be automatically maked in the `FilamentServiceProvider.php`
