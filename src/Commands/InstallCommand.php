@@ -31,6 +31,7 @@ class InstallCommand extends Command
                 '--provider' => CoreServiceProvider::class,
                 '--tag' => ['admin-kit-config', 'admin-kit-stubs', 'admin-kit-migrations'],
             ]);
+            $this->call('filament:assets');
         }
 
         // php artisan storage:link
@@ -74,11 +75,6 @@ class InstallCommand extends Command
             'FILAMENT_PATH',
             'FILAMENT_IMPERSONATE_REDIRECT',
         ], config('admin-kit.panel.path'));
-
-        // load asset files
-        if ($this->confirm('Load asset files?', true)) {
-            $this->call('filament:assets');
-        }
 
         // completing the installation
         $this->info('Admin Kit has been successfully installed =)');
