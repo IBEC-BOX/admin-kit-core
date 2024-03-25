@@ -3,8 +3,8 @@
 namespace AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
-use Filament\Resources\Pages\ListRecords;
 use Filament\Actions;
+use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
