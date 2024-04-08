@@ -2,6 +2,7 @@
 
 namespace AdminKit\Core;
 
+use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
@@ -24,7 +25,10 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasMigration('create_admin_kit_users_table')
             ->hasTranslations()
             ->hasRoute('api')
-            ->hasCommand(InstallCommand::class);
+            ->hasCommands([
+                InstallCommand::class,
+                ClonePackageCommand::class,
+            ]);
     }
 
     public function registeringPackage()
