@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AdminKit\Core\Forms\Components;
 
+use AdminKit\Core\DTO\LocaleData;
+use AdminKit\Core\Enums\LocaleType;
 use AdminKit\Core\Facades\AdminKit;
 use Filament\Forms\Components\Tabs;
 
@@ -15,10 +17,17 @@ class TranslatableTabs
     /**
      * @param  callable(Locale): array  $callback
      */
-    public static function make(callable $callback): Tabs
+    public static function make(callable $callback, LocaleType $type = LocaleType::Native): Tabs
     {
         if (gettype($callback(app()->getLocale())) === 'array') {
-            $tabs = array_map(fn ($locale) => Tabs\Tab::make($locale)->schema($callback($locale)), AdminKit::locales());
+            $tabs = array_map(
+                function ($locale) use ($callback, $type) {
+                    $title = (new LocaleData($locale))->{$type->value};
+
+                    return Tabs\Tab::make($title)->schema($callback($locale));
+                },
+                AdminKit::locales()
+            );
 
             return Tabs::make('Translatable')->tabs($tabs);
         }
