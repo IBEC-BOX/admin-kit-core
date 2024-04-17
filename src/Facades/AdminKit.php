@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Facade;
  * @method static string timezone()
  * @method static array mapLocales(callable $callback)
  * @method static array mapLocalesWithKeys(callable $callback)
-
  *
  * @see \AdminKit\Core\Core
  */
