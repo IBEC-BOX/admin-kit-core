@@ -4,6 +4,7 @@ namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
+use AdminKit\Core\Commands\ManagePackagesCommand;
 use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
@@ -28,6 +29,7 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasCommands([
                 InstallCommand::class,
                 ClonePackageCommand::class,
+                ManagePackagesCommand::class,
             ]);
     }
 
