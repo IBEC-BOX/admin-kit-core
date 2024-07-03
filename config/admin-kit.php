@@ -61,7 +61,7 @@ return [
             Filament\Widgets\FilamentInfoWidget::class,
         ],
         'plugins' => [
-            //
+            BezhanSalleh\FilamentShield\FilamentShieldPlugin::class,
         ],
 
         'middleware' => [
