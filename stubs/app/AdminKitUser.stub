@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Filament\Panel;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use AdminKit\Core\Models\AdminKitUser as Authenticatable;
 use Filament\Models\Contracts\FilamentUser;
+use Spatie\Permission\Traits\HasRoles;
 
 class AdminKitUser extends Authenticatable implements FilamentUser
 {
+    use HasRoles;
+    use HasPanelShield;
+
     protected $fillable = [
         'name',
         'email',
@@ -22,9 +26,4 @@ class AdminKitUser extends Authenticatable implements FilamentUser
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true;
-    }
 }
