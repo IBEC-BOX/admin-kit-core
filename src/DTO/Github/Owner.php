@@ -27,6 +27,5 @@ class Owner extends Data
         public string $received_events_url,
         public string $type,
         public bool $site_admin,
-    ) {
-    }
+    ) {}
 }

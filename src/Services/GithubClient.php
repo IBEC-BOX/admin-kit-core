@@ -13,7 +13,9 @@ use Illuminate\Support\Str;
 class GithubClient
 {
     private string $orgName = 'ibec-box';
+
     private string $url = 'https://api.github.com';
+
     private PendingRequest $client;
 
     public function __construct()

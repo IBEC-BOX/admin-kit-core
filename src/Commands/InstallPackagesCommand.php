@@ -6,8 +6,6 @@ use AdminKit\Core\Repositories\PackageRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 
-use Symfony\Component\Console\Input\InputOption;
-
 use function Laravel\Prompts\multiselect;
 
 class InstallPackagesCommand extends Command
@@ -32,6 +30,7 @@ class InstallPackagesCommand extends Command
         if ($this->option('local') && ! shell_command_exists('composer-local')) {
             $this->error('composer-local не установлен');
             $this->comment('Установите composer-local: https://github.com/ibec-box/composer-dev');
+
             return;
         }
 

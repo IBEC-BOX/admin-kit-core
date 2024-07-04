@@ -14,6 +14,5 @@ class Permissions extends Data
         public bool $push,
         public bool $triage,
         public bool $pull,
-    ) {
-    }
+    ) {}
 }

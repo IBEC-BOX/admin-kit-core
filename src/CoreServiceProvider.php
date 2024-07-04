@@ -80,6 +80,6 @@ class CoreServiceProvider extends PackageServiceProvider
 
     protected function registerHelperFile(): void
     {
-        require_once(__DIR__.'/helpers.php');
+        require_once __DIR__.'/helpers.php';
     }
 }

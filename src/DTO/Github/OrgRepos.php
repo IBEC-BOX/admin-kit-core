@@ -89,6 +89,5 @@ class OrgRepos extends Data
         public int $watchers,
         public string $default_branch,
         public Permissions $permissions,
-    ) {
-    }
+    ) {}
 }
