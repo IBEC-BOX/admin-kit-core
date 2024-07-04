@@ -4,7 +4,7 @@ namespace AdminKit\Core;
 
 use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
-use AdminKit\Core\Commands\ManagePackagesCommand;
+use AdminKit\Core\Commands\InstallPackagesCommand;
 use AdminKit\Core\Providers\FilamentServiceProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
@@ -29,12 +29,14 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasCommands([
                 InstallCommand::class,
                 ClonePackageCommand::class,
-                ManagePackagesCommand::class,
+                InstallPackagesCommand::class,
             ]);
     }
 
     public function registeringPackage()
     {
+        $this->registerHelperFile();
+
         $this->registerConfigs();
 
         $this->app->register(FilamentServiceProvider::class);
@@ -74,5 +76,10 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         DateTimePicker::configureUsing(fn (DateTimePicker $component) => $component->timezone(config('admin-kit.timezone')));
         TextColumn::configureUsing(fn (TextColumn $column) => $column->timezone(config('admin-kit.timezone')));
+    }
+
+    protected function registerHelperFile(): void
+    {
+        require_once(__DIR__.'/helpers.php');
     }
 }

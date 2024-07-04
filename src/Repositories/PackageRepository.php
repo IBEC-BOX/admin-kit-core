@@ -14,10 +14,6 @@ class PackageRepository
                 'label' => 'Admin-Kit Новости',
             ],
             [
-                'name' => 'ibecsystems/admin-kit-banners',
-                'label' => 'Admin-Kit Баннеры',
-            ],
-            [
                 'name' => 'ibecsystems/admin-kit-brand',
                 'label' => 'Admin-Kit Бренд',
             ],
@@ -36,10 +32,6 @@ class PackageRepository
             [
                 'name' => 'ibecsystems/admin-kit-entry-screens',
                 'label' => 'Admin-Kit Начальные экраны',
-            ],
-            [
-                'name' => 'ibecsystems/admin-kit-faqs',
-                'label' => 'Admin-Kit FAQs',
             ],
             [
                 'name' => 'ibecsystems/admin-kit-feedbacks',
@@ -62,10 +54,6 @@ class PackageRepository
                 'label' => 'Admin-Kit Страницы',
             ],
             [
-                'name' => 'ibecsystems/admin-kit-polls',
-                'label' => 'Admin-Kit Опросы',
-            ],
-            [
                 'name' => 'ibecsystems/admin-kit-products',
                 'label' => 'Admin-Kit Продукция',
             ],
@@ -78,16 +66,8 @@ class PackageRepository
                 'label' => 'Admin-Kit Отзывы',
             ],
             [
-                'name' => 'ibecsystems/admin-kit-scramble',
-                'label' => 'Admin-Kit API Документация',
-            ],
-            [
                 'name' => 'ibecsystems/admin-kit-seo',
                 'label' => 'Admin-Kit SEO',
-            ],
-            [
-                'name' => 'ibecsystems/admin-kit-settings',
-                'label' => 'Admin-Kit Настройки',
             ],
             [
                 'name' => 'ibecsystems/admin-kit-social-medias',
@@ -100,10 +80,6 @@ class PackageRepository
             [
                 'name' => 'ibecsystems/admin-kit-vacancy',
                 'label' => 'Admin-Kit Вакансии',
-            ],
-            [
-                'name' => 'ibecsystems/laravel-porto',
-                'label' => 'Laravel Porto (Архитектура)',
             ],
         ];
     }
