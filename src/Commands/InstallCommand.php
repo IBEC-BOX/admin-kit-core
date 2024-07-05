@@ -9,7 +9,7 @@ class InstallCommand extends Command
 {
     protected $signature = 'admin-kit:install';
 
-    protected $description = 'Install all of the AdminKit package';
+    protected $description = 'Install AdminKit Core';
 
     public function handle()
     {

@@ -8,11 +8,11 @@ use Illuminate\Support\Collection;
 
 use function Laravel\Prompts\multiselect;
 
-class ManagePackagesCommand extends Command
+class InstallPackagesCommand extends Command
 {
-    protected $signature = 'admin-kit:package';
+    protected $signature = 'admin-kit:install-packages {--local}';
 
-    protected $description = 'Manage admin-kit packages';
+    protected $description = 'Install AdminKit other packages';
 
     private Collection $packages;
 
@@ -27,8 +27,16 @@ class ManagePackagesCommand extends Command
     {
         // https://laravel.com/docs/11.x/artisan#progress-bars
 
+        if ($this->option('local') && ! shell_command_exists('composer-local')) {
+            $this->error('composer-local не установлен');
+            $this->comment('Установите composer-local: https://github.com/ibec-box/composer-dev');
+
+            return;
+        }
+
         // Check installed packages
         $installedPackages = $this->getInstalledPackages();
+
         if ($installedPackages->count() > 0) {
             $this->info('Список установленных пакетов:');
             $installedPackages->each(fn ($packageName) => $this->line("- $packageName"));
@@ -46,20 +54,38 @@ class ManagePackagesCommand extends Command
                 ->toArray(),
         ));
 
-        if ($toInstallPackages->count() > 0) {
-            $this->info('Установка пакетов:');
-            $cmd = 'composer require '.$toInstallPackages->implode(' ');
-            $this->info($cmd);
-            exec($cmd);
+        if ($toInstallPackages->count() === 0) {
+            return;
         }
+
+        $info = 'Установка пакетов:';
+        $cmd = 'composer require '.$toInstallPackages->implode(' ');
+
+        if ($this->option('local')) {
+            $info = 'Установка пакетов с помощью composer-local:';
+            $cmd = 'composer-local require '.$toInstallPackages->implode(' ');
+        }
+
+        $this->info($info);
+        $this->info($cmd);
+        exec($cmd);
     }
 
     private function getInstalledPackages(): Collection
     {
         $packageLabels = $this->packages->pluck('name')->toArray();
 
-        return collect(json_decode(file_get_contents('composer.json'))->require)
-            ->keys()
+        // get installed packages to string
+        $installedPackages = shell_exec('composer show --name-only');
+
+        if (! $installedPackages) {
+            return collect();
+        }
+
+        // string rows to array
+        $installedPackages = preg_split("/\r\n|\n|\r/", $installedPackages);
+
+        return collect($installedPackages)
             ->filter(fn ($packageName) => in_array($packageName, $packageLabels));
     }
 }
