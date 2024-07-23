@@ -91,6 +91,11 @@ return [
             'in' => app_path('Filament/Widgets'),
             'for' => 'App\Filament\Widgets',
         ],
+
+        'notifications' => [
+            'enabled' => false,
+            'polling' => '30s',
+        ],
     ],
 
     /*

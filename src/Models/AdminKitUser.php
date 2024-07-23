@@ -8,6 +8,8 @@ use Illuminate\Support\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
+ * @deprecated Будет удален, и использован один класс из stub
+ *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -17,7 +19,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-class AdminKitUser extends Authenticatable
+abstract class AdminKitUser extends Authenticatable
 {
     use CyrillicChars;
     use HasRoles;

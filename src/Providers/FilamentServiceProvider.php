@@ -40,7 +40,9 @@ class FilamentServiceProvider extends PanelProvider
             ->domain(config('admin-kit.panel.domain'))
             ->authGuard(config('admin-kit.panel.auth_guard'))
             ->homeUrl(config('admin-kit.panel.home_url'))
-            ->brandName(config('admin-kit.panel.brand_name'));
+            ->brandName(config('admin-kit.panel.brand_name'))
+            ->databaseNotifications(config('admin-kit.panel.notifications.enabled', false))
+            ->databaseNotificationsPolling(config('admin-kit.panel.notifications.polling', '30s'));
     }
 
     /**
