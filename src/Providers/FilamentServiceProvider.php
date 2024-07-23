@@ -2,8 +2,10 @@
 
 namespace AdminKit\Core\Providers;
 
+use App\Models\AdminKitUser;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 //use Livewire\LivewireServiceProvider;
 
@@ -62,5 +64,15 @@ class FilamentServiceProvider extends PanelProvider
         }
 
         return $plugins;
+    }
+
+    public function register(): void
+    {
+        parent::register();
+
+        // for correct working Filament Importer/Exporter
+        if (class_exists(AdminKitUser::class)) {
+            $this->app->bind(Authenticatable::class, AdminKitUser::class);
+        }
     }
 }
