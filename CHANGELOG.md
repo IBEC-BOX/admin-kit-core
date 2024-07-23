@@ -2,6 +2,78 @@
 
 All notable changes to `ibecsystems/admin-kit-core` will be documented in this file.
 
+## v3.5.2 - 2024-07-23
+
+### What's Changed
+
+* fix: correct working Filament Importer/Exporter by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/37
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.5.1...v3.5.2
+
+## v3.5.1 - 2024-07-23
+
+### What's Changed
+
+* Deprecated model \AdminKit\Core\Models\AdminKitUser
+* Feat/notifications by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/36
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.5.0...v3.5.1
+
+## v3.5.0 - 2024-07-18
+
+### What's Changed
+
+* chore(deps): bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/34
+* Feat/add filament RedirectToListPageAfterSave trait by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/35
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.4.3...v3.5.0
+
+## v3.4.3 - 2024-07-05
+
+### What's Changed
+
+* Package command by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/33
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.4.2...v3.4.3
+
+## v3.4.2 - 2024-07-03
+
+### What's Changed
+
+* fix: correct creating shield panel_user role by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/32
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.4.1...v3.4.2
+
+## v3.4.1 - 2024-07-03
+
+### What's Changed
+
+* Add FilamentShieldPlugin to admin-kit config by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/31
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.4.0...v3.4.1
+
+## v3.4.0 - 2024-06-03
+
+### What's Changed
+
+* chore(deps): bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/29
+* feat: add manage packages command by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/30
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.3.0...v3.4.0
+
+## v3.3.0 - 2024-04-06
+
+### What's Changed
+
+* fix:(users): add create action by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/22
+* chore(deps): bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/23
+* chore(deps): bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/IBEC-BOX/admin-kit-core/pull/25
+* !fix: remove laravel-porto from the list of required by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/26
+* feat: add customizable titles to translatable tabs by @ast21 in https://github.com/IBEC-BOX/admin-kit-core/pull/27
+* Add package clone command by @daurensky in https://github.com/IBEC-BOX/admin-kit-core/pull/24
+
+**Full Changelog**: https://github.com/IBEC-BOX/admin-kit-core/compare/v3.2.0...v3.3.0
+
 ## v3.2.0 - 2024-03-20
 
 ### What's Changed
