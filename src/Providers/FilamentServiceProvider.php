@@ -60,7 +60,7 @@ class FilamentServiceProvider extends PanelProvider
 
             $plugins[] = $reflect->hasMethod('make')
                 ? $pluginsClass::make()
-                : new $pluginsClass();
+                : new $pluginsClass;
         }
 
         return $plugins;
