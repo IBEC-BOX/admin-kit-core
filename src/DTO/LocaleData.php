@@ -21,14 +21,22 @@ class LocaleData extends Data
         $this->native = __(key: "admin-kit::language.$this->code", locale: $this->code);
     }
 
-    public static function make(): self
+    public static function make(?string $locale = null): self
     {
-        return new self(app()->getLocale());
+        if (! $locale) {
+            $locale = app()->getLocale();
+        }
+
+        return new self($locale);
     }
 
-    public static function makeCollection(): Collection
+    public static function makeCollection(?array $locales = null): Collection
     {
-        return collect(AdminKit::locales())
+        if (! $locales) {
+            $locales = AdminKit::locales();
+        }
+
+        return collect($locales)
             ->map(fn (string $code) => new self($code));
     }
 }
