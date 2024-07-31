@@ -10,9 +10,9 @@ use Spatie\LaravelData\Data;
 
 class LocaleData extends Data
 {
-    public ?string $title;
+    public string $title;
 
-    public ?string $native;
+    public string $native;
 
     public function __construct(
         public string $code,
