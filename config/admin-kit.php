@@ -37,6 +37,8 @@ return [
      * Настройки админ панели Filament v3
      */
     'panel' => [
+        'provider' => AdminKit\Core\Providers\FilamentPanelProvider::class,
+
         'brand_name' => env('APP_NAME'),
 
         'auth_guard' => env('FILAMENT_AUTH_GUARD', 'admin-kit-web'),
@@ -47,6 +49,14 @@ return [
 
         'colors' => [
             'primary' => Filament\Support\Colors\Color::Amber,
+        ],
+
+        'navigation_groups' => [
+            //
+        ],
+
+        'navigation_items' => [
+            //
         ],
 
         'resources' => [
