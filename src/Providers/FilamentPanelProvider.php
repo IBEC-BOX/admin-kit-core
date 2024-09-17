@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 //use Livewire\LivewireServiceProvider;
 
-class FilamentServiceProvider extends PanelProvider
+class FilamentPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
@@ -21,6 +21,8 @@ class FilamentServiceProvider extends PanelProvider
             ->path(config('admin-kit.panel.path'))
             ->login()
             ->colors(config('admin-kit.panel.colors'))
+            ->navigationGroups(config('admin-kit.panel.navigation_groups'))
+            ->navigationItems(config('admin-kit.panel.navigation_items'))
             ->resources(config('admin-kit.panel.resources'))
             ->pages(config('admin-kit.panel.pages'))
             ->widgets(config('admin-kit.panel.widgets'))

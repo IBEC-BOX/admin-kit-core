@@ -5,7 +5,7 @@ namespace AdminKit\Core;
 use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Commands\InstallPackagesCommand;
-use AdminKit\Core\Providers\FilamentServiceProvider;
+use AdminKit\Core\Providers\FilamentPanelProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
@@ -39,7 +39,7 @@ class CoreServiceProvider extends PackageServiceProvider
 
         $this->registerConfigs();
 
-        $this->app->register(FilamentServiceProvider::class);
+        $this->app->register(config('admin-kit.panel.provider'));
         $this->app->register(MiddlewareServiceProvider::class);
 
         $this->configureTimezoneForFilament();
