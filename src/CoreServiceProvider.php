@@ -39,7 +39,8 @@ class CoreServiceProvider extends PackageServiceProvider
 
         $this->registerConfigs();
 
-        $this->app->register(config('admin-kit.panel.provider'));
+        $this->registerPanelProvider();
+
         $this->app->register(MiddlewareServiceProvider::class);
 
         $this->configureTimezoneForFilament();
@@ -81,5 +82,12 @@ class CoreServiceProvider extends PackageServiceProvider
     protected function registerHelperFile(): void
     {
         require_once __DIR__.'/helpers.php';
+    }
+
+    protected function registerPanelProvider(): void
+    {
+        $panelProvider = config('admin-kit.panel.provider', \AdminKit\Core\Providers\FilamentPanelProvider::class);
+
+        $this->app->register($panelProvider);
     }
 }
