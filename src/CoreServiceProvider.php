@@ -5,7 +5,6 @@ namespace AdminKit\Core;
 use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Commands\InstallPackagesCommand;
-use AdminKit\Core\Providers\FilamentPanelProvider;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
