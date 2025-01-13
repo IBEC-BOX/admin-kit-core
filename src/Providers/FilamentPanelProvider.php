@@ -7,7 +7,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-//use Livewire\LivewireServiceProvider;
+// use Livewire\LivewireServiceProvider;
 
 class FilamentPanelProvider extends PanelProvider
 {
