@@ -16,7 +16,7 @@ class EditUser extends EditRecord
     {
         $model = config('admin-kit.user.model');
         $user = $model::where('email', $data['email'])->first();
-        if (!$user) {
+        if (! $user) {
             return $data;
         }
 
