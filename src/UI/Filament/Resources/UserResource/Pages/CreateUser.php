@@ -3,6 +3,7 @@
 namespace AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
+use Carbon\Carbon;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateUser extends CreateRecord
@@ -17,5 +18,14 @@ class CreateUser extends CreateRecord
     public function getRedirectUrl(): string
     {
         return UserResource::getUrl();
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        if (config('admin-kit.user.password.expiry.enabled')) {
+            $data['password_expires_at'] = Carbon::now()->addDays(config('admin-kit.user.password.expiry.days'));
+        }
+
+        return $data;
     }
 }

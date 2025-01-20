@@ -66,9 +66,9 @@ class UserResource extends Resource
                 ->validationMessages(config('admin-kit.user.password_validation.messages', []))
                 ->maxLength(255)
                 ->label(trans('admin-kit::user.resource.password'))
-                ->dehydrateStateUsing(fn ($state) => Hash::make($state))
-                ->dehydrated(fn ($state) => filled($state))
-                ->required(fn (string $context): bool => $context === 'create'),
+//                ->dehydrateStateUsing(fn($state) => Hash::make($state))
+//                ->dehydrated(fn($state) => filled($state))
+                ->required(fn(string $context): bool => $context === 'create'),
         ];
 
         if (config('admin-kit.user.shield')) {
@@ -102,10 +102,10 @@ class UserResource extends Resource
             ->filters([
                 Tables\Filters\Filter::make('verified')
                     ->label(trans('admin-kit::user.resource.verified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                 Tables\Filters\Filter::make('unverified')
                     ->label(trans('admin-kit::user.resource.unverified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                    ->query(fn(Builder $query): Builder => $query->whereNull('email_verified_at')),
             ]);
 
         if (config('admin-kit.user.impersonate')) {
