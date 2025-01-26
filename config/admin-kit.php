@@ -117,21 +117,32 @@ return [
         'group' => 'Filament Shield',
         'impersonate' => true,
         'shield' => true,
-        'password_validation' => [
-            'rules' => [
-                'required',
-                'string',
-                'min:8',              // must be at least 8 characters in length
-                'max:20',             // must be at no more 20 characters in length
-                'regex:/[a-z]/',      // must contain at least one lowercase letter
-                'regex:/[A-Z]/',      // must contain at least one uppercase letter
-                'regex:/[0-9]/',      // must contain at least one digit
-                'regex:/[@$!%*#?&]/', // must contain a special character
+        'password' => [
+            'history' => [
+                'enabled' => true,
+                'count' => 8,
             ],
-            'messages' => [
-                'min' => 'Пароль должен содержать не менее 8 символов',
-                'max' => 'Пароль должен содержать не более 20 символов',
-                'regex' => 'Пароль должен содержать одну строчную и одну заглавную, одну цифру и один спецсимвол из @$!%*#?&',
+            'expiry' => [
+                'enabled' => true,
+                'days' => 365,
+            ],
+            'validation' => [
+                'rules' => [
+                    'required',
+                    'string',
+                    'min:8',              // must be at least 8 characters in length
+                    'max:20',             // must be at no more 20 characters in length
+                    'regex:/[a-z]/',      // must contain at least one lowercase letter
+                    'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                    'regex:/[0-9]/',      // must contain at least one digit
+                    'regex:/[@$!%*#?&]/', // must contain a special character
+                    new \AdminKit\Core\Rules\PasswordHistory(),
+                ],
+                'messages' => [
+                    'min' => 'Пароль должен содержать не менее 8 символов',
+                    'max' => 'Пароль должен содержать не более 20 символов',
+                    'regex' => 'Пароль должен содержать одну строчную и одну заглавную, одну цифру и один спецсимвол из @$!%*#?&',
+                ],
             ],
         ],
         'password' => [

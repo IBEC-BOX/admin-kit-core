@@ -62,12 +62,10 @@ class UserResource extends Resource
             TextInput::make('email')->email()->required()->label(trans('admin-kit::user.resource.email')),
             TextInput::make('password')
                 ->password()
-                ->rules(config('admin-kit.user.password_validation.rules', []))
-                ->validationMessages(config('admin-kit.user.password_validation.messages', []))
+                ->rules(config('admin-kit.user.password.validation.rules', []))
+                ->validationMessages(config('admin-kit.user.password.validation.messages', []))
                 ->maxLength(255)
                 ->label(trans('admin-kit::user.resource.password'))
-//                ->dehydrateStateUsing(fn($state) => Hash::make($state))
-//                ->dehydrated(fn($state) => filled($state))
                 ->required(fn (string $context): bool => $context === 'create'),
         ];
 

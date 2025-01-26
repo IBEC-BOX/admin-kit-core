@@ -3,11 +3,13 @@
 namespace AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
-use Carbon\Carbon;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUser extends CreateRecord
 {
+    use UserPageTrait;
+
     protected static string $resource = UserResource::class;
 
     public function getTitle(): string
@@ -22,9 +24,10 @@ class CreateUser extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        if (config('admin-kit.user.password.expiry.enabled')) {
-            $data['password_expires_at'] = Carbon::now()->addDays(config('admin-kit.user.password.expiry.days'));
-        }
+        $hashedPassword   = Hash::make($data['password']);
+        $data             = $this->setPasswordExpiry($data);
+        $data             = $this->setPasswordHistory($data, $hashedPassword);
+        $data['password'] = $hashedPassword;
 
         return $data;
     }

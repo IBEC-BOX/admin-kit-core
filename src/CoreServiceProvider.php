@@ -24,7 +24,7 @@ class CoreServiceProvider extends PackageServiceProvider
             ->name('admin-kit')
             ->hasMigrations([
                 'create_admin_kit_users_table',
-                'create_admin_kit_password_histories_table',
+                'add_password_rotation_columns_in_admin_kit_users_table',
             ])
             ->hasTranslations()
             ->hasRoute('api')
