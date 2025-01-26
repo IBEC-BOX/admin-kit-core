@@ -1,5 +1,6 @@
 <?php
 
+use AdminKit\Core\Middlewares\CheckPasswordExpiry;
 use AdminKit\Core\UI\Filament\Resources\UserResource;
 use BezhanSalleh\FilamentShield\Resources\RoleResource;
 use Filament\Http\Middleware\Authenticate;
@@ -9,7 +10,7 @@ use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
+use Filament\Http\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -65,6 +66,7 @@ return [
         ],
         'pages' => [
             Filament\Pages\Dashboard::class,
+            AdminKit\Core\UI\Filament\Pages\PasswordExpired::class,
         ],
         'widgets' => [
             Filament\Widgets\AccountWidget::class,
@@ -84,6 +86,7 @@ return [
             SubstituteBindings::class,
             DisableBladeIconComponents::class,
             DispatchServingFilamentEvent::class,
+            CheckPasswordExpiry::class,
         ],
         'authMiddleware' => [
             Authenticate::class,
@@ -119,12 +122,12 @@ return [
         'shield' => true,
         'password' => [
             'history' => [
-                'enabled' => true,
-                'count' => 8,
+                'enabled' => env('ADMIN_KIT_USER_PASSWORD_HISTORY_ENABLED', false),
+                'count' => env('ADMIN_KIT_USER_PASSWORD_HISTORY_COUNT', 8),
             ],
             'expiry' => [
-                'enabled' => true,
-                'days' => 365,
+                'enabled' => env('ADMIN_KIT_USER_PASSWORD_EXPIRY_ENABLED', false),
+                'days' => env('ADMIN_KIT_USER_PASSWORD_EXPIRY_DAYS', 365),
             ],
             'validation' => [
                 'rules' => [

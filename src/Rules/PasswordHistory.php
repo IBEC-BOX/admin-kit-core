@@ -20,19 +20,17 @@ class PasswordHistory implements ValidationRule, DataAwareRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        // email is required for this rule
-        $validator = Validator::make([
-            'email' => $this->email,
-        ], [
-            'email' => 'required|email',
-        ]);
-        if ($validator->fails()) {
-            $fail($validator->messages()->first());
+        if (!config('admin-kit.user.password.history.enabled')) {
+            return;
         }
 
-        // find user is required
-        $model = config('admin-kit.user.model');
-        $user  = $model::where('email', $this->email)->first();
+        if ($this->email) {
+            // find user is required
+            $model = config('admin-kit.user.model');
+            $user  = $model::where('email', $this->email)->first();
+        } else {
+            $user = auth()->user();
+        }
 
         if (!$user) {
             return;

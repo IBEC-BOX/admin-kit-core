@@ -28,6 +28,7 @@ class CoreServiceProvider extends PackageServiceProvider
             ])
             ->hasTranslations()
             ->hasRoute('api')
+            ->hasViews()
             ->hasCommands([
                 InstallCommand::class,
                 ClonePackageCommand::class,
