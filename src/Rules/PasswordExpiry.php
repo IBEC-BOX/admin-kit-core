@@ -7,14 +7,14 @@ use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Validator;
 
-class PasswordExpiry implements ValidationRule, DataAwareRule
+class PasswordExpiry implements DataAwareRule, ValidationRule
 {
     private ?string $email = null;
 
     /**
      * Run the validation rule.
      *
-     * @param \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
+     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
@@ -30,9 +30,9 @@ class PasswordExpiry implements ValidationRule, DataAwareRule
 
         // find user is required
         $model = config('admin-kit.user.model');
-        $user  = $model::where('email', $this->email)->first();
+        $user = $model::where('email', $this->email)->first();
 
-        if (!$user) {
+        if (! $user) {
             return;
         }
 

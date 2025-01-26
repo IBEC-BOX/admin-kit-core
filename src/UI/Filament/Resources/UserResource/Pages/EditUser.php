@@ -15,15 +15,15 @@ class EditUser extends EditRecord
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $model = config('admin-kit.user.model');
-        $user  = $model::where('email', $data['email'])->first();
-        if (!$user) {
+        $user = $model::where('email', $data['email'])->first();
+        if (! $user) {
             throw new \Exception("User with email {$data['email']} not found");
         }
 
-        if (!empty($data['password'])) {
-            $hashedPassword   = Hash::make($data['password']);
-            $data             = $this->setPasswordExpiry($data);
-            $data             = $this->setPasswordHistory($data, $hashedPassword, $user->password_history ?? []);
+        if (! empty($data['password'])) {
+            $hashedPassword = Hash::make($data['password']);
+            $data = $this->setPasswordExpiry($data);
+            $data = $this->setPasswordHistory($data, $hashedPassword, $user->password_history ?? []);
             $data['password'] = $hashedPassword;
         }
 

@@ -5,11 +5,11 @@ namespace AdminKit\Core\UI\Filament\Pages;
 use Carbon\Carbon;
 use Filament\Actions\Action;
 use Filament\Forms;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Form;
 
 class PasswordExpired extends Page implements HasForms
 {
@@ -29,11 +29,11 @@ class PasswordExpired extends Page implements HasForms
 
     public function mount()
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             redirect()->route('filament.admin-kit.auth.login');
         }
 
-        if (!config('admin-kit.user.password.expiry.enabled')) {
+        if (! config('admin-kit.user.password.expiry.enabled')) {
             return redirect()->route('filament.admin-kit.pages.dashboard');
         }
 
@@ -43,11 +43,11 @@ class PasswordExpired extends Page implements HasForms
             return redirect()->route('filament.admin-kit.pages.dashboard');
         }
 
-        if (!now()->greaterThanOrEqualTo($user->password_expires_at)) {
+        if (! now()->greaterThanOrEqualTo($user->password_expires_at)) {
             return redirect()->route('filament.admin-kit.pages.dashboard');
         }
 
-        if (!now()->greaterThanOrEqualTo($user->password_expires_at)) {
+        if (! now()->greaterThanOrEqualTo($user->password_expires_at)) {
             return redirect()->route('filament.admin-kit.pages.dashboard');
         }
     }
@@ -62,14 +62,14 @@ class PasswordExpired extends Page implements HasForms
         $user->password = Hash::make($this->data['password']);
 
         if (config('admin-kit.user.password.history.enabled')) {
-            $count                  = config('admin-kit.user.password.history.count');
-            $passwordHistory        = $user->password_history ?? [];
-            $passwordHistory[]      = $user->password;
+            $count = config('admin-kit.user.password.history.count');
+            $passwordHistory = $user->password_history ?? [];
+            $passwordHistory[] = $user->password;
             $user->password_history = array_slice($passwordHistory, -$count);
         }
 
         if (config('admin-kit.user.password.expiry.enabled')) {
-            $expiryDays                = config('admin-kit.user.password.expiry.days');
+            $expiryDays = config('admin-kit.user.password.expiry.days');
             $user->password_expires_at = Carbon::now()->addDays($expiryDays);
         }
 

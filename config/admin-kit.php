@@ -4,13 +4,13 @@ use AdminKit\Core\Middlewares\CheckPasswordExpiry;
 use AdminKit\Core\UI\Filament\Resources\UserResource;
 use BezhanSalleh\FilamentShield\Resources\RoleResource;
 use Filament\Http\Middleware\Authenticate;
+use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Filament\Http\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -139,7 +139,7 @@ return [
                     'regex:/[A-Z]/',      // must contain at least one uppercase letter
                     'regex:/[0-9]/',      // must contain at least one digit
                     'regex:/[@$!%*#?&]/', // must contain a special character
-                    new \AdminKit\Core\Rules\PasswordHistory(),
+                    new \AdminKit\Core\Rules\PasswordHistory,
                 ],
                 'messages' => [
                     'min' => 'Пароль должен содержать не менее 8 символов',
