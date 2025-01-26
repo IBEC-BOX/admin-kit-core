@@ -1,15 +1,16 @@
 <?php
 
+use AdminKit\Core\Middlewares\CheckPasswordExpiry;
 use AdminKit\Core\UI\Filament\Resources\UserResource;
 use BezhanSalleh\FilamentShield\Resources\RoleResource;
 use Filament\Http\Middleware\Authenticate;
+use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -65,6 +66,7 @@ return [
         ],
         'pages' => [
             Filament\Pages\Dashboard::class,
+            AdminKit\Core\UI\Filament\Pages\PasswordExpired::class,
         ],
         'widgets' => [
             Filament\Widgets\AccountWidget::class,
@@ -84,6 +86,7 @@ return [
             SubstituteBindings::class,
             DisableBladeIconComponents::class,
             DispatchServingFilamentEvent::class,
+            CheckPasswordExpiry::class,
         ],
         'authMiddleware' => [
             Authenticate::class,
@@ -117,21 +120,42 @@ return [
         'group' => 'Filament Shield',
         'impersonate' => true,
         'shield' => true,
-        'password_validation' => [
-            'rules' => [
-                'required',
-                'string',
-                'min:8',              // must be at least 8 characters in length
-                'max:20',             // must be at no more 20 characters in length
-                'regex:/[a-z]/',      // must contain at least one lowercase letter
-                'regex:/[A-Z]/',      // must contain at least one uppercase letter
-                'regex:/[0-9]/',      // must contain at least one digit
-                'regex:/[@$!%*#?&]/', // must contain a special character
+        'password' => [
+            'history' => [
+                'enabled' => env('ADMIN_KIT_USER_PASSWORD_HISTORY_ENABLED', false),
+                'count' => env('ADMIN_KIT_USER_PASSWORD_HISTORY_COUNT', 8),
             ],
-            'messages' => [
-                'min' => 'Пароль должен содержать не менее 8 символов',
-                'max' => 'Пароль должен содержать не более 20 символов',
-                'regex' => 'Пароль должен содержать одну строчную и одну заглавную, одну цифру и один спецсимвол из @$!%*#?&',
+            'expiry' => [
+                'enabled' => env('ADMIN_KIT_USER_PASSWORD_EXPIRY_ENABLED', false),
+                'days' => env('ADMIN_KIT_USER_PASSWORD_EXPIRY_DAYS', 365),
+            ],
+            'validation' => [
+                'rules' => [
+                    'required',
+                    'string',
+                    'min:8',              // must be at least 8 characters in length
+                    'max:20',             // must be at no more 20 characters in length
+                    'regex:/[a-z]/',      // must contain at least one lowercase letter
+                    'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                    'regex:/[0-9]/',      // must contain at least one digit
+                    'regex:/[@$!%*#?&]/', // must contain a special character
+                    new \AdminKit\Core\Rules\PasswordHistory,
+                ],
+                'messages' => [
+                    'min' => 'Пароль должен содержать не менее 8 символов',
+                    'max' => 'Пароль должен содержать не более 20 символов',
+                    'regex' => 'Пароль должен содержать одну строчную и одну заглавную, одну цифру и один спецсимвол из @$!%*#?&',
+                ],
+            ],
+        ],
+        'password' => [
+            'history' => [
+                'enabled' => false,
+                'count' => 8,
+            ],
+            'expiry' => [
+                'enabled' => false,
+                'days' => 365,
             ],
         ],
     ],

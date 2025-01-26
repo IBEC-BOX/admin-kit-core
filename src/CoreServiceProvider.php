@@ -22,9 +22,13 @@ class CoreServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('admin-kit')
-            ->hasMigration('create_admin_kit_users_table')
+            ->hasMigrations([
+                'create_admin_kit_users_table',
+                'add_password_rotation_columns_in_admin_kit_users_table',
+            ])
             ->hasTranslations()
             ->hasRoute('api')
+            ->hasViews()
             ->hasCommands([
                 InstallCommand::class,
                 ClonePackageCommand::class,

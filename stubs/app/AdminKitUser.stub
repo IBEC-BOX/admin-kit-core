@@ -31,14 +31,19 @@ class AdminKitUser extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'password_expires_at',
+        'password_history',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
+        'password_history',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password_expires_at' => 'datetime',
+        'password_history' => 'array',
     ];
 }

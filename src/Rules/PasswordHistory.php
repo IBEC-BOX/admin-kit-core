@@ -1,0 +1,49 @@
+<?php
+
+namespace AdminKit\Core\Rules;
+
+use Closure;
+use Illuminate\Contracts\Validation\DataAwareRule;
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Facades\Hash;
+
+class PasswordHistory implements DataAwareRule, ValidationRule
+{
+    private ?string $email = null;
+
+    /**
+     * Run the validation rule.
+     *
+     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     */
+    public function validate(string $attribute, mixed $value, Closure $fail): void
+    {
+        if (! config('admin-kit.user.password.history.enabled')) {
+            return;
+        }
+
+        if ($this->email) {
+            // find user is required
+            $model = config('admin-kit.user.model');
+            $user = $model::where('email', $this->email)->first();
+        } else {
+            $user = auth()->user();
+        }
+
+        if (! $user) {
+            return;
+        }
+
+        $passwordHistory = $user->password_history ?? [];
+        foreach ($passwordHistory as $passwordHash) {
+            if (Hash::check($value, $passwordHash)) {
+                $fail('Пароль уже был использован ранее');
+            }
+        }
+    }
+
+    public function setData(array $data): void
+    {
+        $this->email = $data['email'] ?? $data['data']['email'] ?? null;
+    }
+}
