@@ -8,6 +8,8 @@ use AdminKit\Core\Commands\InstallPackagesCommand;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -52,6 +54,35 @@ class CoreServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this->publishFiles();
+
+        Validator::extend('password_history', function ($attribute, $value, $parameters) {
+            if (! config('admin-kit.user.password.history.enabled')) {
+                return true;
+            }
+
+            $email = request()->get('email') ?? request()->get('data')['email'] ?? null;
+
+            if ($email) {
+                // find user is required
+                $model = config('admin-kit.user.model');
+                $user = $model::where('email', $email)->first();
+            } else {
+                $user = auth()->user();
+            }
+
+            if (! $user) {
+                return true;
+            }
+
+            $passwordHistory = $user->password_history ?? [];
+            foreach ($passwordHistory as $passwordHash) {
+                if (Hash::check($value, $passwordHash)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }, 'Пароль уже был использован ранее');
     }
 
     protected function registerConfigs(): self

@@ -139,23 +139,13 @@ return [
                     'regex:/[A-Z]/',      // must contain at least one uppercase letter
                     'regex:/[0-9]/',      // must contain at least one digit
                     'regex:/[@$!%*#?&]/', // must contain a special character
-                    new \AdminKit\Core\Rules\PasswordHistory,
+                    'password_history',
                 ],
                 'messages' => [
                     'min' => 'Пароль должен содержать не менее 8 символов',
                     'max' => 'Пароль должен содержать не более 20 символов',
                     'regex' => 'Пароль должен содержать одну строчную и одну заглавную, одну цифру и один спецсимвол из @$!%*#?&',
                 ],
-            ],
-        ],
-        'password' => [
-            'history' => [
-                'enabled' => false,
-                'count' => 8,
-            ],
-            'expiry' => [
-                'enabled' => false,
-                'days' => 365,
             ],
         ],
     ],
