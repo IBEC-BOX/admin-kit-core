@@ -139,7 +139,7 @@ return [
                     'regex:/[A-Z]/',      // must contain at least one uppercase letter
                     'regex:/[0-9]/',      // must contain at least one digit
                     'regex:/[@$!%*#?&]/', // must contain a special character
-                    new \AdminKit\Core\Rules\PasswordHistory(),
+                    'password_history',
                 ],
                 'messages' => [
                     'min' => 'Пароль должен содержать не менее 8 символов',
