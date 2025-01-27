@@ -148,16 +148,6 @@ return [
                 ],
             ],
         ],
-        'password' => [
-            'history' => [
-                'enabled' => false,
-                'count' => 8,
-            ],
-            'expiry' => [
-                'enabled' => false,
-                'days' => 365,
-            ],
-        ],
     ],
 
     /*
