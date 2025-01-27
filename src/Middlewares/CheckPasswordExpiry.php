@@ -12,21 +12,21 @@ class CheckPasswordExpiry
     /**
      * Handle an incoming request.
      *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!config('admin-kit.user.password.expiry.enabled')) {
+        if (! config('admin-kit.user.password.expiry.enabled')) {
             return $next($request);
         }
 
         $user = auth()->user();
 
-        if (!$user?->password_expires_at) {
+        if (! $user?->password_expires_at) {
             return $next($request);
         }
 
-        if (now()->greaterThanOrEqualTo($user->password_expires_at) && !$this->isExcludedRoute()) {
+        if (now()->greaterThanOrEqualTo($user->password_expires_at) && ! $this->isExcludedRoute()) {
             return redirect()->route('filament.admin-kit.pages.password-expired');
         }
 

@@ -8,7 +8,7 @@ trait UserPageTrait
 {
     protected function setPasswordExpiry(array $data): array
     {
-        if (!config('admin-kit.user.password.expiry.enabled')) {
+        if (! config('admin-kit.user.password.expiry.enabled')) {
             return $data;
         }
 
@@ -25,7 +25,7 @@ trait UserPageTrait
 
     protected function setPasswordHistory(array $data, string $hashedPassword, array $passwordHistory = []): array
     {
-        if (!config('admin-kit.user.password.history.enabled')) {
+        if (! config('admin-kit.user.password.history.enabled')) {
             return $data;
         }
 

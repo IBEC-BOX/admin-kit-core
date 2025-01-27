@@ -6,7 +6,6 @@ use AdminKit\Core\Commands\ClonePackageCommand;
 use AdminKit\Core\Commands\InstallCommand;
 use AdminKit\Core\Commands\InstallPackagesCommand;
 use AdminKit\Core\Providers\MiddlewareServiceProvider;
-use AdminKit\Core\Rules\PasswordExpiry;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Hash;
@@ -57,7 +56,7 @@ class CoreServiceProvider extends PackageServiceProvider
         $this->publishFiles();
 
         Validator::extend('password_history', function ($attribute, $value, $parameters) {
-            if (!config('admin-kit.user.password.history.enabled')) {
+            if (! config('admin-kit.user.password.history.enabled')) {
                 return true;
             }
 
@@ -66,12 +65,12 @@ class CoreServiceProvider extends PackageServiceProvider
             if ($email) {
                 // find user is required
                 $model = config('admin-kit.user.model');
-                $user  = $model::where('email', $email)->first();
+                $user = $model::where('email', $email)->first();
             } else {
                 $user = auth()->user();
             }
 
-            if (!$user) {
+            if (! $user) {
                 return true;
             }
 
