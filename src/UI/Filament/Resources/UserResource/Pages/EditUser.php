@@ -25,6 +25,8 @@ class EditUser extends EditRecord
             $data = $this->setPasswordExpiry($data);
             $data = $this->setPasswordHistory($data, $hashedPassword, $user->password_history ?? []);
             $data['password'] = $hashedPassword;
+        } else {
+            unset($data['password']);
         }
 
         return $data;
