@@ -39,6 +39,8 @@ class PasswordExpired extends Page implements HasForms
 
         $user = auth()->user();
 
+        $this->data['email'] = $user->email;
+
         if (is_null($user?->password_expires_at)) {
             return redirect()->route('filament.admin-kit.pages.dashboard');
         }
@@ -84,6 +86,8 @@ class PasswordExpired extends Page implements HasForms
         return $form
             ->statePath('data')
             ->schema([
+                Forms\Components\Hidden::make('email'),
+
                 Forms\Components\TextInput::make('current_password')
                     ->label('Текущий пароль')
                     ->password()
