@@ -3,6 +3,7 @@
 namespace AdminKit\Core\UI\Filament\Resources\UserResource\Pages;
 
 use AdminKit\Core\UI\Filament\Resources\UserResource;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,5 +36,16 @@ class EditUser extends EditRecord
     public function getTitle(): string
     {
         return trans('admin-kit::user.resource.title.edit');
+    }
+
+    protected function getActions(): array
+    {
+        $actions = [];
+
+        if (auth()->user()->hasRole('super_admin')) {
+            $actions[] = Actions\DeleteAction::make();
+        }
+
+        return $actions;
     }
 }
