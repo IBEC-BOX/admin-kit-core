@@ -55,20 +55,17 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         $this->publishFiles();
 
-        Validator::extend('password_history', function ($attribute, $value, $parameters) {
+        Validator::extend('password_history', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
             if (! config('admin-kit.user.password.history.enabled')) {
                 return true;
             }
 
-            $email = request()->get('email') ?? request()->get('data')['email'] ?? null;
+            $email = $validator->getData()['email'] ?? $validator->getData()['data']['email'] ?? null;
+            Validator::make(['email' => $email], ['email' => 'required|email'])->validate();
 
-            if ($email) {
-                // find user is required
-                $model = config('admin-kit.user.model');
-                $user = $model::where('email', $email)->first();
-            } else {
-                $user = auth()->user();
-            }
+            // find user is required
+            $model = config('admin-kit.user.model');
+            $user = $model::where('email', $email)->first();
 
             if (! $user) {
                 return true;
